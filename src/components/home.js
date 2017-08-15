@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, Text } from "react-native"
 
+import TemplateBase from './templateBase'
 
 export default class Home extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -11,12 +12,7 @@ export default class Home extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<View style={{
-				flex: 1,
-				flexDirection: 'column',
-				justifyContent: 'center'
-			}}
-			>
+			<TemplateBase mainTitle="PerformFeedback" subTitle="Thanks for feeding back">
 				<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
 				<Button
 					title="About"
@@ -26,7 +22,8 @@ export default class Home extends Component {
 					title="Change Count"
 					onPress={ ()=>{navigate('Count')} }
 				/>
-			</View>
+			</TemplateBase>
 		);
+
 	}
 }

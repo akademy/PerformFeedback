@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Button, Text } from "react-native"
 
+import TemplateBase from './templateBase'
 export default class Count extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "Count"
@@ -9,11 +10,7 @@ export default class Count extends Component {
 
 	render() {
 		return (
-			<View style={{
-				flex: 1,
-				flexDirection: 'column',
-				justifyContent: 'center'
-			}}>
+			<TemplateBase mainTitle="Count" subTitle="Delete me">
 				<Button
 					title="Add One"
 					onPress={ ()=>{
@@ -39,7 +36,7 @@ export default class Count extends Component {
 					} }
 				/>
 				<Text style={{fontSize:28}}>Count is: {this.props.count}</Text>
-			</View>
+			</TemplateBase>
 		);
 	}
 }
