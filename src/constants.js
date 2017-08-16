@@ -6,3 +6,11 @@ export const REDUCER = {
 	ADD_ERROR: "ADD_ERROR",
 	CLEAR_ERROR: "CLEAR_ERROR"
 };
+
+export const NAVIGATION = {
+	HOME : "HOME",
+	//COUNT: "COUNT",
+	ABOUT : "ABOUT",
+	PROFILE : "PROFILE",
+	PERFORMANCE: "PERFORMANCE"
+};

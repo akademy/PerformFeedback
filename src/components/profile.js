@@ -12,15 +12,9 @@ export default class About extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="About" subTitle="All about this app!">
+			<TemplateBase mainTitle="Profile" subTitle="Your details">
 				<Text>
-					About this app
-				</Text>
-				<Text>
-					Privacy statement
-				</Text>
-				<Text>
-					Contributors
+					This is some text that explains something
 				</Text>
 			</TemplateBase>
 		);

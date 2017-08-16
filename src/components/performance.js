@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Text } from "react-native"
 
 import TemplateBase from './templateBase'
 
-export default class About extends Component {
+export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "About"
 	});
@@ -12,15 +12,9 @@ export default class About extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="About" subTitle="All about this app!">
+			<TemplateBase mainTitle="Performance" subTitle="Watching a performance">
 				<Text>
-					About this app
-				</Text>
-				<Text>
-					Privacy statement
-				</Text>
-				<Text>
-					Contributors
+					Performance coming...
 				</Text>
 			</TemplateBase>
 		);
