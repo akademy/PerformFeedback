@@ -3,9 +3,9 @@ import { Text } from "react-native"
 
 import TemplateBase from './templateBase'
 
-export default class About extends Component {
+export default class Profile extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: "About"
+		title: "Profile"
 	});
 
 	render() {
@@ -14,7 +14,7 @@ export default class About extends Component {
 		return (
 			<TemplateBase mainTitle="Profile" subTitle="Your details">
 				<Text>
-					This is some text that explains something
+					Profile coming
 				</Text>
 			</TemplateBase>
 		);

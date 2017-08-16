@@ -5,7 +5,7 @@ import TemplateBase from './templateBase'
 
 export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: "About"
+		title: "Performance"
 	});
 
 	render() {
