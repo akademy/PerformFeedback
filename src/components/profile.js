@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from "react-native"
+import { View, Text } from "react-native"
 
 import TemplateBase from './templateBase'
 
@@ -13,9 +13,18 @@ export default class Profile extends Component {
 
 		return (
 			<TemplateBase mainTitle="Profile" subTitle="Your details">
-				<Text>
-					Anonymous identifier: {this.props.id}
-				</Text>
+				<View style={{
+					//backgroundColor: 'red',
+					flex: 1,
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					padding: 30
+				}}
+				>
+					<Text>
+						Anonymous identifier: {this.props.id}
+					</Text>
+				</View>
 			</TemplateBase>
 		);
 	}
