@@ -7,7 +7,7 @@ import About from "./components/about"
 import Profile from "./components/profile"
 import Performance from "./components/performance"
 
-import { NAVIGATION as N } from 'constants'
+import { NAVIGATION as N } from './constants'
 
 const routerSetup = {};
 routerSetup[N.HOME] = {
