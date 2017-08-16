@@ -6,7 +6,8 @@ import { NAVIGATION as N } from '../constants'
 
 export default class Home extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: `${screenProps.build} Home (Home)`
+		//title: `${screenProps.build} Home (Home)`
+		title: "Home"
 	});
 
 	render() {
@@ -15,29 +16,47 @@ export default class Home extends Component {
 		return (
 			<TemplateBase mainTitle="PerformFeedback" subTitle="Thanks for feeding back">
 				<View style={{
-					backgroundColor: 'steelblue',
+					//backgroundColor: 'green',
 					padding:50,
-					flex: 1
+					flex: 1,
 				}}
 				>
-					<Button
-						title="About"
-						onPress={ ()=>{navigate(N.ABOUT)} }
-					/>
-					<Button
-						title="Profile"
-						onPress={ ()=>{navigate(N.PROFILE)} }
-					/>
-					<Button
-						title="Performance"
-						onPress={ ()=>{navigate(N.PERFORMANCE)} }
-					/>
+					<View style={{
+						height:250, // Divide the buttons into this space
+					}}
+					>
+						<View style={{
+							//backgroundColor: 'red',
+							flex: 1,
+							flexDirection: 'column',
+							justifyContent: 'space-between',
+						}}
+						>
+							<Button
+								title="About"
+								onPress={ ()=>{navigate(N.ABOUT)} }
+							/>
+							<Button
+								title="Profile"
+								onPress={ ()=>{navigate(N.PROFILE)} }
+							/>
+							<Button
+								title="Performance"
+								onPress={ ()=>{navigate(N.PERFORMANCE)} }
+							/>
+							<Button
+								disabled={true}
+								title="Questions"
+								onPress={ ()=>{navigate(N.QUESTIONS)} }
+							/>
+							<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
+							<Button
+								title="Change Count"
+								onPress={ ()=>{navigate(N.COUNT)} }
+							/>
+						</View>
+					</View>
 
-					{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
-					<Button
-						title="Change Count"
-						onPress={ ()=>{navigate(N.COUNT)} }
-					/>*/}
 				</View>
 			</TemplateBase>
 		);
