@@ -6,7 +6,7 @@ import { NAVIGATION as N } from './constants'
 import Home from "./components/bind/home"
 import About from "./components/about"
 import Count from "./components/bind/count"
-import Profile from "./components/profile"
+import Profile from "./components/bind/profile"
 import Performance from "./components/performance"
 
 import Questions from "./components/questions/questions"

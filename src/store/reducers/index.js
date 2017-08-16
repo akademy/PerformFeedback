@@ -1,5 +1,7 @@
-import { REDUCER as R } from '../constants'
+import { REDUCER as R } from '../../constants'
 import { combineReducers } from 'redux'
+
+import profile from './profiles'
 
 const initial = {
 	dataVersion: 1, // increment if data is incompatible with previous
@@ -63,6 +65,7 @@ export default combineReducers(
 		dataVersion,
 		count,
 		requestingCount,
+		profile,
 		errors
 	}
 );

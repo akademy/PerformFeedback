@@ -14,7 +14,7 @@ export default class Profile extends Component {
 		return (
 			<TemplateBase mainTitle="Profile" subTitle="Your details">
 				<Text>
-					Profile coming
+					Anonymous identifier: {this.props.id}
 				</Text>
 			</TemplateBase>
 		);

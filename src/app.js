@@ -9,8 +9,9 @@ import Store from "./store/store"
 
 const store = Store();
 
-// AsyncStorage.clear();
-persistStore(store, {storage: AsyncStorage} );
+
+const persister = persistStore(store, {storage: AsyncStorage} );
+//persister.purge()
 
 console.log("state", store.getState() );
 
