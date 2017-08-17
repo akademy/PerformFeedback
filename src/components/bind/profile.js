@@ -1,13 +1,24 @@
 import Profile from '../profile'
 import { connect } from 'react-redux'
+import {setDOB} from "../../store/actions/profile";
 
 const stateToProps = (state) => (
 	{
-		id: state.profile.randomId
+		id: state.profile.randomId,
+		dateOfBirth: state.profile.dateOfBirth
 	}
 );
 
+const dispatchToProps = (dispatch) => (
+	{
+		onDateOfBirth : (dob) => (
+			dispatch(
+				setDOB(dob)
+			)
+		)
+	}
+);
 
-const connector = connect( stateToProps )(Profile);
+const connector = connect( stateToProps, dispatchToProps )(Profile);
 
 export default connector

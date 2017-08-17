@@ -7,7 +7,8 @@ export const stateBase = {
 	errors: [],
 
 	profile : {
-		randomId: null
+		randomId: null,
+		dateOfBirth: null
 	}
 };
 

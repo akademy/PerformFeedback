@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text } from "react-native"
+import { StyleSheet, ScrollView, View, Text } from "react-native"
 
 import TemplateBase from './templateBase'
-
+import DatePicker from 'react-native-datepicker'
 export default class Profile extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "Profile"
@@ -13,19 +13,60 @@ export default class Profile extends Component {
 
 		return (
 			<TemplateBase mainTitle="Profile" subTitle="Your details">
-				<View style={{
-					//backgroundColor: 'red',
-					flex: 1,
-					flexDirection: 'column',
-					justifyContent: 'space-between',
-					padding: 30
-				}}
-				>
-					<Text>
-						Anonymous identifier: {this.props.id}
-					</Text>
+				<View style={{flex:1,padding: 20}}>
+
+					<ScrollView style={{
+						//backgroundColor: 'red',
+						//flex: 1,
+						//flexDirection: 'column',
+						//justifyContent: 'flex-start',
+						//padding: 30
+					}}
+					>
+						<View style={[styles.group]}>
+							<Text>To help with our research we ask that you answer the following questions. All data collected will be anonymous.</Text>
+						</View>
+
+						<View style={[styles.group]}>
+							<Text style={[styles.label]}>Anonymous identifier:</Text>
+							<Text style={{fontSize:20}}>{this.props.id}</Text>
+						</View>
+
+						<View style={[styles.group]}>
+							<Text style={[styles.label]}>Date of Birth:</Text>
+							<DatePicker
+								style={{
+									//width: 200
+								}}
+								date={this.props.dateOfBirth}
+								mode="date"
+								placeholder="select date"
+								format="YYYY-MM-DD"
+								minDate="1895-01-01"
+								maxDate="2014-12-31"
+								confirmBtnText="Confirm"
+								cancelBtnText="Cancel"
+								customStyles={{}}
+								onDateChange={(date) => {
+									console.log("Date selected:", date);
+									if( this.props.onDateOfBirth ) {
+										this.props.onDateOfBirth( date );
+									}
+								}}
+							/>
+						</View>
+					</ScrollView>
 				</View>
 			</TemplateBase>
 		);
 	}
 }
+
+var styles = StyleSheet.create({
+	group: {
+		marginBottom: 20
+	},
+	label: {
+		fontWeight: "bold"
+	}
+});

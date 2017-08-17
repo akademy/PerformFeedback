@@ -20,4 +20,5 @@ export const REDUCER = {
 
 	// Profile
 	SET_RANDOM_ID: "SET_RANDOM_ID",
+	SET_DOB: "SET_DOB",
 };

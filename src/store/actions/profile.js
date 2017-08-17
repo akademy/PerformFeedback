@@ -9,3 +9,11 @@ export const setRandomId = (id) => {
 		payload: id
 	}
 };
+
+export const setDOB = (dob) => {
+
+	return {
+		type: R.SET_DOB,
+		payload: dob
+	}
+};

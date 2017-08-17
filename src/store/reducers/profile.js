@@ -10,8 +10,18 @@ const randomId = (state=null,  action) => {
 	return state;
 };
 
+const dateOfBirth = (state=null,  action) => {
+	switch(action.type) {
+		case R.SET_DOB :
+			return action.payload;
+	}
+
+	return state;
+};
+
 export default combineReducers(
 	{
-		randomId
+		randomId,
+		dateOfBirth
 	}
 );
