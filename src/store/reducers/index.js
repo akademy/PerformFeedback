@@ -1,20 +1,13 @@
 import { REDUCER as R } from '../../constants'
 import { combineReducers } from 'redux'
 
-import profile from './profiles'
+import profile from './profile'
 
-const initial = {
-	dataVersion: 1, // increment if data is incompatible with previous
-	count: 0,
-	requestingCount: false,
-	errors: []
-};
-
-export const dataVersion = (state=initial.dataVersion) => {
+export const dataVersion = (state=0) => {
 	return state;
 };
 
-export const count = (state=initial.count, action ) => {
+export const count = (state=0, action ) => {
 	switch(action.type) {
 		case R.SET_COUNT :
 			return action.payload;
@@ -23,7 +16,7 @@ export const count = (state=initial.count, action ) => {
 	return state;
 };
 
-export const requestingCount = (state=initial.requestingCount, action ) => {
+export const requestingCount = (state=false, action ) => {
 	switch(action.type) {
 
 		case R.REQUESTING_COUNT :
@@ -40,7 +33,7 @@ export const requestingCount = (state=initial.requestingCount, action ) => {
 	return state;
 };
 
-export const errors = (state=initial.errors, action) => {
+export const errors = (state=[], action) => {
 
 	switch(action.type) {
 

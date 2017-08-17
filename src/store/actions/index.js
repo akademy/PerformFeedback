@@ -1,4 +1,4 @@
-import { REDUCER as R } from '../constants'
+import { REDUCER as R } from '../../constants'
 import fetch from 'fetch-everywhere'
 
 // These set up the data if needs be, and create a "state changer"
