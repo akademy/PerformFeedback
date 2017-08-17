@@ -5,16 +5,17 @@ import { createLogger } from "redux-logger";
 
 import reducers from './reducers'
 
-const loggerMiddleware = createLogger();
+let middleware = [thunkMiddleware];
+if( __DEV__ ) {
+	const loggerMiddleware = createLogger();
+	middleware.push(loggerMiddleware);
+}
 
 const store = (initialState: Object={}) => createStore(
 	reducers,
 	initialState,
 	compose(
-		applyMiddleware(
-			thunkMiddleware, loggerMiddleware
-
-		),
+		applyMiddleware(...middleware),
 		autoRehydrate()
 	)
 );

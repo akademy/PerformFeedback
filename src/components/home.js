@@ -54,6 +54,15 @@ export default class Home extends Component {
 								title="Change Count"
 								onPress={ ()=>{navigate(N.COUNT)} }
 							/>
+							{__DEV__ &&
+								<Button
+									title="Purge Persist"
+									onPress={() => {
+										console.warn("Purging the persistant data");
+										this.props.screenProps.persister.purge();
+									}}
+								/>
+							}
 						</View>
 					</View>
 
