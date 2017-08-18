@@ -1,5 +1,6 @@
 import { REDUCER as R } from '../../constants'
 import fetch from 'fetch-everywhere'
+import config from '../../config/config'
 
 // These set up the data if needs be, and create a "state changer"
 
@@ -23,7 +24,7 @@ export const requestCount = () => (dispatch/*, getState*/) => {
 
 	dispatch( requestingCount() );
 
-	fetch('http://10.0.2.2:40080')
+	fetch(config.local.api.url)
 		.then(
 			(response) => (
 				response.json()
