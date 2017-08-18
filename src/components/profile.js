@@ -48,7 +48,6 @@ export default class Profile extends Component {
 								cancelBtnText="Cancel"
 								customStyles={{}}
 								onDateChange={(date) => {
-									console.log("Date selected:", date);
 									if( this.props.onDateOfBirth ) {
 										this.props.onDateOfBirth( date );
 									}

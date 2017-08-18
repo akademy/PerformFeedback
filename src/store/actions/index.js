@@ -31,8 +31,6 @@ export const requestCount = () => (dispatch/*, getState*/) => {
 		)
 		.then(
 			(data) => {
-				console.log( data );
-
 				dispatch( requestingCountComplete() );
 				dispatch( setCount( data.count ) );
 			}

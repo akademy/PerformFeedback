@@ -3,6 +3,7 @@ import { View, Button, Text } from "react-native"
 
 import TemplateBase from './templateBase'
 import { NAVIGATION as N } from '../constants'
+import { Console as C } from "./../console"
 
 export default class Home extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -58,7 +59,7 @@ export default class Home extends Component {
 								<Button
 									title="Purge Persist"
 									onPress={() => {
-										console.warn("Purging the persistant data");
+										C.warn("Purging the persistant data");
 										this.props.screenProps.persister.purge();
 									}}
 								/>
