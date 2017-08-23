@@ -1,4 +1,5 @@
-import {setRandomId} from "./actions/profile";
+import uuid from 'react-native-uuid'
+import { setRandomId, setRandomUuid } from "./actions/profile";
 
 export const stateBase = {
 	dataVersion: 1, // increment if data is incompatible with previous
@@ -7,15 +8,26 @@ export const stateBase = {
 	errors: [],
 
 	profile : {
+		randomUuid: null,
 		randomId: null,
 		dateOfBirth: null
 	}
 };
 
 export const stateSetup = (state, store) => {
+
+	if( state.profile.randomUuid === null ) {
+		store.dispatch( setRandomUuid( generateRandomUuid() ));
+	}
+
 	if( state.profile.randomId === null ) {
 		store.dispatch( setRandomId( generateRandomId() ));
 	}
+
+};
+
+const generateRandomUuid = () => {
+	return uuid.v4();
 };
 
 const generateRandomId = () => {

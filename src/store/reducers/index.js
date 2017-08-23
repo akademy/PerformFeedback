@@ -1,7 +1,7 @@
 import { REDUCER as R } from '../../constants'
 import { combineReducers } from 'redux'
 
-import profile from './profile'
+import profileReducers from './profile'
 
 export const dataVersion = (state=0) => {
 	return state;
@@ -58,7 +58,7 @@ export default combineReducers(
 		dataVersion,
 		count,
 		requestingCount,
-		profile,
+		profile : profileReducers,
 		errors
 	}
 );

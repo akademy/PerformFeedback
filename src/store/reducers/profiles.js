@@ -1,4 +1,4 @@
-import { REDUCER as R } from '../../constants'
+/*import { REDUCER as R } from '../../constants'
 import { combineReducers } from 'redux'
 
 const initial = {
@@ -38,3 +38,4 @@ export default combineReducers(
 		randomId
 	}
 );
+*/
