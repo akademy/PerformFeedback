@@ -5,7 +5,8 @@ import {setDOB} from "../../store/actions/profile";
 const stateToProps = (state) => (
 	{
 		id: state.profile.randomId,
-		dateOfBirth: state.profile.dateOfBirth
+		dateOfBirth: state.profile.dateOfBirth,
+		profile: state.profile
 	}
 );
 

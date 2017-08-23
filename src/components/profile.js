@@ -54,6 +54,13 @@ export default class Profile extends Component {
 								}}
 							/>
 						</View>
+
+						<View style={[styles.group]}>
+							<Text style={[styles.label]}>Profile:</Text>
+							<Text>ru:{this.props.profile.randomUuid}</Text>
+							<Text>ri:{this.props.profile.randomId}</Text>
+							<Text>dob:{this.props.profile.dateOfBirth}</Text>
+						</View>
 					</ScrollView>
 				</View>
 			</TemplateBase>
