@@ -8,6 +8,12 @@ export default class Profile extends Component {
 		title: "Profile"
 	});
 
+	componentWillUnmount = () => {
+		if( this.props.onSyncProfile ) {
+			this.props.onSyncProfile();
+		}
+	};
+
 	render() {
 		const { navigate } = this.props.navigation;
 
