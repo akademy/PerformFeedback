@@ -24,7 +24,7 @@ export const requestCount = () => (dispatch/*, getState*/) => {
 
 	dispatch( requestingCount() );
 
-	fetch(config.local.api.url)
+	fetch( config.local.api.url + "/test/count" )
 		.then(
 			(response) => (
 				response.json()
