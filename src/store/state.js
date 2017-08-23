@@ -10,7 +10,9 @@ export const stateBase = {
 	profile : {
 		randomUuid: null,
 		randomId: null,
-		dateOfBirth: null
+		dateOfBirth: null,
+
+		postingProfile: false,
 	}
 };
 

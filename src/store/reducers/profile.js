@@ -27,11 +27,30 @@ const dateOfBirth = (state=null,  action) => {
 
 	return state;
 };
+export const postingProfile = (state=false, action ) => {
+	switch(action.type) {
+
+		case R.POSTING_PROFILE :
+			return true;
+
+		case R.POSTING_PROFILE_CANCEL :
+			return false;
+
+		case R.POSTING_PROFILE_COMPLETE:
+			return false;
+
+	}
+
+	return state;
+};
+
 
 export default combineReducers(
 	{
 		randomUuid,
 		randomId,
-		dateOfBirth
+		dateOfBirth,
+
+		postingProfile
 	}
 );
