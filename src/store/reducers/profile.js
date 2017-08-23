@@ -30,6 +30,7 @@ const dateOfBirth = (state=null,  action) => {
 
 export default combineReducers(
 	{
+		randomUuid,
 		randomId,
 		dateOfBirth
 	}
