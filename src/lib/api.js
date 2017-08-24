@@ -34,8 +34,45 @@ let api = {
 		return request;
 	},
 
-	responseCheck : ( response, requestId ) => {
-		return response.responseId = requestId;
+	responseCheckStatus: ( response ) => {
+		if (response.status < 200 && response.status >= 300) {
+			let error = new Error(response.statusText);
+			error.response = response;
+			throw error;
+		}
+
+		return response;
+	},
+
+	responseCheckValid : ( responseJson, requestId ) => {
+		if( responseJson.responseId !== requestId ) {
+			let error = new Error( "Response not valid" );
+			error.response = responseJson;
+		}
+		return responseJson;
+	},
+
+	responseJson: ( response ) => ( response.json() ),
+
+	fetchHandle: ( apiPath, data, state ) => {
+
+		let request = api.requestSetup( state.profile.randomUuid );
+		request.payload = data;
+
+		return fetch(config.local.api.url + apiPath, { //"/api/pre/", {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify( request )
+		})
+		.then( api.responseCheckStatus )
+		.then( api.responseJson )
+		.then( (responseJson) => {
+			console.log('responseJson', responseJson);
+			return api.responseCheckValid(responseJson, request.requestId)
+		})
 	}
 };
 
