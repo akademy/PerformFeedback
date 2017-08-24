@@ -1,5 +1,7 @@
 import uuid from 'react-native-uuid'
-import { setRandomId, setRandomUuid } from "./actions/profile";
+
+import { SYNC_STATUS as SS } from '../constants'
+import { setRandomId, setRandomUuid, setProfileSync, postingProfileCancel } from "./actions/profile"
 
 export const stateBase = {
 	dataVersion: 1, // increment if data is incompatible with previous
@@ -12,6 +14,7 @@ export const stateBase = {
 		randomId: null,
 		dateOfBirth: null,
 
+		syncStatus: SS.NOT_SYNCED,
 		postingProfile: false,
 	}
 };
@@ -19,12 +22,25 @@ export const stateBase = {
 export const stateSetup = (state, store) => {
 
 	if( state.profile.randomUuid === null ) {
+		// initial
 		store.dispatch( setRandomUuid( generateRandomUuid() ));
 	}
 
 	if( state.profile.randomId === null ) {
+		// initial
 		store.dispatch( setRandomId( generateRandomId() ));
 	}
+
+	if( state.profile.syncStatus === SS.SYNCING ) {
+		// clean-up
+		store.dispatch( setProfileSync( SS.NOT_SYNCED ) );
+	}
+
+	if( state.profile.postingProfile === true ) {
+		// cleanup
+		store.dispatch( postingProfileCancel() );
+	}
+
 
 };
 
@@ -37,9 +53,9 @@ const generateRandomId = () => {
 		Generate an anonymous ID.
 
 		I'd like it to look simple, and by easier to remember,
-		 but still unique with being checked against a server.
+		 but still unique without being checked against a server.
 
-		 Removed i, j, L, q and o as they look the same.
+		 Removed i, j, L, and q, o as they can look the same.
 		 Removed AEU to avoid words being generated.
 	*/
 	const codeLetters = "BCDFGHKMNPRSTVWXYZ";

@@ -1,4 +1,4 @@
-import { REDUCER as R } from '../../constants'
+import { REDUCER as R, SYNC_STATUS as SS } from '../../constants'
 import { combineReducers } from 'redux'
 
 const randomUuid = (state=null,  action) => {
@@ -27,6 +27,31 @@ const dateOfBirth = (state=null,  action) => {
 
 	return state;
 };
+
+export const syncStatus = (state=false, action ) => {
+
+	switch(action.type) {
+
+		case R.POSTING_PROFILE :
+			return SS.SYNCING;
+
+		case R.SET_DOB:
+		case R.SET_RANDOM_ID:
+		case R.SET_RANDOM_UUID:
+		case R.POSTING_PROFILE_CANCEL :
+			return SS.NOT_SYNCED;
+
+		case R.POSTING_PROFILE_COMPLETE:
+			return state;
+
+		case R.SET_PROFILE_SYNC:
+			return action.payload;
+
+	}
+
+	return state;
+};
+
 export const postingProfile = (state=false, action ) => {
 	switch(action.type) {
 
@@ -51,6 +76,7 @@ export default combineReducers(
 		randomId,
 		dateOfBirth,
 
+		syncStatus,
 		postingProfile
 	}
 );
