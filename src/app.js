@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 
 import Router from "./route"
 import Store from "./store/store"
+import sync from './store/sync'
+
 import { Console as C } from "./console"
 
 import { stateBase, stateSetup } from "./store/state"
@@ -16,14 +18,14 @@ const persisterOptions = {
 	storage: AsyncStorage
 };
 
-const persister = persistStore(store, persisterOptions , () => {
-	const state = store.getState();
+const persister = persistStore( store, persisterOptions , () => {
 
-	C.groupCollapsed("Rehydration complete");
-	C.log("Rehydrated state", state);
+	C.groupCollapsed("Rehydrate complete");
+	C.log("Rehydrate state", store.getState());
 	C.groupEnd();
 
-	stateSetup( state, store );
+	stateSetup( store );
+	sync.check( store );
 });
 
 class App extends Component {
