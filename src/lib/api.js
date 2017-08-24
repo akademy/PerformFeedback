@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 import uuid from 'react-native-uuid'
 //import VersionNumber from 'react-native-version-number';
 import config from "../config/config";
+import { Console as C } from "../console"
 
 let api = {
 	requestSetup : ( randomUuid ) => {
@@ -59,7 +60,7 @@ let api = {
 		let request = api.requestSetup( state.profile.randomUuid );
 		request.payload = data;
 
-		return fetch(config.local.api.url + apiPath, { //"/api/pre/", {
+		return fetch(config.local.api.url + apiPath, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -70,7 +71,7 @@ let api = {
 		.then( api.responseCheckStatus )
 		.then( api.responseJson )
 		.then( (responseJson) => {
-			console.log('responseJson', responseJson);
+			C.log('responseJson', responseJson);
 			return api.responseCheckValid(responseJson, request.requestId)
 		})
 	}

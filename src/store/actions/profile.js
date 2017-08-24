@@ -1,8 +1,9 @@
-import { REDUCER as R } from '../../constants'
+import { REDUCER as R, SYNC_STATUS as SS } from '../../constants'
 import { addError } from '../actions'
-import config from '../../config/config'
 import api from '../../lib/api'
-import { SYNC_STATUS as SS } from '../../constants'
+
+import { Console as C } from "../../console"
+
 
 export const setRandomUuid = (payload) => ({ type: R.SET_RANDOM_UUID, payload });
 export const setRandomId = (payload) => ({ type: R.SET_RANDOM_ID, payload });
@@ -24,7 +25,7 @@ export const postProfile = () => (dispatch, getState) => {
 
 		api.fetchHandle( "/api/pre/", state.profile, state )
 			.then( (data) => {
-				console.log( 'data', data);
+				C.log( 'data', data);
 				if ( data.payload.updated )  {
 					const state = getState();
 
