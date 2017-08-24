@@ -19,24 +19,24 @@ export const stateBase = {
 	}
 };
 
-export const stateSetup = (state, store) => {
+export const stateSetup = (store) => {
 
-	if( state.profile.randomUuid === null ) {
+	if( store.getState().profile.randomUuid === null ) {
 		// initial
 		store.dispatch( setRandomUuid( generateRandomUuid() ));
 	}
 
-	if( state.profile.randomId === null ) {
+	if( store.getState().profile.randomId === null ) {
 		// initial
 		store.dispatch( setRandomId( generateRandomId() ));
 	}
 
-	if( state.profile.syncStatus === SS.SYNCING ) {
+	if( store.getState().profile.syncStatus === SS.SYNCING ) {
 		// clean-up
 		store.dispatch( setProfileSync( SS.NOT_SYNCED ) );
 	}
 
-	if( state.profile.postingProfile === true ) {
+	if( store.getState().profile.postingProfile === true ) {
 		// cleanup
 		store.dispatch( postingProfileCancel() );
 	}
