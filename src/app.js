@@ -11,7 +11,12 @@ import { stateBase, stateSetup } from "./store/state"
 
 const store = Store(stateBase);
 
-const persister = persistStore(store, {storage: AsyncStorage} , () => {
+const persisterOptions = {
+	blacklist: ["profile.postingProfile"],
+	storage: AsyncStorage
+};
+
+const persister = persistStore(store, persisterOptions , () => {
 	const state = store.getState();
 
 	C.groupCollapsed("Rehydration complete");
