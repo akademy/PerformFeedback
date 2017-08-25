@@ -43,7 +43,7 @@ export default class Home extends Component {
 							/>
 							<Button
 								title="Performance"
-								onPress={ ()=>{navigate(N.PERFORMANCE)} }
+								onPress={ ()=>{navigate(N.PERFORMANCE_BEGIN)} }
 							/>
 							<Button
 								disabled={true}
