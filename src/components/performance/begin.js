@@ -62,7 +62,10 @@ export default class Performance extends Component {
 							"section end" in the music you are listening to.
 						</Text>
 						<Text style={[styles.text]}>
-							Simple press the "Add section" button when you believe a section comes to an end.
+							Simple press the "Add Section End" button when you believe a section comes to an end.
+						</Text>
+						<Text style={[styles.text]}>
+							If you accidentally press the button you can mark your last one as an error.
 						</Text>
 						<Button
 							onPress={ ()=>{navigate(N.PERFORMANCE_SECTIONS)} }
