@@ -14,7 +14,11 @@ import { stateBase, stateSetup } from "./store/state"
 const store = Store(stateBase);
 
 const persisterOptions = {
-	blacklist: ["profile.postingProfile"],
+	blacklist: [
+		"profile.postingProfile",
+		"live.positingLive",
+		"errors"
+	],
 	storage: AsyncStorage
 };
 
