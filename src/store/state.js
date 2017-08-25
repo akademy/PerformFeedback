@@ -16,7 +16,27 @@ export const stateBase = {
 
 		syncStatus: SS.NOT_SYNCED,
 		postingProfile: false,
-	}
+	},
+
+	live: {
+		feedbacks: [
+			/* e.g. {
+				performanceId: 'manchester2017',
+				feedbackId: 'wojenfowenf',
+				data: [
+					{
+						ty: 'start',
+						ts: 12324567389
+
+					}
+				]
+			}*/
+		],
+
+		syncStatus: SS.NOT_SYNCED,
+		postingLive: false,
+	},
+
 };
 
 export const stateSetup = (store) => {

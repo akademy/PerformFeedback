@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {StyleSheet, Text, View} from "react-native"
 
 import Button from 'apsl-react-native-button'
+import uuid from 'react-native-uuid'
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
@@ -14,23 +15,23 @@ export default class Performance extends Component {
 		title: "Sections"
 	});
 
+	feedbackId = '';
+	performanceId = 'manchester2017';
+
 	state = {
-		startTime: 0,
 		sections: [],
+		sectionsChanged: false,
 		sectionTexts: '',
 		removeButtonDisabled: true
-	};
-
-
-	constructor(props) {
-		super(props);
-		C.log( 'constructor' );
 	};
 
 	// noinspection JSUnusedGlobalSymbols
 	componentWillMount = () => {
 		C.log( 'componentWillMount' );
-		// TODO: Reset on retake
+		// TODO?: Reset on retake
+
+		this.feedbackId = uuid.v4();
+
 		const now = Date.now();
 
 		this.setState( (prevState) => {
@@ -41,7 +42,7 @@ export default class Performance extends Component {
 				});
 				return {
 					sections ,
-					startTime: now
+					sectionsChanged: true
 				}
 			}
 			, () => {
@@ -53,11 +54,28 @@ export default class Performance extends Component {
 	// noinspection JSUnusedGlobalSymbols
 	componentDidMount = () => {
 		C.log( 'componentDidMount' );
-		this.createSectionText()
+		this.createSectionText();
+
+		this.sectionsChangedInterval = setInterval( () => {
+			this.sectionsChanged();
+		}, 5000 );
 	};
 
 	componentWillUnmount = () => {
 		C.log( 'componentWillUnmount' );
+		clearInterval( this.sectionsChangedInterval );
+	};
+
+	sectionsChanged = () => {
+		if( this.props.onSectionsChange && this.state.sectionsChanged ) {
+			let feedback = {
+				performanceId: this.performanceId,
+				feedbackId: this.feedbackId,
+				data: this.state.sections
+			};
+
+			this.props.onSectionsChange( feedback );
+		}
 	};
 
 	createSectionText = () => {
@@ -126,6 +144,7 @@ export default class Performance extends Component {
 									return {
 										sections ,
 										removeButtonDisabled: false,
+										sectionsChanged: true
 									}
 								}
 								, () => {
@@ -157,6 +176,7 @@ export default class Performance extends Component {
 									return {
 										sections,
 										removeButtonDisabled: true,
+										sectionsChanged: true
 									}
 								}, () => {
 									this.createSectionText()
@@ -188,10 +208,12 @@ export default class Performance extends Component {
 										});
 										return {
 											sections ,
+											sectionsChanged: true
 										}
 									}
 									, () => {
-										C.log( this.state);
+										C.log( this.state );
+										this.sectionsChanged();
 										navigate(N.PERFORMANCE_FINISH)
 									}
 								);
