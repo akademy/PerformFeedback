@@ -28,6 +28,7 @@ let api = {
 			randomUuid,
 
 			requestId: uuid.v4(),
+			requestDateTime: (new Date()).toISOString(),
 
 			payload : null
 		};
