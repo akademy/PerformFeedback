@@ -5,6 +5,7 @@ import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
+import { Console as C } from "../../console"
 
 export default class Performance extends Component {
 
@@ -20,18 +21,43 @@ export default class Performance extends Component {
 		removeButtonDisabled: true
 	};
 
+
+	constructor(props) {
+		super(props);
+		C.log( 'constructor' );
+	};
+
 	// noinspection JSUnusedGlobalSymbols
 	componentWillMount = () => {
-		// TODO: Reset on
-		console.log('willmount');
-		this.setState({
-			startTime: Date.now()
-		});
+		C.log( 'componentWillMount' );
+		// TODO: Reset on retake
+		const now = Date.now();
+
+		this.setState( (prevState) => {
+			const sections = prevState.sections.slice();
+				sections.push({
+					ty: 'start',
+					ts: now,
+				});
+				return {
+					sections ,
+					startTime: now
+				}
+			}
+			, () => {
+				this.createSectionText()
+			}
+		);
 	};
 
 	// noinspection JSUnusedGlobalSymbols
 	componentDidMount = () => {
+		C.log( 'componentDidMount' );
 		this.createSectionText()
+	};
+
+	componentWillUnmount = () => {
+		C.log( 'componentWillUnmount' );
 	};
 
 	createSectionText = () => {
@@ -42,15 +68,17 @@ export default class Performance extends Component {
 
 		if( count > 0 ) {
 			for (let i = 0; i < count; i++) {
-				let text = (this.state.sections[i].error) ? charError : charOK;
+				if( !this.state.sections[i].ty ) {
+					let text = (this.state.sections[i].error) ? charError : charOK;
 
-				if( i === 0 ) {
-					text = text[1]; // remove space
+					if (i === 0) {
+						text = text[1]; // remove space
+					}
+
+					texts.push(
+						<Text key={i + 1}>{text}</Text>
+					)
 				}
-
-				texts.push(
-					<Text key={i+1}>{text}</Text>
-				)
 			}
 		}
 
@@ -88,10 +116,12 @@ export default class Performance extends Component {
 								fontSize: 18
 							}}
 							onPress={ () => {
+								const now = Date.now();
+
 								this.setState( (prevState) => {
 									const sections = prevState.sections.slice();
 									sections.push({
-										t: Date.now(),
+										ts: now,
 									});
 									return {
 										sections ,
@@ -147,7 +177,25 @@ export default class Performance extends Component {
 								color: '#fff',
 								fontSize: 14
 							}}
-							onPress={ () => {navigate(N.PERFORMANCE_FINISH)} }
+							onPress={ () => {
+								const now = Date.now();
+
+								this.setState( (prevState) => {
+										const sections = prevState.sections.slice();
+										sections.push({
+											ty: 'finish',
+											ts: now,
+										});
+										return {
+											sections ,
+										}
+									}
+									, () => {
+										C.log( this.state);
+										navigate(N.PERFORMANCE_FINISH)
+									}
+								);
+							} }
 						>Finish</Button>
 					</View>
 				</View>
