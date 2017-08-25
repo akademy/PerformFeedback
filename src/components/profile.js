@@ -74,7 +74,7 @@ export default class Profile extends Component {
 	}
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
 	group: {
 		marginBottom: 20
 	},
