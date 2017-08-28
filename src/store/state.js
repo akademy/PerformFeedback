@@ -32,9 +32,6 @@ export const stateBase = {
 				]
 			}*/
 		],
-
-		syncStatus: SS.NOT_SYNCED,
-		postingLive: false,
 	},
 
 };
