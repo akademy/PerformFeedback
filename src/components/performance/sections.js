@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import {StyleSheet, Text, View} from "react-native"
+import { StyleSheet, Text, View } from "react-native"
 
 import Button from 'apsl-react-native-button'
-import uuid from 'react-native-uuid'
 
 import TemplateBase from '../templateBase'
-import {NAVIGATION as N} from "../../constants";
+import { NAVIGATION as N } from "../../constants"
 import { Console as C } from "../../console"
 
 export default class Performance extends Component {
@@ -15,7 +14,6 @@ export default class Performance extends Component {
 		title: "Sections"
 	});
 
-	feedbackId = '';
 	performanceId = 'manchester2017';
 
 	state = {
@@ -30,7 +28,13 @@ export default class Performance extends Component {
 		C.log( 'componentWillMount' );
 		// TODO?: Reset on retake
 
-		this.feedbackId = uuid.v4();
+		if( this.props.setPerformanceId ) { // TODO: Remove to own component
+			this.props.setPerformanceId( 'manchester2017' );
+		}
+
+		if( this.props.createFeedback ) {
+			this.props.createFeedback();
+		}
 
 		const now = Date.now();
 
@@ -67,14 +71,9 @@ export default class Performance extends Component {
 	};
 
 	sectionsChanged = () => {
+		C.log( 'sectionsChanged' );
 		if( this.props.onSectionsChange && this.state.sectionsChanged ) {
-			let feedback = {
-				performanceId: this.performanceId,
-				feedbackId: this.feedbackId,
-				data: this.state.sections
-			};
-
-			this.props.onSectionsChange( feedback );
+			this.props.onSectionsChange( this.props.feedbackId, this.state.sections );
 		}
 	};
 

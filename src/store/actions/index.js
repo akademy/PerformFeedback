@@ -4,6 +4,10 @@ import config from '../../config/config'
 
 // These set up the data if needs be, and create a "state changer"
 
+
+export const setCurrentPerformanceId = (payload) => ({ type: R.SET_CURRENT_PERFORMANCE_ID, payload });
+export const setCurrentFeedbackId = (payload) => ({ type: R.SET_CURRENT_FEEDBACK_ID, payload });
+
 export const setCount = (count) => {
 	if( count < 0 ) {
 		count = 0;

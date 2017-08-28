@@ -1,18 +1,26 @@
 import Sections from '../sections'
 import { connect } from 'react-redux'
-import { liveFeedback } from "../../../store/actions/live";
+import { createFeedback, setFeedbackData } from "../../../store/actions/live";
+import {setCurrentPerformanceId} from "../../../store/actions/index";
 
-const stateToProps = null; /*(state) => (
+const stateToProps = (state) => (
 	{
-		id: state.profile.randomId,
+		performanceId: state.currentPerformanceId,
+		feedbackId: state.currentFeedbackId
 	}
-);*/
+);
 
 const dispatchToProps = (dispatch) => (
 	{
-		onSectionsChange : (feedback) => (
+		setPerformanceId: (performanceId) => (
+			dispatch( setCurrentPerformanceId( performanceId ) ) // TODO: Move to own component
+		),
+		createFeedback: ( feedbackId ) => (
+			dispatch( createFeedback( feedbackId ) )
+		),
+		onSectionsChange: ( feedbackId, data ) => (
 			dispatch(
-				liveFeedback(feedback)
+				setFeedbackData( feedbackId, data )
 			)
 		)
 	}

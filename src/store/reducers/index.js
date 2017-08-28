@@ -2,6 +2,7 @@ import { REDUCER as R } from '../../constants'
 import { combineReducers } from 'redux'
 
 import profileReducers from './profile'
+import liveReducers from './live'
 
 export const dataVersion = (state=0) => {
 	return state;
@@ -10,6 +11,24 @@ export const dataVersion = (state=0) => {
 export const count = (state=0, action ) => {
 	switch(action.type) {
 		case R.SET_COUNT :
+			return action.payload;
+	}
+
+	return state;
+};
+
+export const currentPerformanceId = (state=null, action ) => {
+	switch(action.type) {
+		case R.SET_CURRENT_PERFORMANCE_ID :
+			return action.payload;
+	}
+
+	return state;
+};
+
+export const currentFeedbackId = (state=null, action ) => {
+	switch(action.type) {
+		case R.SET_CURRENT_FEEDBACK_ID :
 			return action.payload;
 	}
 
@@ -58,7 +77,10 @@ export default combineReducers(
 		dataVersion,
 		count,
 		requestingCount,
+		currentPerformanceId,
+		currentFeedbackId,
 		profile : profileReducers,
+		live: liveReducers,
 		errors
 	}
 );
