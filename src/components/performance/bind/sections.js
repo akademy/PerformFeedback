@@ -1,6 +1,6 @@
 import Sections from '../sections'
 import { connect } from 'react-redux'
-import { createFeedback, setFeedbackData } from "../../../store/actions/live";
+import { createFeedback, setFeedbackData, postLive } from "../../../store/actions/live";
 import {setCurrentPerformanceId} from "../../../store/actions/index";
 
 const stateToProps = (state) => (
@@ -12,17 +12,27 @@ const stateToProps = (state) => (
 
 const dispatchToProps = (dispatch) => (
 	{
-		setPerformanceId: (performanceId) => (
-			dispatch( setCurrentPerformanceId( performanceId ) ) // TODO: Move to own component
-		),
 		createFeedback: ( feedbackId ) => (
 			dispatch( createFeedback( feedbackId ) )
 		),
-		onSectionsChange: ( feedbackId, data ) => (
+		setPerformanceId: (performanceId) => (
+			dispatch( setCurrentPerformanceId( performanceId ) ) // TODO: Move to own component
+		),
+		setFeedbackData: ( feedbackId, data ) => {
 			dispatch(
 				setFeedbackData( feedbackId, data )
 			)
-		)
+		},
+		onFeedbackSync: ( feedbackId ) => {
+			dispatch(
+				postLive( feedbackId )
+			)
+		},
+		//onSectionsChange: ( feedbackId, data ) => (
+		//	dispatch(
+		//		setFeedbackData( feedbackId, data )
+		//	)
+		//)
 	}
 );
 

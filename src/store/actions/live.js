@@ -4,6 +4,8 @@ import { REDUCER as R, SYNC_STATUS as SS } from '../../constants'
 import { setCurrentFeedbackId, addError } from '../actions'
 import api from '../../lib/api'
 
+import { Console as C } from "../../console"
+
 export const addFeedback = (payload) => ({ type: R.ADD_FEEDBACK, payload });
 
 export const setFeedbackPerformanceId = (id, payload) => ({ type: R.SET_FEEDBACK_PERFORMANCE_ID, id, payload });
@@ -36,13 +38,15 @@ export const createFeedback = ( performanceId ) => (dispatch, getState) => {
 };
 
 // thunk
-export const postLive = (id) => (dispatch, getState) => {
+export const postLive = (feedbackId) => (dispatch, getState) => {
 
 	const state = getState();
 
-	for( let i=0, z=state.live.feedbacks; i<z; i++ ) {
-		if( state.live.feedbacks[i].syncStatus === SS.NOT_SYNCED ) {
-			postLiveFeedback( state.live.feedbacks[i], dispatch, getState );
+	C.log( 'postLiveFeedback()', feedbackId, state);
+
+	for( let i=0, z=state.live.feedbacks.length; i<z; i++ ) {
+		if( !feedbackId || state.live.feedbacks[i].feedbackId === feedbackId ) {
+			postLiveFeedback(state.live.feedbacks[i], dispatch, getState);
 		}
 	}
 };
@@ -50,14 +54,16 @@ export const postLive = (id) => (dispatch, getState) => {
 
 const postLiveFeedback = ( feedbackState, dispatch, getState ) => {
 
-	if( !feedbackState.posting ) {
+	C.log( 'postLiveFeedback()', feedbackState);
+
+	if( !feedbackState.posting && feedbackState.syncStatus === SS.NOT_SYNCED ) {
 
 		let feedbackId = feedbackState.feedbackId;
 
 		dispatch( postingLive( feedbackId ));
 		dispatch( setFeedbackSync( feedbackId, SS.SYNCING ));
 
-		api.fetchHandle( "/api/live/", feedbackState, state )
+		api.fetchHandle( "/api/live/", feedbackState, getState() )
 			.then( (data) => {
 				const state = getState();
 				let updatedFeedback = null;

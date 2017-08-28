@@ -18,7 +18,7 @@ export default class Performance extends Component {
 
 	state = {
 		sections: [],
-		sectionsChanged: false,
+		sectionsNeedSync: false,
 		sectionTexts: '',
 		removeButtonDisabled: true
 	};
@@ -46,7 +46,7 @@ export default class Performance extends Component {
 				});
 				return {
 					sections ,
-					sectionsChanged: true
+					sectionsNeedSync: true
 				}
 			}
 			, () => {
@@ -61,7 +61,7 @@ export default class Performance extends Component {
 		this.createSectionText();
 
 		this.sectionsChangedInterval = setInterval( () => {
-			this.sectionsChanged();
+			this.syncFeedback();
 		}, 5000 );
 	};
 
@@ -70,10 +70,17 @@ export default class Performance extends Component {
 		clearInterval( this.sectionsChangedInterval );
 	};
 
+	syncFeedback = () => {
+		C.log( 'syncFeedback' );
+		if( this.props.onFeedbackSync ) {
+			this.props.onFeedbackSync( this.props.feedbackId )
+		}
+	};
+
 	sectionsChanged = () => {
 		C.log( 'sectionsChanged' );
-		if( this.props.onSectionsChange && this.state.sectionsChanged ) {
-			this.props.onSectionsChange( this.props.feedbackId, this.state.sections );
+		if( this.props.setFeedbackData ) {
+			this.props.setFeedbackData( this.props.feedbackId, this.state.sections );
 		}
 	};
 
@@ -143,10 +150,11 @@ export default class Performance extends Component {
 									return {
 										sections ,
 										removeButtonDisabled: false,
-										sectionsChanged: true
+										sectionsNeedSync: true
 									}
 								}
 								, () => {
+									this.sectionsChanged();
 									this.createSectionText()
 								});
 							} }
@@ -175,9 +183,10 @@ export default class Performance extends Component {
 									return {
 										sections,
 										removeButtonDisabled: true,
-										sectionsChanged: true
+										sectionsNeedSync: true
 									}
 								}, () => {
+									this.sectionsChanged();
 									this.createSectionText()
 								});
 							} }
@@ -207,12 +216,15 @@ export default class Performance extends Component {
 										});
 										return {
 											sections ,
-											sectionsChanged: true
+											sectionsNeedSync: true
 										}
 									}
 									, () => {
 										C.log( this.state );
+
 										this.sectionsChanged();
+										this.syncFeedback();
+
 										navigate(N.PERFORMANCE_FINISH)
 									}
 								);
