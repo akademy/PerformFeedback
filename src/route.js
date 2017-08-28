@@ -8,16 +8,13 @@ import About from "./components/about"
 import Count from "./components/bind/count"
 import Profile from "./components/bind/profile"
 import Begin from "./components/performance/begin"
-import Sections from "./components/performance/sections"
+import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"
 
 import Questions from "./components/questions/questions"
 
 
 const routerSetup = {};
-routerSetup[N.PERFORMANCE_SECTIONS] = {
-	screen: Sections
-};
 routerSetup[N.HOME] = {
 	screen: Home
 };
@@ -32,6 +29,9 @@ routerSetup[N.PROFILE] = {
 };
 routerSetup[N.PERFORMANCE_BEGIN] = {
 	screen: Begin
+};
+routerSetup[N.PERFORMANCE_SECTIONS] = {
+	screen: Sections
 };
 routerSetup[N.PERFORMANCE_FINISH] = {
 	screen: Finish
