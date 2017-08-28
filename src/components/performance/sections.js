@@ -62,7 +62,7 @@ export default class Performance extends Component {
 
 		this.sectionsChangedInterval = setInterval( () => {
 			this.syncFeedback();
-		}, 5000 );
+		}, Math.floor( ( ( Math.random() * 4 ) + 4 ) * 1000 ) ); // Wait 4 to 8 seconds to check for needed updates.
 	};
 
 	componentWillUnmount = () => {
