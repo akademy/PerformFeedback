@@ -1,0 +1,180 @@
+
+
+Hello Mat,
+
+
+I hope that you're having a good break somewhere away from the rain!
+
+
+Thank you again for all of this. I've added some comments to the points below (I've done it in capitals to make my additions clear, but I hope this doesn't look shouty!). You all know best about data collection though so feel free to ignore!
+
+
+All the best,
+
+Michelle
+
+
+Michelle Phillips
+
+Assistant Head of Undergraduate Programmes
+
+Royal Northern College of Music
+
+124 Oxford Road
+
+Manchester
+
+M13 9RD
+
+
+From: Matthew Wilcoxson <matthew.wilcoxson@oerc.ox.ac.uk>
+Sent: 04 August 2017 15:52
+To: Michelle Phillips; emilychoward@yahoo.co.uk; David De Roure; Pip Willcox
+Subject: RE: Performance App
+
+Hi Michelle,
+
+Thanks for your comments, I'm sorry for not getting back to this sooner, I've just been concentrating on the technical side (and holidays!)
+
+- I added the "sections marked" counter so that a user would have confirmation that the button pressed had been registered, it's not essential just nice to have. Perhaps we could just add a "dot" every time it's pressed instead, do you think that would influence also? (Maybe it would also be useful to have a "delete last" button, in case a user presses accidentally?). I'll remove the time indication though. And I'll make the button bigger (maybe even just have the button). - THAT SOUNDS GREAT. YES, I LIKE THE IDEA OF A DOT AND A DELETE LAST.
+
+- I agree it would be better to get the responses as soon as they have done it. However, I added the option so as not to interrupt the flow of the whole show, it might be a bit of a distraction for everyone - is this something we want to do? It'll probably only be a few minutes extra though. - I SEE WHAT YOU MEAN. YES, MAYBE LEAVE IT AS AN OPTION.
+
+- The questions look good, and there shouldn't be a problem creating them. Let me know when you have the full text for all of them. I'd like to split them up into the profile ones (1-8) and the performance ones (9-17). They'd appear in two different areas in the App, from the profile 1-8 can be filled in before or after the show and 9-17, as stated, should be done immediately after the performance - SOUNDS GREAT!
+
+I am still working under the idea that this app could go on to be used in other performances, however, to reduce the amount of work required, this version will be "locked" to Manchester, but it can be adapted in the future. (So the "Performance Selection" screen in the mockup won't exist this time.) - SOUNDS GOOD!
+
+I've updated the mockup with those requests (except all the new questions).
+
+Thanks
+
+Mat
+
+.-..--.. .--.---- .---..-. .--..-.. ..-..... .-..--.- .--....- .---.-..
+
+☺J Matthew Wilcoxson
+Research Software Engineer
+
+✉ Room 275, Oxford eResearch Centre, 7 Keble Road, Oxford, OX1 3QG
+☏ 01865 610684
+
+☄☆☉☽🚀
+From: Michelle Phillips [Michelle.Phillips@rncm.ac.uk]
+Sent: 07 July 2017 22:33
+To: Matthew Wilcoxson; emilychoward@yahoo.co.uk; David De Roure; Pip Willcox
+Subject: Re: Performance App
+
+Hello Mat, Dave, Pip and Emily
+
+
+Wow, that was quick Mat!
+
+
+Thank you for such a productive, enjoyable and beautiful meeting yesterday. What a wonderful setting, thank you for inviting us into your summer school venue. It was great to see you all. I hope the rest of the event went well (and was brawl-free!).
+
+
+This looks fantastic, Mat. I really like the clear and clean design. It looks professional and very user-friendly.
+
+
+I've listed a few comments below, followed by a summary of the questions we discussed yesterday (your 'miserable' option made me laugh a lot!). You know best though, so please do ignore any of the below.
+
+
+I've added questions 8, 13 and 14. On reflection, I thought that these could give us some useful context for people's responses. I'm not sure if we need them or not though so we could take the out if you think they're redundant, or that the questionnaire is becoming too long. I also added 12, but I think we've discussed this before (I'm not sure if this should be multiple choice or an open text box, I'll keep thinking).
+
+
+I hope that you all have good weekends,
+
+Michelle
+
+
+Comments:
+
+
+- I really like the idea of separating 'profile' info, and participation in experiments. It gives the impression that the app is a series of projects.
+
+
+- The colour scheme and font options look great.
+
+
+- I wonder whether it may be best to omit displaying the total number of sections marked to the user? It may lead to confounding manipulations (such as someone aiming for a round number, or feeling like they haven't marked many). Could we also omit the counter, as we will probably ask them to estimate how long they were listening for?
+
+
+- I wonder if it may be best to capture all responses immediately, rather than giving them the option to answer later (when having been in a traffic jam / listening to different music in the background etc. may get in the way of responses)?
+
+
+- Could the button which is tapped to mark section ends be bigger, to prevent people tapping but missing?
+
+
+
+Questions for the app:
+
+
+Q1. What is your date of birth (dd/mm/yyyy)?
+
+Q2. How many years of formal music training have you had (including A-level and any instrumental, vocal or composition lessons)? [give ten options: 1 2 3 4 5 6 7 8 9 10+]
+
+Q3. Do you currently play a musical instrument, sing or compose, and if so for how long? (Please select zero if you do not) [give ten options: 1 2 3 4 5 6 7 8 9 10+]
+
+Q4. How many years of formal mathematics training have you had (including A-level and any further study of mathematics)? [give ten options: 1 2 3 4 5 6 7 8 9 10+]
+
+Q5. Do you currently work in a field which requires mathematical skills, and if so for how long have you worked in this area? (Please select zero if you do not work with mathematics) [give ten options: 1 2 3 4 5 6 7 8 9 10+]
+
+Q6. Do you work in any of the following fields? [I wonder if we need this question, as we have music and maths covered above?]
+
+Q7. What is your highest level of formal qualification? [options: GCSEs, A-levels, Bachelor's Degree, Masters Degree, PhD, other (please state in text box)]
+
+Q8. How often do you listen to music (of any style)? [5 options: never, occasionally, sometimes, most days, every day]
+
+[here is perhaps the best place to add in ethics details - e.g. stating that it's anonymous and they can stop at any time]
+
+Q9. Wait until instructed to proceed. When the signal is given and the music begins, please tap the button below. Please then tap the button once every time that you feel that a section of music has finished.
+
+Q10. How long did you think that the piece of music lasted? [give a minutes and a seconds box, with the options that either can be left blank but not both]
+
+Q11. Please describe the piece in three words [followed by text box]
+
+Q12. What features in the piece influenced your choice of section endings? [give options here?]
+
+Q13. How much did you enjoy the piece of music? (from 1 = I didn't enjoy it at all to 7 = I enjoyed it a lot) [followed by options 1-7]
+
+Q14. As a listener, how familiar are you with twentieth-century classical music? (from 1 = It not familiar at all to 7 = very familiar) [followed by options 1-7]
+
+Q15. What motivated you to come to tonight's event? [I'm not sure what the options should be here, perhaps: I wanted to learn more about music and maths working together, I am a regular attendee of RNCM events, I wanted to take part in a scientific study, a friend / family member asked me to come along. They should have options to tick all that apply]
+
+Q16. Does participation in a scientific experiment such as this increase or decrease your enjoyment of a concert experience? (from 1 = It significantly decreases my enjoyment to 7 = it significantly increases my enjoyment) [followed by options 1-7]
+
+Q17. Please use this box for any other comments you wish to make [followed by text box]
+
+
+Michelle Phillips
+
+Assistant Head of Undergraduate Programmes
+
+Royal Northern College of Music
+
+124 Oxford Road
+
+Manchester
+
+M13 9RD
+
+
+From: Matthew Wilcoxson <matthew.wilcoxson@oerc.ox.ac.uk>
+Sent: 07 July 2017 21:30
+To: emilychoward@yahoo.co.uk; David De Roure; Michelle Phillips; Pip Willcox
+Subject: Performance App
+
+Hello.
+
+I've put together a prototype which should show the main features of what we want.
+
+If you view on a desktop you can place comments (although I think there are limits to this) or you can try it on mobile for a more realistic view. But comments by email are just as easy.
+
+Here's the link:
+https://marvelapp.com/94bj65j
+
+Cheers
+
+Mat
+
+
