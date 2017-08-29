@@ -240,8 +240,5 @@ const styles = StyleSheet.create({
 	key: {
 		paddingBottom: 10,
 		paddingLeft: 10
-	},
-	input: {
-		backgroundColor: 'red'
 	}
 });

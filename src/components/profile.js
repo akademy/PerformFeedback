@@ -177,12 +177,12 @@ export default class Profile extends Component {
 							/>
 						</View>
 
-						<View style={[styles.group]}>
+						{/* <View style={[styles.group]}>
 							<Text style={[styles.label]}>Profile:</Text>
 							<Text>ru:{this.props.profile.randomUuid}</Text>
 							<Text>ri:{this.props.profile.randomId}</Text>
 							<Text>dob:{this.props.profile.dateOfBirth}</Text>
-						</View>
+						</View>*/}
 					</ScrollView>
 				</View>
 			</TemplateBase>
@@ -192,30 +192,21 @@ export default class Profile extends Component {
 
 const styles = StyleSheet.create({
 	group: {
-		marginBottom: 20
+		marginBottom: 15
 	},
 	label: {
-		fontWeight: "bold"
+		fontWeight: "bold",
+		marginBottom: 10,
 	},
 	question: {
-		marginBottom: 40,
+		marginBottom: 30,
 		flex: 1,
 		borderBottomColor: 'steelblue',
 		borderBottomWidth: 4,
 		paddingBottom: 40,
 	},
-	label: {
-		fontWeight: "bold"
-	},
 	questionText: {
 		paddingTop: 10,
 		paddingBottom: 10
-	},
-	key: {
-		paddingBottom: 10,
-		paddingLeft: 10
-	},
-	input: {
-		backgroundColor: 'red'
 	}
 });
