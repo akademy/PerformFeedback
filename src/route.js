@@ -7,11 +7,12 @@ import Home from "./components/bind/home"
 import About from "./components/about"
 import Count from "./components/bind/count"
 import Profile from "./components/bind/profile"
+
 import Begin from "./components/performance/begin"
 import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"
 
-import Questions from "./components/questions/questions"
+import Questions from "./components/questions/bind/questions"
 
 
 const routerSetup = {};
@@ -46,7 +47,7 @@ const routerOptions = {
 	initialRouteName: N.HOME,
 };
 if( __DEV__ ) {
-	routerOptions.initialRouteName = N.PROFILE;
+	routerOptions.initialRouteName = N.QUESTIONS;
 }
 
 // Main Navigation
