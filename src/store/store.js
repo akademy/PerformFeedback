@@ -2,12 +2,16 @@ import { compose, createStore, applyMiddleware } from "redux";
 import {autoRehydrate} from 'redux-persist'
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
+import { Console } from "../lib/console"
 
 import reducers from './reducers'
 
 let middleware = [thunkMiddleware];
 if( __DEV__ ) {
-	const loggerMiddleware = createLogger();
+	const loggerMiddleware = createLogger({
+		logger: Console,
+		collapsed: true
+	});
 	middleware.push(loggerMiddleware);
 }
 
