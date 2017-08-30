@@ -40,8 +40,17 @@ routerSetup[N.PERFORMANCE_FINISH] = {
 routerSetup[N.QUESTIONS] = {
 	screen: Questions
 };
+
+// Options for router
+const routerOptions = {
+	initialRouteName: N.HOME,
+};
+if( __DEV__ ) {
+	routerOptions.initialRouteName = N.PROFILE;
+}
+
 // Main Navigation
-const Router = StackNavigator( routerSetup );
+const Router = StackNavigator( routerSetup, routerOptions );
 
 
 export default Router;
