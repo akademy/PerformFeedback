@@ -18,6 +18,9 @@ export const stateBase = {
 		postingProfile: false,
 	},
 
+	currentFeedbackId: null,
+	currentPerformanceId: null,
+
 	live: {
 		feedbacks: [
 			/* e.g. {

@@ -46,7 +46,7 @@ export default class Home extends Component {
 								onPress={ ()=>{navigate(N.PERFORMANCE_BEGIN)} }
 							/>
 							<Button
-								disabled={true}
+								disabled={!this.props.performanceId || !this.props.feedbackId}
 								title="Post performance questions"
 								onPress={ ()=>{navigate(N.QUESTIONS)} }
 							/>
