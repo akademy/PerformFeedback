@@ -18,32 +18,6 @@ const feedbacks = (state=[],  action) => {
 		case R.POSTING_LIVE_COMPLETE:
 			return updateObjectInArray(state, action);
 
-		/*
-		case R.ADD_OR_UPDATE_LIVE_FEEDBACK :
-
-			let found = -1;
-			for( let i=0, z=state.length; i < z; i++ ) {
-				if( state[i].feedbackId === action.payload.feedbackId ) {
-					found = i;
-					break;
-				}
-			}
-
-			let newState = state.slice();
-			if( found !== -1 ) {
-				newState[found].data = action.payload.data;
-				newState[found].syncStatus = SS.NOT_SYNCED;
-			}
-			else {
-				newState.push( {
-					...action.payload,
-					syncStatus: SS.NOT_SYNCED
-				} );
-			}
-
-			return newState;
-		*/
-
 	}
 
 	return state;
@@ -99,28 +73,6 @@ function updateObjectInArray( array, action ) {
 		}
 	});
 }
-
-export const syncStatus = (state=false, action ) => {
-
-	switch(action.type) {
-
-		case R.POSTING_LIVE :
-			return SS.SYNCING;
-
-		case R.ADD_OR_UPDATE_LIVE_FEEDBACK:
-		case R.POSTING_LIVE_CANCEL :
-			return SS.NOT_SYNCED;
-
-		case R.POSTING_LIVE_COMPLETE:
-			return state;
-
-		case R.SET_LIVE_SYNC:
-			return action.payload;
-
-	}
-
-	return state;
-};
 
 
 
