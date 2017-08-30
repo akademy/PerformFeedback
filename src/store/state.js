@@ -60,17 +60,18 @@ export const stateSetup = (store) => {
 		store.dispatch( setRandomId( generateRandomId() ));
 	}
 
+
 	if( store.getState().profile.syncStatus === SS.SYNCING ) {
 		// clean-up
 		store.dispatch( setProfileSync( SS.NOT_SYNCED ) );
 	}
 
 	if( store.getState().profile.postingProfile === true ) {
-		// cleanup
+		// clean-up
 		store.dispatch( postingProfileCancel() );
 	}
 
-
+	// TODO: Clear errors
 };
 
 const generateRandomUuid = () => {
