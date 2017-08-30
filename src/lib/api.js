@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import uuid from 'react-native-uuid'
 //import VersionNumber from 'react-native-version-number';
 import config from "../config/config";
-import { Console as C } from "../console"
+import { Console as C } from "./console"
 
 let api = {
 	requestSetup : ( randomUuid ) => {

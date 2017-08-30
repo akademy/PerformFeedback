@@ -5,7 +5,7 @@ import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
-import { Console as C } from "../../console"
+import { Console as C } from "../../lib/console"
 
 export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
