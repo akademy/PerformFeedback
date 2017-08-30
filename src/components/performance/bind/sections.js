@@ -12,8 +12,8 @@ const stateToProps = (state) => (
 
 const dispatchToProps = (dispatch) => (
 	{
-		createFeedback: ( feedbackId ) => (
-			dispatch( createFeedback( feedbackId ) )
+		createFeedback: () => (
+			dispatch( createFeedback() )
 		),
 		setPerformanceId: (performanceId) => (
 			dispatch( setCurrentPerformanceId( performanceId ) ) // TODO: Move to own component
