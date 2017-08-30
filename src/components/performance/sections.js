@@ -17,6 +17,11 @@ export default class Performance extends Component {
 		}
 	};
 
+	timestampType = {
+		START : "start",
+		FINISH : "finish",
+	};
+
 	// Call just before navigating back to this screen
 	navigateWithBack = () => {
 		C.log('navigateWithBack');
@@ -53,7 +58,7 @@ export default class Performance extends Component {
 		this.setState( (prevState) => {
 			const sections = prevState.sections.slice();
 				sections.push({
-					ty: 'start',
+					ty: this.timestampType.START,
 					ts: now,
 				});
 				return {
@@ -216,11 +221,19 @@ export default class Performance extends Component {
 								borderColor: '#847a81',
 							}}
 							onPress={ () => {
-								C.log('Button: Mark last as Error');
+								C.log('Button: Mark last as Error', this.state);
 
 								this.setState((prevState) => {
+									C.log('Button: Mark last as Error', prevState);
 									const sections = prevState.sections.slice();
-									sections[prevState.sections.length-1].error = true;
+
+									for( let i=sections.length; i; i-- ) {
+										if( sections[i-1].ty !== this.timestampType.FINISH ) {
+											sections[i-1].error = true;
+											break;
+										}
+									}
+
 									return {
 										sections,
 										removeButtonDisabled: true,
@@ -255,7 +268,7 @@ export default class Performance extends Component {
 								this.setState( (prevState) => {
 										const sections = prevState.sections.slice();
 										sections.push({
-											ty: 'finish',
+											ty: this.timestampType.FINISH,
 											ts: now,
 										});
 										return {
