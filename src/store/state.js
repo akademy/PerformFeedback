@@ -33,6 +33,15 @@ export const stateBase = {
 			}*/
 		],
 	},
+	post: {
+		questions: [
+			/* e.g. {
+				performanceId: 'manchester2017',
+				musicLength: 75 (seconds)
+
+			}*/
+		]
+	}
 
 };
 
