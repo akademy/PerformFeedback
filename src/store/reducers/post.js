@@ -43,7 +43,7 @@ function updateObjectInArray( array, action ) {
 			case R.SET_QUESTION_MUSIC_LENGTH:
 				return {
 					...item,
-					length: action.payload,
+					musicLength: action.payload,
 					syncStatus: SS.NOT_SYNCED
 				};
 			case R.SET_QUESTION_DESCRIBE:
