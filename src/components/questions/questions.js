@@ -1,32 +1,172 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native"
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 import CheckboxGroup from 'react-native-checkbox-group'
+
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import TemplateBase from '../templateBase'
 import {InputBackgroundColor} from "../../style/";
 import {NAVIGATION as N} from "../../constants";
+import {Console as C} from '../../lib/console'
 
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
 
 export default class Questions extends Component {
+	// noinspection JSUnusedGlobalSymbols
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "Questions"
 	});
 
-	state={
-		selectionOption:null
+	state = {
+		performanceId: this.props.performanceId,
+
+		musicLengthSeconds: null,
+		musicLengthMinutes: null,
+
+		describe1: "",
+		describe2: "",
+		describe3: "",
+
+		influences: "",
+
+		enjoy : null,
+		familiar: null,
+		participation: null,
+
+		motivation: []
 	};
 
-	setSelectedOption = (selectedOption)=>{
+	motivationOptions = [
+		{
+			label: "I wanted to learn more about music and maths working together", // label for checkbox item
+			value: 1, // selected value for item, if selected, what value should be sent?
+		},
+		{
+			label: "I am a regular attendee of RNCM events",
+			value: 2
+		},
+		{
+			label: "I wanted to take part in a scientific study",
+			value: 3
+		},
+		{
+			label: "A friend / family member asked me to come along",
+			value: 4
+		},
+	];
+
+	componentWillMount = () => {
+		C.log( 'componentWillMount' );
+
+		let question = null;
+
+		if( this.props.performanceId && this.props.questions ) {
+			for( let i=0, z=this.props.questions.length; i<z; i++ ) {
+				if( this.props.questions[i].performanceId === this.props.performanceId ) {
+					question = this.props.questions[i];
+
+					break;
+				}
+			}
+		}
+
+		if( question === null && this.props.createQuestion ) {
+			this.props.createQuestion( this.props.performanceId )
+		}
+		else {
+			this.setStateFromQuestion( question );
+		}
+	};
+
+	setStateFromQuestion = (question) => {
+
 		this.setState({
-			selectedOption
+			musicLengthSeconds: (question.musicLength % 60).toString(),
+			musicLengthMinutes: (Math.floor( question.musicLength / 60 )).toString(),
+
+			describe1: question.describe && question.describe[0] ? question.describe[0] : "",
+			describe2: question.describe && question.describe[1] ? question.describe[1] : "",
+			describe3: question.describe && question.describe[2] ? question.describe[2] : "",
+
+			influences: question.influences,
+
+			enjoy : question.enjoy,
+			familiar: question.familiar,
+			participation: question.participation,
+
+			comments: question.comments,
+			motivation: question.motivation
 		});
+
+		this.updateCheckboxGroup( this.motivationOptions, question.motivation || [] );
 	};
 
+	updateCheckboxGroup = (group, selected) => {
+		for( let i=0, z=group.length; i<z; i++ ){
+			group[i].selected = (selected.indexOf(group[i].value) !== -1);
+		}
+	};
 
+	setQuestionComments = () => {
+		if( this.props.setQuestionComments ) {
+			this.props.setQuestionComments( this.props.performanceId, this.state.comments );
+		}};
+	setQuestionDescribe = () => {
+		if( this.props.setQuestionDescribe ) {
+			let words = [
+				this.state.describe1,
+				this.state.describe2,
+				this.state.describe3
+			];
+
+			this.props.setQuestionDescribe( this.props.performanceId, words );
+		}
+	};
+	setQuestionEnjoy = () => {
+		if( this.props.setQuestionEnjoy ) {
+			this.props.setQuestionEnjoy( this.props.performanceId, this.state.enjoy );
+		}
+	};
+	setQuestionFamiliar = () => {
+		if( this.props.setQuestionFamiliar ) {
+			this.props.setQuestionFamiliar( this.props.performanceId, this.state.familiar );
+		}
+	};
+	setQuestionInfluences = () => {
+		if( this.props.setQuestionInfluences ) {
+			this.props.setQuestionInfluences( this.props.performanceId, this.state.influences );
+		}
+	};
+	setQuestionMotivation = () => {
+		if (this.props.setQuestionMotivation) {
+			this.props.setQuestionMotivation(this.props.performanceId, this.state.motivation);
+		}
+	};
+	setQuestionMusicLength = () => {
+		if( this.props.setQuestionMusicLength ) {
+
+			let seconds = this.checkInt(this.state.musicLengthMinutes) * 60;
+			seconds += this.checkInt(this.state.musicLengthSeconds);
+
+			this.props.setQuestionMusicLength( this.props.performanceId, seconds );
+		}
+
+	};
+	setQuestionParticipation = () => {
+		if( this.props.setQuestionParticipation ) {
+			this.props.setQuestionParticipation( this.props.performanceId, this.state.participation );
+		}
+	};
+
+	checkInt = (poss) => {
+		let int = 0;
+		if( poss ) {
+			int = parseInt(poss, 10);
+		}
+		return isNaN(int) ? 0 : int;
+	};
 
 	render() {
 		const { navigate } = this.props.navigation;
@@ -37,8 +177,8 @@ export default class Questions extends Component {
 					<ScrollView>
 
 						<View style={[styles.question, {marginTop:20}]}>
-							<Text style={[styles.label]}>Q1</Text>
-							<Text style={[styles.questionText]}>How long did you think that the piece of music lasted?</Text>
+							<Text style={[styles.label]}><Icon name="ios-person" size={30} color="#4F8EF7" />Q1</Text>
+							<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
 								<View style={{backgroundColor:inputBackgroundColor}}>
 									<TextInput
@@ -46,6 +186,8 @@ export default class Questions extends Component {
 										editable={true}
 										keyboardType='numeric'
 										placeholder="00"
+										value={this.state.musicLengthMinutes}
+										onChangeText={ (text) => this.setState({musicLengthMinutes:text},this.setQuestionMusicLength)}
 									/>
 								</View>
 								<Text> Minutes </Text>
@@ -55,9 +197,11 @@ export default class Questions extends Component {
 										editable={true}
 										keyboardType='numeric'
 										placeholder="00"
+										value={this.state.musicLengthSeconds}
+										onChangeText={ (text) => this.setState({musicLengthSeconds:text},this.setQuestionMusicLength )}
 									/>
 								</View>
-								<Text style={{}}> Seconds</Text>
+								<Text> Seconds</Text>
 							</View>
 						</View>
 
@@ -76,6 +220,8 @@ export default class Questions extends Component {
 										style={[styles.textInput,{
 											width:'100%'
 										}]}
+										value={this.state.describe1}
+										onChangeText={ (text) => this.setState({describe1:text},this.setQuestionDescribe)}
 									/>
 								</View>
 							</View>
@@ -91,6 +237,8 @@ export default class Questions extends Component {
 										style={[styles.textInput, {
 											width: '100%',
 										}]}
+										value={this.state.describe2}
+										onChangeText={ (text) => this.setState({describe2:text},this.setQuestionDescribe)}
 									/>
 								</View>
 							</View>
@@ -101,6 +249,8 @@ export default class Questions extends Component {
 										style={[styles.textInput, {
 											width: '100%',
 										}]}
+										value={this.state.describe3}
+										onChangeText={ (text) => this.setState({describe3:text},this.setQuestionDescribe)}
 									/>
 								</View>
 							</View>
@@ -117,6 +267,8 @@ export default class Questions extends Component {
 
 									multiline={true}
 									numberOfLines={3}
+									value={this.state.influences}
+									onChangeText={ (text) => this.setState({influences:text},this.setQuestionInfluences)}
 								/>
 							</View>
 						</View>
@@ -130,14 +282,41 @@ export default class Questions extends Component {
 							</Text>
 							<RadioSegmentedControls
 								options={ [1,2,3,4,5,6,7] }
-								onSelection={ this.setSelectedOption.bind(this) }
-								selectedOption={this.state.selectedOption }
+								onSelection={ (option) => this.setState({enjoy:option},this.setQuestionEnjoy) }
+								selectedOption={this.state.enjoy}
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
 								//renderContainer={ this.renderContainer }
 							/>
+							{/*
+								list of the props you might override:
+								const IOS_BLUE = '#007AFF';
+								const IOS_WHITE = '#ffffff';
+
+								const DEFAULTS = {
+								  direction: 'row',
+
+								  tint: IOS_BLUE,
+								  backTint: IOS_WHITE,
+
+								  paddingTop: 5,
+								  paddingBottom: 5,
+								  textAlign: 'center',
+
+								  selectedTint: IOS_WHITE,
+								  selectedBackgroundColor: IOS_WHITE,
+
+								  separatorTint: IOS_BLUE,
+								  separatorWidth: 1,
+
+								  containerBorderTint: IOS_BLUE,
+								  containerBorderWidth: 1,
+								  containerBorderRadius: 5,
+
+								}
+								*/}
 						</View>
 
 
@@ -151,8 +330,8 @@ export default class Questions extends Component {
 
 							<RadioSegmentedControls
 								options={ [1,2,3,4,5,6,7] }
-								onSelection={ this.setSelectedOption.bind(this) }
-								selectedOption={this.state.selectedOption }
+								onSelection={ (option) => this.setState({familiar:option.sort()},this.setQuestionFamiliar) }
+								selectedOption={this.state.familiar}
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
@@ -170,8 +349,8 @@ export default class Questions extends Component {
 							</Text>
 							<RadioSegmentedControls
 								options={ [1,2,3,4,5,6,7] }
-								onSelection={ this.setSelectedOption.bind(this) }
-								selectedOption={this.state.selectedOption }
+								onSelection={ (option) => this.setState({participation:option},this.setQuestionParticipation) }
+								selectedOption={this.state.participation}
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
@@ -184,29 +363,12 @@ export default class Questions extends Component {
 							<Text style={[styles.label]}>Q7</Text>
 							<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
 							<CheckboxGroup
-								callback={(selected) => { console.log(selected) }}
+								callback={ (selected) => this.setState({motivation:selected},this.setQuestionMotivation)}
 								iconColor={"steelblue"}
 								iconSize={30}
 								checkedIcon="ios-checkbox-outline"
 								uncheckedIcon="ios-square-outline"
-								checkboxes={[
-									{
-										label: "I wanted to learn more about music and maths working together", // label for checkbox item
-										value: 1, // selected value for item, if selected, what value should be sent?
-									},
-									{
-										label: "I am a regular attendee of RNCM events",
-										value: 2
-									},
-									{
-										label: "I wanted to take part in a scientific study",
-										value: 3
-									},
-									{
-										label: "A friend / family member asked me to come along",
-										value: 4
-									},
-								]}
+								checkboxes={this.motivationOptions}
 								labelStyle={{
 									color: '#333',
 									paddingLeft: 10,
@@ -233,6 +395,8 @@ export default class Questions extends Component {
 
 							    multiline={true}
 							    numberOfLines={3}
+								value={this.state.comments}
+								onChangeText={ (text) => this.setState({comments:text},this.setQuestionComments)}
 							/>
 							</View>
 						</View>
@@ -269,7 +433,7 @@ const styles = StyleSheet.create({
 	},
 	textInput: {
 		borderWidth: 1,
-		borderColor: '#999',
+		borderColor: '#ccc',
 		padding: 5
 	}
 });
