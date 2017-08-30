@@ -47,7 +47,7 @@ const routerOptions = {
 	initialRouteName: N.HOME,
 };
 if( __DEV__ ) {
-	routerOptions.initialRouteName = N.QUESTIONS;
+	routerOptions.initialRouteName = N.HOME;
 }
 
 // Main Navigation
