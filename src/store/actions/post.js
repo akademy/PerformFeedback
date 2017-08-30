@@ -24,9 +24,8 @@ export const postingPostCancel = (id) => ({ type: R.POSTING_POST_CANCEL, id });
 export const postingPostComplete = (id) => ({ type: R.POSTING_POST_COMPLETE, id });
 
 // thunk
-export const createQuestion = ( performanceId ) => (dispatch, getState) => {
-
-	performanceId = getState().currentPerformanceId;
+export const createQuestion = () => (dispatch, getState) => {
+	const performanceId = getState().currentPerformanceId;
 
 	dispatch( addQuestion( { performanceId } ) );
 };

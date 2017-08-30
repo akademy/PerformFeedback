@@ -27,10 +27,10 @@ export const postingLiveComplete = (id) => ({ type: R.POSTING_LIVE_COMPLETE, id 
 
 // thunk
 export const createFeedback = () => (dispatch, getState) => {
-	let feedbackId = uuid.v4();
-	let performanceId = getState().currentPerformanceId;
+	const feedbackId = uuid.v4(),
+		performanceId = getState().currentPerformanceId;
 
-	dispatch( addFeedback( { feedbackId: feedbackId } ) );
+	dispatch( addFeedback( { feedbackId } ) );
 	dispatch( setFeedbackPerformanceId( performanceId ) );
 
 	dispatch( setCurrentFeedbackId( feedbackId ) );
