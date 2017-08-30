@@ -26,7 +26,7 @@ export default class TemplateBase extends Component {
 				</View>
 
 				<View style={{
-					flex: 5
+					flex: 7
 				}}>
 					{this.props.children}
 				</View>
