@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, View, Text } from "react-native"
+import { Button, StyleSheet, ScrollView, View, Text } from "react-native"
 
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 
 import TemplateBase from './templateBase'
 import DatePicker from 'react-native-datepicker'
 
-const inputBackgroundColor = '#f5f5f5';
+import { MainBackgroundColor, InputBackgroundColor } from "../style/";
+import {NAVIGATION as N} from "../constants";
+
+const inputBackgroundColor = InputBackgroundColor;
+const radioTint = '#555';
 
 export default class Profile extends Component {
+	// noinspection JSUnusedGlobalSymbols
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "Profile"
 	});
@@ -30,7 +35,7 @@ export default class Profile extends Component {
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
+		const { goBack } = this.props.navigation;
 
 		return (
 			<TemplateBase mainTitle="Profile" subTitle="Your details">
@@ -45,7 +50,7 @@ export default class Profile extends Component {
 					}}
 					>
 						<View style={[styles.group, {paddingTop: 20}]}>
-							<Text>To help with our research we ask that you answer the following questions. All data collected will be anonymous, data collected will only be identified by the identifier below.</Text>
+							<Text>To help with our research we ask that you answer the following questions. All data collected will be anonymous and only identifiable by the short ID below.</Text>
 						</View>
 
 						<View style={[styles.question]}>
@@ -85,9 +90,10 @@ export default class Profile extends Component {
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
+
 								//renderOption={ this.renderOption }
 								//renderContainer={ this.renderContainer }
 							/>
@@ -101,7 +107,7 @@ export default class Profile extends Component {
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -116,7 +122,7 @@ export default class Profile extends Component {
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -132,7 +138,7 @@ export default class Profile extends Component {
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -150,7 +156,7 @@ export default class Profile extends Component {
 								] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -169,7 +175,7 @@ export default class Profile extends Component {
 								] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -183,6 +189,10 @@ export default class Profile extends Component {
 							<Text>ri:{this.props.profile.randomId}</Text>
 							<Text>dob:{this.props.profile.dateOfBirth}</Text>
 						</View>*/}
+
+						<Button
+							onPress={ () => goBack()}
+							title={"Finished"} />
 					</ScrollView>
 				</View>
 			</TemplateBase>
@@ -207,6 +217,6 @@ const styles = StyleSheet.create({
 	},
 	questionText: {
 		paddingTop: 10,
-		paddingBottom: 10
+		paddingBottom: 20
 	}
 });

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native"
+import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 import CheckboxGroup from 'react-native-checkbox-group'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import TemplateBase from '../templateBase'
+import {InputBackgroundColor} from "../../style/";
+import {NAVIGATION as N} from "../../constants";
 
-const inputBackgroundColor = '#f5f5f5';
+const inputBackgroundColor = InputBackgroundColor;
+const radioTint = '#555';
 
 export default class Questions extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -39,7 +42,7 @@ export default class Questions extends Component {
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
 								<View style={{backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={{width: 30, fontSize:20}}
+										style={[{width: 30, fontSize:20}]}
 										editable={true}
 										keyboardType='numeric'
 										placeholder="00"
@@ -48,7 +51,7 @@ export default class Questions extends Component {
 								<Text> Minutes </Text>
 								<View style={{backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={{width: 30, fontSize:20}}
+										style={[{width: 30, fontSize:20}]}
 										editable={true}
 										keyboardType='numeric'
 										placeholder="00"
@@ -61,27 +64,43 @@ export default class Questions extends Component {
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q2</Text>
 							<Text style={[styles.questionText]}>Please describe the piece in three words:</Text>
-							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-								<Text>1 </Text>
-								<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
+							<View style={{
+								flex:1,
+								flexDirection:'row',
+								alignItems:'center',
+								marginBottom: 5
+							}}>
+								<Text style={{flex:1}}>1</Text>
+								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={{width:'100%'}}
+										style={[styles.textInput,{
+											width:'100%'
+										}]}
+									/>
+								</View>
+							</View>
+							<View style={{
+								flex:1,
+								flexDirection:'row',
+								alignItems:'center',
+								marginBottom: 5
+							}}>
+								<Text style={{flex:1}}>2</Text>
+								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
+									<TextInput
+										style={[styles.textInput, {
+											width: '100%',
+										}]}
 									/>
 								</View>
 							</View>
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-								<Text>2 </Text>
-								<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
+								<Text style={{flex:1}}>3</Text>
+								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={{width: '100%'}}
-									/>
-								</View>
-							</View>
-							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-								<Text>3 </Text>
-								<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={{width: '100%'}}
+										style={[styles.textInput, {
+											width: '100%',
+										}]}
 									/>
 								</View>
 							</View>
@@ -92,8 +111,10 @@ export default class Questions extends Component {
 							<Text style={[styles.questionText]}>What features in the piece influenced your choice of section endings?</Text>
 							<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
 								<TextInput
-									style={{width: '100%'
-									}}
+									style={[styles.textInput, {
+										width: '100%',
+									}]}
+
 									multiline={true}
 									numberOfLines={3}
 								/>
@@ -111,7 +132,7 @@ export default class Questions extends Component {
 								options={ [1,2,3,4,5,6,7] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -132,7 +153,7 @@ export default class Questions extends Component {
 								options={ [1,2,3,4,5,6,7] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -151,7 +172,7 @@ export default class Questions extends Component {
 								options={ [1,2,3,4,5,6,7] }
 								onSelection={ this.setSelectedOption.bind(this) }
 								selectedOption={this.state.selectedOption }
-								tint={'steelblue'}
+								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
 								//renderOption={ this.renderOption }
@@ -206,13 +227,18 @@ export default class Questions extends Component {
 							<Text style={[styles.questionText]}>Please use this box for any other comments you wish to make.</Text>
 							<View style={{width: '90%', backgroundColor:inputBackgroundColor}}>
 							<TextInput
-								style={{width: '100%'}}
+								style={[styles.textInput, {
+									width: '100%',
+								}]}
+
 							    multiline={true}
 							    numberOfLines={3}
 							/>
 							</View>
 						</View>
 
+						<Button onPress={ () => { navigate(N.HOME);} }
+						        title="Finished" />
 
 					</ScrollView>
 				</View>
@@ -235,10 +261,15 @@ const styles = StyleSheet.create({
 	},
 	questionText: {
 		paddingTop: 10,
-		paddingBottom: 10
+		paddingBottom: 20
 	},
 	key: {
-		paddingBottom: 10,
+		paddingBottom: 20,
 		paddingLeft: 10
+	},
+	textInput: {
+		borderWidth: 1,
+		borderColor: '#999',
+		padding: 5
 	}
 });
