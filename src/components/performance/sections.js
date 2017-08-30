@@ -5,16 +5,27 @@ import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
 import { NAVIGATION as N } from "../../constants"
-import { Console as C } from "../../console"
+import { Console as C } from "../../lib/console"
 
 export default class Performance extends Component {
 
 	// noinspection JSUnusedGlobalSymbols
-	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: "Sections"
-	});
+	static navigationOptions = ({ navigation, screenProps }) => {
+		C.log( "navOpts");
+		return {
+			title: "Sections"
+		}
+	};
+
+	// Call just before navigating back to this screen
+	navigateWithBack = () => {
+		C.log('navigateWithBack');
+		this.createSectionText();
+		this.startSyncInterval();
+	};
 
 	performanceId = 'manchester2017';
+	sectionsChangedInterval = null;
 
 	state = {
 		sections: [],
@@ -22,6 +33,7 @@ export default class Performance extends Component {
 		sectionTexts: '',
 		removeButtonDisabled: true
 	};
+
 
 	// noinspection JSUnusedGlobalSymbols
 	componentWillMount = () => {
@@ -53,6 +65,8 @@ export default class Performance extends Component {
 				this.createSectionText()
 			}
 		);
+
+		C.log("IntervalID:", this.sectionsChangedInterval );
 	};
 
 	// noinspection JSUnusedGlobalSymbols
@@ -60,14 +74,38 @@ export default class Performance extends Component {
 		C.log( 'componentDidMount' );
 		this.createSectionText();
 
+		this.startSyncInterval();
+	};
+
+	startSyncInterval = () => {
+		C.log( 'startSyncInterval' );
+		if( this.sectionsChangedInterval !== null ) {
+			this.stopSyncInterval();
+		}
+
 		this.sectionsChangedInterval = setInterval( () => {
+			C.log( 'setIntervalCalled' );
 			this.syncFeedback();
-		}, Math.floor( ( ( Math.random() * 4 ) + 4 ) * 1000 ) ); // Wait 4 to 8 seconds to check for needed updates.
+		},
+			Math.floor( ( ( Math.random() * 4 ) + 4 ) * 1000 ) // Wait 4 to 8 seconds to check for needed updates.
+		);
+
+		C.log("Interval ID:", this.sectionsChangedInterval );
+	};
+
+	stopSyncInterval = () => {
+		C.log( 'stopSyncInterval' );
+		C.log("IntervalID:", this.sectionsChangedInterval );
+
+		if( this.sectionsChangedInterval ) {
+			clearInterval(this.sectionsChangedInterval);
+			this.sectionsChangedInterval = null;
+		}
 	};
 
 	componentWillUnmount = () => {
 		C.log( 'componentWillUnmount' );
-		clearInterval( this.sectionsChangedInterval );
+		this.stopSyncInterval();
 	};
 
 	syncFeedback = () => {
@@ -140,7 +178,8 @@ export default class Performance extends Component {
 								fontSize: 18
 							}}
 							onPress={ () => {
-								const now = Date.now();
+								C.log("Button: Add Section End");
+								const now = Date.now(); // immediately take a time snapshot
 
 								this.setState( (prevState) => {
 									const sections = prevState.sections.slice();
@@ -177,6 +216,8 @@ export default class Performance extends Component {
 								borderColor: '#847a81',
 							}}
 							onPress={ () => {
+								C.log('Button: Mark last as Error');
+
 								this.setState((prevState) => {
 									const sections = prevState.sections.slice();
 									sections[prevState.sections.length-1].error = true;
@@ -206,7 +247,10 @@ export default class Performance extends Component {
 								fontSize: 14
 							}}
 							onPress={ () => {
-								const now = Date.now();
+								C.log("Button: Finish");
+								this.stopSyncInterval();
+
+								const now = Date.now(); // immediately take a time snapshot
 
 								this.setState( (prevState) => {
 										const sections = prevState.sections.slice();
@@ -225,7 +269,7 @@ export default class Performance extends Component {
 										this.sectionsChanged();
 										this.syncFeedback();
 
-										navigate(N.PERFORMANCE_FINISH)
+										navigate(N.PERFORMANCE_FINISH, { navigateWithBack: this.navigateWithBack });
 									}
 								);
 							} }

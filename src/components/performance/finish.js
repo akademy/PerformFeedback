@@ -13,7 +13,7 @@ export default class Performance extends Component {
 	});
 
 	render() {
-		const { navigate, goBack } = this.props.navigation;
+		const { navigate, goBack, state } = this.props.navigation;
 
 		return (
 			<TemplateBase mainTitle="Performance Live Complete" subTitle="Live performance part complete">
@@ -58,7 +58,13 @@ export default class Performance extends Component {
 							<Button
 								style={[styles.button, styles.buttonSmall]}
 								textStyle={[styles.buttonText,styles.buttonTextSmall]}
-								onPress={ () => { goBack() } }>
+								onPress={ () => {
+									C.log(state,state.params);
+									if( state.params.navigateWithBack ) {
+										state.params.navigateWithBack();
+									}
+									goBack();
+								} }>
 								Continue
 							</Button>
 						</View>
