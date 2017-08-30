@@ -2,7 +2,7 @@ import { REDUCER as R, SYNC_STATUS as SS } from '../../constants'
 import { addError } from '../actions'
 import api from '../../lib/api'
 
-import { Console as C } from "../../console"
+import { Console as C } from "../../lib/console"
 
 
 export const setRandomUuid = (payload) => ({ type: R.SET_RANDOM_UUID, payload });

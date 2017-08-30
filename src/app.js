@@ -7,7 +7,7 @@ import Router from "./route"
 import Store from "./store/store"
 import sync from './store/sync'
 
-import { Console as C } from "./console"
+import { Console as C } from "./lib/console"
 
 import { stateBase, stateSetup } from "./store/state"
 

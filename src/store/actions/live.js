@@ -4,7 +4,7 @@ import { REDUCER as R, SYNC_STATUS as SS } from '../../constants'
 import { setCurrentFeedbackId, addError } from '../actions'
 import api from '../../lib/api'
 
-import { Console as C } from "../../console"
+import { Console as C } from "../../lib/console"
 
 export const addFeedback = (payload) => ({ type: R.ADD_FEEDBACK, payload });
 
@@ -41,7 +41,7 @@ export const postLive = (feedbackId) => (dispatch, getState) => {
 
 	const state = getState();
 
-	C.log( 'postLiveFeedback()', feedbackId, state);
+	C.log( 'postLive()', feedbackId, state);
 
 	for( let i=0, z=state.live.feedbacks.length; i<z; i++ ) {
 		if( !feedbackId || state.live.feedbacks[i].feedbackId === feedbackId ) {
