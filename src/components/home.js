@@ -34,11 +34,11 @@ export default class Home extends Component {
 						}}
 						>
 							<Button
-								title="About"
+								title="About this app"
 								onPress={ ()=>{navigate(N.ABOUT)} }
 							/>
 							<Button
-								title="Profile"
+								title="Your profile"
 								onPress={ ()=>{navigate(N.PROFILE)} }
 							/>
 							<Button
@@ -47,10 +47,10 @@ export default class Home extends Component {
 							/>
 							<Button
 								disabled={true}
-								title="Questions"
+								title="Post performance questions"
 								onPress={ ()=>{navigate(N.QUESTIONS)} }
 							/>
-							<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
+							{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>*/}
 							<Button
 								title="Change Count"
 								onPress={ ()=>{navigate(N.COUNT)} }
