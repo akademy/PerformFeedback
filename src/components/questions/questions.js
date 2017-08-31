@@ -6,8 +6,7 @@ import CheckboxGroup from 'react-native-checkbox-group'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import TemplateBase from '../templateBase'
-import {InputBackgroundColor} from "../../style/";
-import {NAVIGATION as N} from "../../constants";
+import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
 import {Console as C} from '../../lib/console'
 
 const inputBackgroundColor = InputBackgroundColor;
@@ -180,7 +179,9 @@ export default class Questions extends Component {
 		return (
 			<TemplateBase mainTitle="Questions" subTitle="To be answered after the performance">
 				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
-					<ScrollView>
+					<ScrollView
+						contentContainerStyle={{paddingBottom: 40}}
+					>
 
 						<View style={[styles.question, {marginTop:20}]}>
 							<Text style={[styles.label]}><Icon name="ios-person" size={30} color="#4F8EF7" />Q1</Text>
@@ -293,6 +294,9 @@ export default class Questions extends Component {
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
+								paddingTop={10}
+								paddingBottom={25}
+								selectedBackgroundColor={MainColor}
 								//renderOption={ this.renderOption }
 								//renderContainer={ this.renderContainer }
 							/>
@@ -341,6 +345,9 @@ export default class Questions extends Component {
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
+								paddingTop={10}
+								paddingBottom={25}
+								selectedBackgroundColor={MainColor}
 								//renderOption={ this.renderOption }
 								//renderContainer={ this.renderContainer }
 							/>
@@ -360,6 +367,9 @@ export default class Questions extends Component {
 								tint={radioTint}
 								selectedTint={'white'}
 								backTint= {inputBackgroundColor}
+								paddingTop={10}
+								paddingBottom={25}
+								selectedBackgroundColor={MainColor}
 								//renderOption={ this.renderOption }
 								//renderContainer={ this.renderContainer }
 							/>
