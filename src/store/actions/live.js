@@ -39,6 +39,8 @@ export const createFeedback = () => (dispatch, getState) => {
 // thunk
 export const postLive = (feedbackId) => (dispatch, getState) => {
 
+	// Todo: We should throttle this, although in most situations there should be very few of them.
+
 	const state = getState();
 
 	C.log( 'postLive()', feedbackId, state);
