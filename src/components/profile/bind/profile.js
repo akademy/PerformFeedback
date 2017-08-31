@@ -1,6 +1,6 @@
 import Profile from '../profile'
 import { connect } from 'react-redux'
-import {setDOB, postProfile} from "../../store/actions/profile";
+import {setDOB, postProfile} from "../../../store/actions/profile";
 
 const stateToProps = (state) => (
 	{

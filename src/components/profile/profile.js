@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Button, StyleSheet, ScrollView, View, Text } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 
-import TemplateBase from './templateBase'
+import TemplateBase from '../templateBase'
 import DatePicker from 'react-native-datepicker'
 
-import { InputBackgroundColor } from "../style/";
+import { InputBackgroundColor } from "../../style/index";
 
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
