@@ -2,6 +2,7 @@ import Questions from '../questions'
 import { connect } from 'react-redux'
 import {
 	createQuestion,
+	postPost,
 	setQuestionComments,
 	setQuestionDescribe,
 	setQuestionEnjoy,
@@ -24,6 +25,9 @@ const dispatchToProps = (dispatch) => (
 	{
 		createQuestion: ( performanceId ) => (
 			dispatch( createQuestion( performanceId ) )
+		),
+		doSync: ( performanceId ) => (
+			dispatch( postPost( performanceId ) )
 		),
 		setQuestionComments: ( performanceId, payload ) => {
 			dispatch(

@@ -80,6 +80,12 @@ export default class Questions extends Component {
 		}
 	};
 
+	componentWillUnmount = () => {
+		if( this.props.doSync() ) {
+			this.props.doSync();
+		}
+	};
+
 	setStateFromQuestion = (question) => {
 
 		this.setState({
@@ -330,7 +336,7 @@ export default class Questions extends Component {
 
 							<RadioSegmentedControls
 								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({familiar:option.sort()},this.setQuestionFamiliar) }
+								onSelection={ (option) => this.setState({familiar:option},this.setQuestionFamiliar) }
 								selectedOption={this.state.familiar}
 								tint={radioTint}
 								selectedTint={'white'}
@@ -363,7 +369,7 @@ export default class Questions extends Component {
 							<Text style={[styles.label]}>Q7</Text>
 							<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
 							<CheckboxGroup
-								callback={ (selected) => this.setState({motivation:selected},this.setQuestionMotivation)}
+								callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
 								iconColor={"steelblue"}
 								iconSize={30}
 								checkedIcon="ios-checkbox-outline"
