@@ -175,7 +175,7 @@ export default class Questions extends Component {
 	};
 
 	render() {
-		const { navigate } = this.props.navigation;
+		const { goBack } = this.props.navigation;
 
 		return (
 			<TemplateBase mainTitle="Questions" subTitle="To be answered after the performance">
@@ -407,7 +407,7 @@ export default class Questions extends Component {
 							</View>
 						</View>
 
-						<Button onPress={ () => { navigate(N.HOME);} }
+						<Button onPress={ () => { goBack(); } }
 						        title="Finished" />
 
 					</ScrollView>
