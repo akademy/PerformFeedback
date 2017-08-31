@@ -1,24 +1,78 @@
 import Profile from '../profile'
 import { connect } from 'react-redux'
-import {setDOB, postProfile} from "../../../store/actions/profile";
+import {
+	setDOB,
+	setMusicTraining,
+	setMusicField,
+	setMathTraining,
+	setMathField,
+	setEducation,
+	setEducationOther,
+	setMusicListen,
+	postProfile
+} from "../../../store/actions/profile";
 
 const stateToProps = (state) => (
 	{
-		id: state.profile.randomId,
-		dateOfBirth: state.profile.dateOfBirth,
+		shortId: state.profile.randomId,
 
-		profile: state.profile
+		dateOfBirth: state.profile.dateOfBirth,
+		musicTraining: state.profile.musicTraining,
+		musicField: state.profile.musicField,
+		mathTraining: state.profile.mathTraining,
+		mathField: state.profile.mathField,
+		education: state.profile.education,
+		educationOther: state.profile.educationOther,
+		musicListen: state.profile.musicListen,
 	}
 );
 
 const dispatchToProps = (dispatch) => (
 	{
-		onDateOfBirth : (dob) => (
+		setDateOfBirth : (payload) => (
 			dispatch(
-				setDOB(dob)
+				setDOB(payload)
 			)
 		),
-		onSyncProfile : () => (
+		setMusicTraining : (payload) => (
+			dispatch(
+				setMusicTraining(payload)
+			)
+		),
+		setMusicField : (payload) => (
+			dispatch(
+				setMusicField(payload)
+			)
+		),
+		setMathTraining : (payload) => (
+			dispatch(
+				setMathTraining(payload)
+			)
+		),
+		setMathField : (payload) => (
+			dispatch(
+				setMathField(payload)
+			)
+		),
+		setEducation : (payload) => (
+			dispatch(
+				setEducation(payload)
+			)
+		),
+		setEducationOther : (payload) => (
+			dispatch(
+				setEducationOther(payload)
+			)
+		),
+		setMusicListen : (payload) => (
+			dispatch(
+				setMusicListen(payload)
+			)
+		),
+
+
+
+		onSync : () => (
 			dispatch(
 				postProfile()
 			)
