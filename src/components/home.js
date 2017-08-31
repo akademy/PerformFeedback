@@ -43,18 +43,19 @@ export default class Home extends Component {
 							/>
 							<Button
 								title="Performance"
-								onPress={ ()=>{navigate(N.PERFORMANCE_BEGIN)} }
+								onPress={ ()=>{ navigate(N.PERFORMANCE_BEGIN)} }
 							/>
 							<Button
 								disabled={!this.props.performanceId || !this.props.feedbackId}
-								title="Post performance questions"
+								title="Questions on performance"
 								onPress={ ()=>{navigate(N.QUESTIONS)} }
 							/>
-							{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>*/}
+							{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
 							<Button
 								title="Change Count"
 								onPress={ ()=>{navigate(N.COUNT)} }
 							/>
+							*/}
 							{__DEV__ &&
 								<Button
 									title="Purge Persist"
