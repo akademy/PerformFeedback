@@ -6,14 +6,18 @@ import config from "../config/config";
 import { Console as C } from "./console"
 
 let api = {
-	requestSetup : ( randomUuid ) => {
+	requestPrepare : (randomUuid ) => {
 		/*
 		request: {
 			appOs: OS System
 			appVersion: current app version,
+
 			key: server generate uuid,
+
 			randomUuid: app generate uuid,
+
 			requestId: request generated uuid,
+			requestDateTime: (new Date()).toISOString(),
 		};
 		result: {
 			resultId: must match requestId,
@@ -58,7 +62,7 @@ let api = {
 
 	fetchHandle: ( apiPath, data, state ) => {
 
-		let request = api.requestSetup( state.profile.randomUuid );
+		let request = api.requestPrepare( state.profile.randomUuid );
 		request.payload = data;
 
 		return fetch(config.local.api.url + apiPath, {
