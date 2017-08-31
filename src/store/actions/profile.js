@@ -7,7 +7,15 @@ import { Console as C } from "../../lib/console"
 
 export const setRandomUuid = (payload) => ({ type: R.SET_RANDOM_UUID, payload });
 export const setRandomId = (payload) => ({ type: R.SET_RANDOM_ID, payload });
+
 export const setDOB = (payload) => ({ type: R.SET_DOB, payload });
+export const setMusicTraining = (payload) => ({ type: R.SET_MUSIC_TRAINING, payload });
+export const setMusicField = (payload) => ({ type: R.SET_MUSIC_FIELD, payload });
+export const setMathTraining = (payload) => ({ type: R.SET_MATH_TRAINING, payload });
+export const setMathField = (payload) => ({ type: R.SET_MATH_FIELD, payload });
+export const setEducation = (payload) => ({ type: R.SET_EDUCATION, payload });
+export const setEducationOther = (payload) => ({ type: R.SET_EDUCATION_OTHER, payload });
+export const setMusicListen = (payload) => ({ type: R.SET_MUSIC_LISTEN, payload });
 
 export const setProfileSync = (payload) => ({ type: R.SET_PROFILE_SYNC, payload });
 

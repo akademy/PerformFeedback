@@ -12,7 +12,15 @@ export const stateBase = {
 	profile : {
 		randomUuid: null,
 		randomId: null,
+
 		dateOfBirth: null,
+		musicTraining: null,
+		musicField: null,
+		mathTraining: null,
+		mathField: null,
+		education: null,
+		educationOther: null,
+		musicListen: null,
 
 		syncStatus: SS.NOT_SYNCED,
 		postingProfile: false,
