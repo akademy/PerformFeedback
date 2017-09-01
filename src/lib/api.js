@@ -40,20 +40,31 @@ let api = {
 		return request;
 	},
 
-	responseCheckStatus: ( response ) => {
-		if (response.status < 200 && response.status >= 300) {
-			let error = new Error(response.statusText);
-			error.response = response;
+	responseCheckStatus: ( responseJson ) => {
+
+		if (responseJson.status < 200 || responseJson.status >= 300) {
+
+			let errorText =
+				"Unknown error on server, status: " + responseJson.status;
+
+			if (responseJson.title) {
+				errorText = responseJson.title;
+			}
+
+			const error = new Error(errorText);
+			error.status = responseJson.status;
 			throw error;
 		}
 
-		return response;
+		return responseJson;
 	},
 
 	responseCheckValid : ( responseJson, requestId ) => {
-		if( responseJson.responseId !== requestId ) {
-			let error = new Error( "Response not valid" );
+		C.log("responseCheckValid");
+		if( !responseJson.responseId || responseJson.responseId !== requestId ) {
+			const error = new Error( "Response not valid" );
 			error.response = responseJson;
+			throw error;
 		}
 		return responseJson;
 	},
@@ -73,12 +84,14 @@ let api = {
 			},
 			body: JSON.stringify( request )
 		})
-		.then( api.responseCheckStatus )
 		.then( api.responseJson )
+		.then( api.responseCheckStatus )
 		.then( (responseJson) => {
-			C.log('responseJson', responseJson);
 			return api.responseCheckValid(responseJson, request.requestId)
 		})
+		//.catch( (error) => {
+		//	throw error;
+		//})
 	}
 };
 
