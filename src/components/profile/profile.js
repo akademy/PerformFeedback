@@ -42,7 +42,8 @@ export default class Profile extends Component {
 	// noinspection JSUnusedGlobalSymbols
 	componentWillUnmount = () => {
 		if( this.props.onSync ) {
-			this.props.onSync();
+			this.props.onSync()
+				.catch( ()=>{} );
 		}
 	};
 
