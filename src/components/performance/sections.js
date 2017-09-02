@@ -44,30 +44,28 @@ export default class Performance extends Component {
 	componentWillMount = () => {
 		C.log( 'componentWillMount' );
 		// TODO?: Reset on retake
+		let feedbackId = null;
 
 		if( this.props.setPerformanceId ) { // TODO: Remove to own component
 			this.props.setPerformanceId( 'manchester2017' );
 		}
 
 		if( this.props.createFeedback ) {
-			this.props.createFeedback();
+			feedbackId = this.props.createFeedback();
 		}
 
 		const now = Date.now();
 
-		this.setState( (prevState) => {
-			const sections = prevState.sections.slice();
-				sections.push({
+		this.setState( {
+				sections: [{
 					ty: this.timestampType.START,
 					ts: now,
-				});
-				return {
-					sections ,
-					sectionsNeedSync: true
-				}
-			}
-			, () => {
-				this.createSectionText()
+				}],
+				sectionsNeedSync: true,
+				feedbackId
+			},
+			() => {
+				this.sectionsChanged();
 			}
 		);
 
@@ -77,8 +75,6 @@ export default class Performance extends Component {
 	// noinspection JSUnusedGlobalSymbols
 	componentDidMount = () => {
 		C.log( 'componentDidMount' );
-		this.createSectionText();
-
 		this.startSyncInterval();
 	};
 
@@ -116,14 +112,15 @@ export default class Performance extends Component {
 	syncFeedback = () => {
 		C.log( 'syncFeedback' );
 		if( this.props.onFeedbackSync ) {
-			this.props.onFeedbackSync( this.props.feedbackId )
+			this.props.onFeedbackSync( this.state.feedbackId )
+				.catch( ()=>{} );
 		}
 	};
 
 	sectionsChanged = () => {
 		C.log( 'sectionsChanged' );
 		if( this.props.setFeedbackData ) {
-			this.props.setFeedbackData( this.props.feedbackId, this.state.sections );
+			this.props.setFeedbackData( this.state.feedbackId, this.state.sections );
 		}
 	};
 

@@ -6,7 +6,7 @@ import {setCurrentPerformanceId} from "../../../store/actions/index";
 const stateToProps = (state) => (
 	{
 		performanceId: state.currentPerformanceId,
-		feedbackId: state.currentFeedbackId
+		//feedbackId: state.currentFeedbackId
 	}
 );
 
@@ -18,16 +18,16 @@ const dispatchToProps = (dispatch) => (
 		setPerformanceId: (performanceId) => (
 			dispatch( setCurrentPerformanceId( performanceId ) ) // TODO: Move to own component
 		),
-		setFeedbackData: ( feedbackId, data ) => {
+		setFeedbackData: ( feedbackId, data ) => (
 			dispatch(
 				setFeedbackData( feedbackId, data )
 			)
-		},
-		onFeedbackSync: ( feedbackId ) => {
+		),
+		onFeedbackSync: ( feedbackId ) => (
 			dispatch(
 				postLive( feedbackId )
 			)
-		},
+		),
 		//onSectionsChange: ( feedbackId, data ) => (
 		//	dispatch(
 		//		setFeedbackData( feedbackId, data )
