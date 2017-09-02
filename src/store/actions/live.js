@@ -63,7 +63,7 @@ const postLiveFeedback = ( feedbackState, dispatch, getState ) => {
 
 	C.fun( 'postLiveFeedback()', "feedbackId:", feedbackId);
 
-	if( feedbackState.posting /*|| feedbackState.syncStatus !== SS.NOT_SYNCED*/ ) {
+	if( feedbackState.posting || feedbackState.syncStatus !== SS.NOT_SYNCED ) {
 		C.log( '- Nothing to do' );
 		return Promise.resolve(null);
 	}
