@@ -32,74 +32,81 @@ export const createQuestion = () => (dispatch, getState) => {
 
 // thunk
 export const postPost = (performanceId) => (dispatch, getState) => {
+	C.fun( 'postPost()');
 
 	// Todo: We should throttle this, although in most situations there should be very few of them.
 	const state = getState();
 
-	C.log( 'postPost()', performanceId, state);
-
+	let promiseList = [];
 	for( let i=0, z=state.post.questions.length; i<z; i++ ) {
 		if( !performanceId || state.post.questions.performanceId === performanceId ) {
-			postPostQuestions(state.post.questions[i], dispatch, getState);
+			promiseList.push( postPostQuestions(state.post.questions[i], dispatch, getState) );
 		}
 	}
+
+	return Promise.all( promiseList );
 };
 
 
 const postPostQuestions = ( questionState, dispatch, getState ) => {
 
-	C.log( 'postPostQuestion()', questionState);
+	const performanceId = questionState.performanceId;
 
-	if( !questionState.posting && questionState.syncStatus === SS.NOT_SYNCED ) {
+	C.fun( 'postPostQuestion()', "performanceId", performanceId);
 
-		let performanceId = questionState.performanceId;
+	if( questionState.posting || questionState.syncStatus !== SS.NOT_SYNCED ) {
+		C.log( '- Nothing to do' );
+		return Promise.resolve(null);
+	}
 
-		dispatch( postingPost( performanceId ));
-		dispatch( setQuestionSync( performanceId, SS.SYNCING ));
 
-		api.fetchHandle( "/api/post/", questionState, getState() )
-			.then( (data) => {
-				const state = getState();
-				let updatedQuestion = null;
+	C.log( '- Fetching' );
 
-				for (let i = 0, z = state.post.questions.length; i < z; i++) {
-					if (state.post.questions[i].performanceId === performanceId) {
-						updatedQuestion = state.post.questions[i];
-						break;
-					}
-				}
+	dispatch( postingPost( performanceId ));
+	dispatch( setQuestionSync( performanceId, SS.SYNCING ));
 
-				//C.log( 'data', data);
-				if( data.payload.updated ) {
+	return api.fetchHandle( "/api/post/", questionState, getState() )
+		.then( (data) => {
+			const state = getState();
+			let updatedQuestion = questionFromPerformanceId(state.post.questions, performanceId );
+
+			if( updatedQuestion ) { // It's possible it may have been deleted (if all app data deleted) but unlikely.
+
+				if (data.payload.updated) {
 
 					if (updatedQuestion.syncStatus === SS.SYNCING) {
 						// Only when the data has not changed since we started posting (i.e. syncStatus !== SS.NOT_SYNCED) do we say it is synced
-						dispatch( setQuestionSync( performanceId, SS.SYNCED ) );
+						dispatch(setQuestionSync(performanceId, SS.SYNCED));
 					}
 				}
 				else {
 					// something weird happened...
-					dispatch( setQuestionSync( performanceId, SS.NOT_SYNCED ) );
+					dispatch(setQuestionSync(performanceId, SS.NOT_SYNCED));
 				}
 
-				dispatch( postingPostComplete( performanceId ) );
-			})
-			.catch(
-				(error) => {
-					const state = getState();
-					let updatedQuestion = null;
+				dispatch(postingPostComplete(performanceId));
+			}
 
-					for (let i = 0, z = state.post.questions.length; i < z; i++) {
-						if (state.post.questions[i].performanceId === performanceId) {
-							updatedQuestion = state.post.questions[i];
-							break;
-						}
-					}
+			return data;
+		})
+		.catch(
+			(error) => {
+				const state = getState();
 
-					dispatch( addError( error.message ) );
-					dispatch( postingPostCancel( performanceId ) );
-					dispatch( setQuestionSync( performanceId, SS.NOT_SYNCED ) );
-				}
-			);
+				dispatch( addError( error.message ) );
+				dispatch( postingPostCancel( performanceId ) );
+				dispatch( setQuestionSync( performanceId, SS.NOT_SYNCED ) );
+
+				throw error;
+			}
+		);
+};
+
+const questionFromPerformanceId = ( questions, performanceId ) => {
+	for (let i = 0, z = questions.length; i < z; i++) {
+		if (questions[i].performanceId === performanceId) {
+			return questions[i];
+		}
 	}
+	return null;
 };

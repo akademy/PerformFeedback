@@ -21,8 +21,8 @@ export default class Questions extends Component {
 	state = {
 		performanceId: this.props.performanceId,
 
-		musicLengthSeconds: null,
-		musicLengthMinutes: null,
+		musicLengthSeconds: 0,
+		musicLengthMinutes: 0,
 
 		describe1: "",
 		describe2: "",
@@ -80,16 +80,25 @@ export default class Questions extends Component {
 	};
 
 	componentWillUnmount = () => {
-		if( this.props.doSync() ) {
-			this.props.doSync();
+		if( this.props.doSync ) {
+			this.props.doSync()
+				.catch( ()=>{} );
 		}
 	};
 
 	setStateFromQuestion = (question) => {
 
+		let musicLengthSeconds = null;
+		let musicLengthMinutes = null;
+
+		if( question.musicLength > 0 ) {
+			musicLengthSeconds = this.checkInt(question.musicLength % 60).toString();
+			musicLengthMinutes = this.checkInt(Math.floor(question.musicLength / 60)).toString();
+		}
+
 		this.setState({
-			musicLengthSeconds: (question.musicLength % 60).toString(),
-			musicLengthMinutes: (Math.floor( question.musicLength / 60 )).toString(),
+			musicLengthSeconds,
+			musicLengthMinutes,
 
 			describe1: question.describe && question.describe[0] ? question.describe[0] : "",
 			describe2: question.describe && question.describe[1] ? question.describe[1] : "",
@@ -189,22 +198,22 @@ export default class Questions extends Component {
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
 								<View style={{backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={[{width: 30, fontSize:20}]}
+										style={[{textAlign:'right',width: 45, fontSize:20}]}
 										editable={true}
 										keyboardType='numeric'
-										placeholder="00"
 										value={this.state.musicLengthMinutes}
+										placeholder="0"
 										onChangeText={ (text) => this.setState({musicLengthMinutes:text},this.setQuestionMusicLength)}
 									/>
 								</View>
 								<Text> Minutes </Text>
 								<View style={{backgroundColor:inputBackgroundColor}}>
 									<TextInput
-										style={[{width: 30, fontSize:20}]}
+										style={[{textAlign:'right',width: 35, fontSize:20}]}
 										editable={true}
 										keyboardType='numeric'
-										placeholder="00"
 										value={this.state.musicLengthSeconds}
+										placeholder="0"
 										onChangeText={ (text) => this.setState({musicLengthSeconds:text},this.setQuestionMusicLength )}
 									/>
 								</View>
