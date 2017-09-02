@@ -1,23 +1,32 @@
+export const Console = {};
+const z=(undefined===__DEV__||!__DEV__),x=()=>{},C=Console;
 
-let logger = {};
+C.log = z?x: (...args) => {
+	let d=new Date(); console.log("["+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"] ", ...args);
+};
+C.warn = z?x: (...args) => { console.warn(...args); };
+C.error = z?x: (...args) => { console.error(...args); };
+C.info = z?x: (...args) => { console.info(...args); };
+C.group = z?x: (...args) => {
+	(console.group) ? console.group(...args) : C.log(...args);
+};
+C.groupCollapsed = z?x: (...args) => {
+	(console.groupCollapsed) ? console.groupCollapsed(...args) : C.log("\\/\\/\\/",...args);
+};
+C.groupEnd = z?x: (...args) => {
+	(console.groupEnd) ? console.groupEnd(...args) : C.log("/\\/\\/\\",...args);
+};
 
-if( __DEV__ ) {
-	logger.log = (...args) => { console.log(...args); };
-	logger.warn = (...args) => { console.warn(...args); };
-	logger.error = (...args) => { console.error(...args); };
-	logger.info = (...args) => { console.info(...args); };
-	logger.group = (...args) => { (console.group) ? console.group(...args) : logger.log(...args); };
-	logger.groupCollapsed = (...args) => { (console.groupCollapsed) ? console.groupCollapsed(...args) : logger.log(...args); };
-	logger.groupEnd = (...args) => { (console.groupEnd) ? console.groupEnd(...args) : logger.log(...args); };
-}
-else {
-	logger.log = () => {};
-	logger.warn = () => {};
-	logger.error = () => {};
-	logger.info = () => {};
-	logger.group = () => {};
-	logger.groupCollapsed = () => {};
-	logger.groupEnd = () => {};
-}
+C.fun = z?x: (...args) => { C.log( "[FUNCTION]", ...args) };
 
-export const Console = logger;
+export const ConsoleDummy = {
+	log : x,
+	warn : x,
+	error : x,
+	info : x,
+	group : x,
+	groupCollapsed : x,
+	groupEnd : x
+};
+
+export default Console;
