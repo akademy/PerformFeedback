@@ -29,46 +29,46 @@ const dispatchToProps = (dispatch) => (
 		doSync: ( performanceId ) => (
 			dispatch( postPost( performanceId ) )
 		),
-		setQuestionComments: ( performanceId, payload ) => {
+		setQuestionComments: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionComments( performanceId, payload )
 			)
-		},
-		setQuestionDescribe: ( performanceId, payload ) => {
+		),
+		setQuestionDescribe: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionDescribe( performanceId, payload )
 			)
-		},
-		setQuestionEnjoy: ( performanceId, payload ) => {
+		),
+		setQuestionEnjoy: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionEnjoy( performanceId, payload )
 			)
-		},
-		setQuestionFamiliar: ( performanceId, payload ) => {
+		),
+		setQuestionFamiliar: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionFamiliar( performanceId, payload )
 			)
-		},
-		setQuestionInfluences: ( performanceId, payload ) => {
+		),
+		setQuestionInfluences: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionInfluences( performanceId, payload )
 			)
-		},
-		setQuestionMotivation: ( performanceId, payload ) => {
+		),
+		setQuestionMotivation: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionMotivation( performanceId, payload )
 			)
-		},
-		setQuestionMusicLength: ( performanceId, payload ) => {
+		),
+		setQuestionMusicLength: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionMusicLength( performanceId, payload )
 			)
-		},
-		setQuestionParticipation: ( performanceId, payload ) => {
+		),
+		setQuestionParticipation: ( performanceId, payload ) => (
 			dispatch(
 				setQuestionParticipation( performanceId, payload )
 			)
-		},
+		),
 	}
 );
 
