@@ -21,8 +21,8 @@ export default class Questions extends Component {
 	state = {
 		performanceId: this.props.performanceId,
 
-		musicLengthSeconds: 0,
-		musicLengthMinutes: 0,
+		musicLengthSeconds: null,
+		musicLengthMinutes: null,
 
 		describe1: "",
 		describe2: "",
