@@ -59,10 +59,21 @@ let api = {
 		return responseJson;
 	},
 
+	responseValid: ( responseJson, requestId ) => {
+		if (!responseJson.hasOwnProperty("responseId") ) {
+			return "Bad request format";
+		}
+
+		if (responseJson.responseId !== requestId) {
+			return "Bad match";
+		}
+		return "";
+	},
+
 	responseCheckValid : ( responseJson, requestId ) => {
-		C.log("responseCheckValid");
-		if( !responseJson.responseId || responseJson.responseId !== requestId ) {
-			const error = new Error( "Response not valid" );
+		const check = api.responseValid( responseJson, requestId );
+		if( check !== "" ) {
+			const error = new Error( check );
 			error.response = responseJson;
 			throw error;
 		}
