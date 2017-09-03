@@ -14,19 +14,13 @@ let sync = {
 		//checkProfile( state, store.dispatch );
 		//checkFeedbacks( state, store.dispatch );
 
-		Promise.all([
+		return Promise.all([
 			checkProfile( state, store.dispatch ),
 			checkFeedbacks( state, store.dispatch ),
 			checkQuestions( state, store.dispatch )
 		])
-		.then( () => { C.log("ALL synced!")})
+		.then( () => { C.log("ALL synced!")} )
 		.catch( () => { C.log("ALL synced with errors")} );
-
-		//return Promise.all([
-		//checkProfile( state, store.dispatch ).catch(),
-		//checkFeedbacks( state, store.dispatch ).catch(),
-		//checkQuestions( state, store.dispatch ).catch()
-		//]);
 	}
 };
 
