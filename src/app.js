@@ -1,7 +1,10 @@
+import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native'
+import BackgroundTask from 'react-native-background-task'
+
 import { Provider } from "react-redux";
 import { persistStore } from 'redux-persist'
-import React, { Component } from 'react';
+
 
 import Router from "./route"
 import Store from "./store/store"
@@ -22,10 +25,25 @@ const persisterOptions = {
 	storage: AsyncStorage
 };
 
+BackgroundTask.cancel();
+BackgroundTask.define( () => {
+
+	C.log("***** BACKGROUND SYNC START *****");
+	sync.check( store )
+		.then( C.log("****BACKGROUND SYNC COMPLETE *****") )
+		.then( () => {
+			setTimeout( ()=> {
+				C.log("**** FINISHING *****");
+				BackgroundTask.finish();
+			}, 1000 );
+		});
+	}
+);
+
 const persister = persistStore( store, persisterOptions , () => {
 
 	C.groupCollapsed("Rehydrate complete");
-	C.log("Rehydrate state", store.getState());
+	//C.log("Rehydrate state", store.getState());
 	C.groupEnd();
 
 	stateSetup( store );
@@ -33,6 +51,11 @@ const persister = persistStore( store, persisterOptions , () => {
 });
 
 class App extends Component {
+
+	componentDidMount() {
+		BackgroundTask.schedule()
+	}
+
 	render() {
 		return (
 			<Provider store={store}>
