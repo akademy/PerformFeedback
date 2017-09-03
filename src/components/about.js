@@ -43,7 +43,7 @@ export default class About extends Component {
 						>
 							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/PRiSM_purple_1.png')} />
 							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/oxford_eresearch_centre.png')} />
-							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/epsrc.png')} />
+							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/sponsorfullres.png')} />
 						</View>
 					</ScrollView>
 				</View>
