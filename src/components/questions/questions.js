@@ -193,7 +193,7 @@ export default class Questions extends Component {
 					>
 
 						<View style={[styles.question, {marginTop:20}]}>
-							<Text style={[styles.label]}><Icon name="ios-person" size={30} color="#4F8EF7" />Q1</Text>
+							<Text style={[styles.label]}>Q1</Text>
 							<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
 								<View style={{backgroundColor:inputBackgroundColor}}>
