@@ -14,7 +14,8 @@ export default class Performance extends Component {
 	});
 
 	render() {
-		const { navigate, goBack, state } = this.props.navigation;
+		const { navigate, goBack  } = this.props.navigation;
+		const navigationState = this.props.navigation.state;
 
 		return (
 			<TemplateBase mainTitle="Performance Live Complete" subTitle="Live performance part complete">
@@ -64,9 +65,9 @@ export default class Performance extends Component {
 								style={[styles.button, styles.buttonSmall]}
 								textStyle={[styles.buttonText,styles.buttonTextSmall]}
 								onPress={ () => {
-									C.log(state,state.params);
-									if( state.params.navigateWithBack ) {
-										state.params.navigateWithBack();
+									C.log(navigationState,navigationState.params);
+									if( navigationState.params.navigateWithBack ) {
+										navigationState.params.navigateWithBack();
 										// TODO: Fix other back button... maybe don't stop timer until componentWillUnmount called
 									}
 									goBack();
