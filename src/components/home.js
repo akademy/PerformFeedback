@@ -15,7 +15,7 @@ export default class Home extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="PerformFeedback" subTitle="Thanks for feeding back">
+			<TemplateBase mainTitle="PRiSM Audience App" subTitle="Thanks for taking part">
 				<View style={{
 					//backgroundColor: 'green',
 					padding:50,
@@ -42,7 +42,8 @@ export default class Home extends Component {
 								onPress={ ()=>{navigate(N.PROFILE)} }
 							/>
 							<Button
-								title="Performance"
+								accessibilityLabel="Select a performance"
+								title="Performances"
 								onPress={ ()=>{ navigate(N.PERFORMANCE_BEGIN)} }
 							/>
 							<Button
