@@ -39,11 +39,12 @@ export default class About extends Component {
 						<View style={{
 							width:'100%',
 							justifyContent: 'center',
+							alignItems: 'center',
 						}}
 						>
-							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/PRiSM_purple_1.png')} />
-							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/oxford_eresearch_centre.png')} />
-							<Image style={[styles.paragraph,{alignItems:'center',height:80,width: 200}]} source={require('./img/sponsorfullres.png')} />
+							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/PRiSM_purple_1.png')} />
+							<Image style={[styles.paragraph,{height:94,width: 200,marginRight:20}]} source={require('./img/RGB-Logo-Pair.png')} />
+							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/sponsorfullres.png')} />
 						</View>
 					</ScrollView>
 				</View>
