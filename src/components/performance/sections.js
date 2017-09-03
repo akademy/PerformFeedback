@@ -18,6 +18,7 @@ export default class Performance extends Component {
 	};
 
 	timestampType = {
+		PRE: "pre",
 		START : "start",
 		FINISH : "finish",
 	};
@@ -54,13 +55,21 @@ export default class Performance extends Component {
 			feedbackId = this.props.createFeedback();
 		}
 
-		const now = Date.now();
+		let sections = [];
+
+		if( this.props.navigation.state.params.timestamp ) {
+			sections.push({
+				ty: this.timestampType.PRE,
+				ts: this.props.navigation.state.params.timestamp,
+			})
+		}
+		sections.push({
+			ty: this.timestampType.START,
+				ts: Date.now(),
+		});
 
 		this.setState( {
-				sections: [{
-					ty: this.timestampType.START,
-					ts: now,
-				}],
+				sections: sections,
 				sectionsNeedSync: true,
 				feedbackId
 			},
@@ -164,7 +173,8 @@ export default class Performance extends Component {
 						maxHeight: 95,
 						textAlign:'center',
 						padding: 10,
-						color: 'white'
+						color: 'white',
+						fontSize: (this.state.sectionTexts.length > 50 ) ? 16 : 20
 					}}>{this.state.sectionTexts}</Text>
 				</View>
 				<View style={{flex:1,padding: 20}}>
@@ -199,10 +209,10 @@ export default class Performance extends Component {
 									this.createSectionText()
 								});
 							} }
-						>Add Section End</Button>
+						>Add section end</Button>
 					</View>
 
-					<View style={{flex:2,paddingBottom: 20}}>
+					<View style={{flex:1,paddingBottom: 20}}>
 						<Button
 							style={{
 								backgroundColor: '#dd2325',
@@ -242,7 +252,7 @@ export default class Performance extends Component {
 								});
 							} }
 							isDisabled={this.state.removeButtonDisabled}
-						>Mark last as Error</Button>
+						>Mark last as accidental</Button>
 					</View>
 
 					<View style={{flex:1,paddingBottom: 20}}>
