@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {Button, StyleSheet, Text, View} from "react-native"
+import {StyleSheet, Text, View} from "react-native"
+
+import Button from 'apsl-react-native-button'
 
 import { DialogComponent, SlideAnimation, DialogContent, DialogButton }from 'react-native-dialog-component';
 
@@ -62,16 +64,33 @@ export default class Performance extends Component {
 							"section end" in the music you are listening to.
 						</Text>
 						<Text style={[styles.text]}>
-							Simple press the "Add Section End" button when you believe a section comes to an end.
+							Simple press the "Add section end" button when you believe a section comes to an end.
 						</Text>
 						<Text style={[styles.text]}>
-							If you accidentally press the button you can mark your last one as an error.
+							If you accidentally press the "Add section end" button you can mark it as accidental by pressing the "Mark last as accidental" button.
 						</Text>
-						<Button
+						{/*<Button
 							onPress={ ()=>{navigate(N.PERFORMANCE_SECTIONS)} }
 							title="Begin"
 							disabled={this.state.beginButtonDisabled}
-						/>
+						/>*/}
+						<View style={{paddingTop: 20}}>
+							<Button
+								style={{
+									backgroundColor: '#1ddd6a',
+									borderColor: '#1db259',
+									height: 100
+								}}
+								textStyle={{
+									color: '#fff',
+									fontSize: 18
+								}}
+								onPress={ () => {
+									navigate(N.PERFORMANCE_SECTIONS,{timestamp: Date.now()});
+								}}
+								isDisabled={this.state.beginButtonDisabled}
+							>BEGIN</Button>
+						</View>
 					</View>
 				</TemplateBase>
 			</View>
