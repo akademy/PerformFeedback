@@ -1,6 +1,7 @@
 import { REDUCER as R } from '../../constants'
 import fetch from 'fetch-everywhere'
 import config from '../../config/config'
+import C from "../../lib/console";
 
 // These set up the data if needs be, and create a "state changer"
 
@@ -48,12 +49,13 @@ export const requestCount = () => (dispatch/*, getState*/) => {
 		);
 };
 
-export const addError = (message) => (
-	{
+export const addError = (message) => {
+	C.log( "Adding error: ", message );
+	return {
 		type: R.ADD_ERROR,
-		payload: message
+		payload:message
 	}
-);
+};
 
 export const clearError = (index) => (
 	{

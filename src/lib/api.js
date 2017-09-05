@@ -3,17 +3,21 @@ import { Platform } from 'react-native'
 import uuid from 'react-native-uuid'
 //import VersionNumber from 'react-native-version-number';
 import config from "../config/config";
-import { Console as C } from "../console"
+import { Console as C } from "./console"
 
 let api = {
-	requestSetup : ( randomUuid ) => {
+	requestPrepare : (randomUuid ) => {
 		/*
 		request: {
 			appOs: OS System
 			appVersion: current app version,
+
 			key: server generate uuid,
+
 			randomUuid: app generate uuid,
+
 			requestId: request generated uuid,
+			requestDateTime: (new Date()).toISOString(),
 		};
 		result: {
 			resultId: must match requestId,
@@ -36,20 +40,42 @@ let api = {
 		return request;
 	},
 
-	responseCheckStatus: ( response ) => {
-		if (response.status < 200 && response.status >= 300) {
-			let error = new Error(response.statusText);
-			error.response = response;
+	responseCheckStatus: ( responseJson ) => {
+
+		if (responseJson.status < 200 || responseJson.status >= 300) {
+
+			let errorText =
+				"Unknown error on server, status: " + responseJson.status;
+
+			if (responseJson.title) {
+				errorText = responseJson.title;
+			}
+
+			const error = new Error(errorText);
+			error.status = responseJson.status;
 			throw error;
 		}
 
-		return response;
+		return responseJson;
+	},
+
+	responseValid: ( responseJson, requestId ) => {
+		if (!responseJson.hasOwnProperty("responseId") ) {
+			return "Bad request format";
+		}
+
+		if (responseJson.responseId !== requestId) {
+			return "Bad match";
+		}
+		return "";
 	},
 
 	responseCheckValid : ( responseJson, requestId ) => {
-		if( responseJson.responseId !== requestId ) {
-			let error = new Error( "Response not valid" );
+		const check = api.responseValid( responseJson, requestId );
+		if( check !== "" ) {
+			const error = new Error( check );
 			error.response = responseJson;
+			throw error;
 		}
 		return responseJson;
 	},
@@ -58,7 +84,7 @@ let api = {
 
 	fetchHandle: ( apiPath, data, state ) => {
 
-		let request = api.requestSetup( state.profile.randomUuid );
+		let request = api.requestPrepare( state.profile.randomUuid );
 		request.payload = data;
 
 		return fetch(config.local.api.url + apiPath, {
@@ -69,12 +95,14 @@ let api = {
 			},
 			body: JSON.stringify( request )
 		})
-		.then( api.responseCheckStatus )
 		.then( api.responseJson )
+		.then( api.responseCheckStatus )
 		.then( (responseJson) => {
-			C.log('responseJson', responseJson);
 			return api.responseCheckValid(responseJson, request.requestId)
 		})
+		//.catch( (error) => {
+		//	throw error;
+		//})
 	}
 };
 

@@ -12,11 +12,22 @@ export const stateBase = {
 	profile : {
 		randomUuid: null,
 		randomId: null,
+
 		dateOfBirth: null,
+		musicTraining: null,
+		musicField: null,
+		mathTraining: null,
+		mathField: null,
+		education: null,
+		educationOther: null,
+		musicListen: null,
 
 		syncStatus: SS.NOT_SYNCED,
 		postingProfile: false,
 	},
+
+	currentFeedbackId: null,
+	currentPerformanceId: null,
 
 	live: {
 		feedbacks: [
@@ -33,6 +44,15 @@ export const stateBase = {
 			}*/
 		],
 	},
+	post: {
+		questions: [
+			/* e.g. {
+				performanceId: 'manchester2017',
+				musicLength: 75 (seconds)
+
+			}*/
+		]
+	}
 
 };
 
@@ -48,17 +68,18 @@ export const stateSetup = (store) => {
 		store.dispatch( setRandomId( generateRandomId() ));
 	}
 
+
 	if( store.getState().profile.syncStatus === SS.SYNCING ) {
 		// clean-up
 		store.dispatch( setProfileSync( SS.NOT_SYNCED ) );
 	}
 
 	if( store.getState().profile.postingProfile === true ) {
-		// cleanup
+		// clean-up
 		store.dispatch( postingProfileCancel() );
 	}
 
-
+	// TODO: Clear errors
 };
 
 const generateRandomUuid = () => {

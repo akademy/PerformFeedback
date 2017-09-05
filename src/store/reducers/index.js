@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 
 import profileReducers from './profile'
 import liveReducers from './live'
+import postReducers from './post'
 
 export const dataVersion = (state=0) => {
 	return state;
@@ -81,6 +82,7 @@ export default combineReducers(
 		currentFeedbackId,
 		profile : profileReducers,
 		live: liveReducers,
+		post: postReducers,
 		errors
 	}
 );

@@ -5,15 +5,17 @@ import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
-import { Console as C } from "../../console"
+import { Console as C } from "../../lib/console"
+import {changePathAndNavigate} from "../../route"
 
 export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: "Performance Live Complete"
+		title: "Performance Live Complete",
 	});
 
 	render() {
-		const { navigate, goBack } = this.props.navigation;
+		const { navigate, goBack  } = this.props.navigation;
+		const navigationState = this.props.navigation.state;
 
 		return (
 			<TemplateBase mainTitle="Performance Live Complete" subTitle="Live performance part complete">
@@ -37,13 +39,17 @@ export default class Performance extends Component {
 								<Button
 									style={[styles.button]}
 									textStyle={[styles.buttonText]}
-									onPress={ () => {navigate(N.QUESTIONS) } }>
+									onPress={ () => {
+										changePathAndNavigate( this.props.navigation, [N.HOME, N.QUESTIONS] );
+									}}>
 									Questions
 								</Button>
 								<Button
 									style={[styles.button]}
 									textStyle={[styles.buttonText]}
-									onPress={ () => {navigate(N.HOME) } }>
+									onPress={ () => {
+										changePathAndNavigate( this.props.navigation, [N.HOME] );
+									}}>
 									Home
 								</Button>
 							</View>
@@ -58,7 +64,14 @@ export default class Performance extends Component {
 							<Button
 								style={[styles.button, styles.buttonSmall]}
 								textStyle={[styles.buttonText,styles.buttonTextSmall]}
-								onPress={ () => { goBack() } }>
+								onPress={ () => {
+									C.log(navigationState,navigationState.params);
+									if( navigationState.params.navigateWithBack ) {
+										navigationState.params.navigateWithBack();
+										// TODO: Fix other back button... maybe don't stop timer until componentWillUnmount called
+									}
+									goBack();
+								} }>
 								Continue
 							</Button>
 						</View>
@@ -73,7 +86,9 @@ export default class Performance extends Component {
 							<Button
 								style={[styles.button, styles.buttonSmall]}
 								textStyle={[styles.buttonText,styles.buttonTextSmall]}
-								onPress={ () => {navigate(N.PERFORMANCE_BEGIN) } }>
+								onPress={ () => {
+									changePathAndNavigate( this.props.navigation, [N.HOME, N.PERFORMANCE_BEGIN]);
+								} }>
 								Rerun
 							</Button>
 						</View>

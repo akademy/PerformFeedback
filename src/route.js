@@ -1,18 +1,30 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import { NAVIGATION as N } from './constants'
 
 import Home from "./components/bind/home"
 import About from "./components/about"
 import Count from "./components/bind/count"
-import Profile from "./components/bind/profile"
+import Profile from "./components/profile/bind/profile"
+
 import Begin from "./components/performance/begin"
 import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"
 
-import Questions from "./components/questions/questions"
+import Questions from "./components/questions/bind/questions"
 
+export const changePathAndNavigate = ( navigation, routeList, index ) => {
+	let actions = [];
+	for( let i=0, z=routeList.length; i<z; i++ ) {
+		actions.push( NavigationActions.navigate({ routeName: routeList[i] }), )
+	}
+	const resetAction = NavigationActions.reset({
+		index: (index !== undefined) ? index : actions.length-1,
+		actions
+	});
+	navigation.dispatch(resetAction);
+};
 
 const routerSetup = {};
 routerSetup[N.HOME] = {
@@ -40,8 +52,20 @@ routerSetup[N.PERFORMANCE_FINISH] = {
 routerSetup[N.QUESTIONS] = {
 	screen: Questions
 };
+
+// Options for router
+const routerOptions = {
+	initialRouteName: N.HOME,
+	navigationOptions: {
+		headerTintColor: 'steelblue',
+	}
+};
+if( __DEV__ ) {
+	routerOptions.initialRouteName = N.HOME;
+}
+
 // Main Navigation
-const Router = StackNavigator( routerSetup );
+const Router = StackNavigator( routerSetup, routerOptions );
 
 
 export default Router;

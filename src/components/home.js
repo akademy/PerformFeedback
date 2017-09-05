@@ -3,7 +3,7 @@ import { View, Button, Text } from "react-native"
 
 import TemplateBase from './templateBase'
 import { NAVIGATION as N } from '../constants'
-import { Console as C } from "./../console"
+import { Console as C } from "../lib/console"
 
 export default class Home extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -15,7 +15,7 @@ export default class Home extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="PerformFeedback" subTitle="Thanks for feeding back">
+			<TemplateBase mainTitle="PRiSM Audience App" subTitle="Thanks for taking part">
 				<View style={{
 					//backgroundColor: 'green',
 					padding:50,
@@ -34,27 +34,29 @@ export default class Home extends Component {
 						}}
 						>
 							<Button
-								title="About"
+								title="About this app"
 								onPress={ ()=>{navigate(N.ABOUT)} }
 							/>
 							<Button
-								title="Profile"
+								title="Your profile"
 								onPress={ ()=>{navigate(N.PROFILE)} }
 							/>
 							<Button
-								title="Performance"
-								onPress={ ()=>{navigate(N.PERFORMANCE_BEGIN)} }
+								accessibilityLabel="Select a performance"
+								title="Performances"
+								onPress={ ()=>{ navigate(N.PERFORMANCE_BEGIN)} }
 							/>
 							<Button
-								disabled={true}
-								title="Questions"
+								disabled={!this.props.performanceId || !this.props.feedbackId}
+								title="Questions on performance"
 								onPress={ ()=>{navigate(N.QUESTIONS)} }
 							/>
-							<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
+							{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
 							<Button
 								title="Change Count"
 								onPress={ ()=>{navigate(N.COUNT)} }
 							/>
+							*/}
 							{__DEV__ &&
 								<Button
 									title="Purge Persist"
