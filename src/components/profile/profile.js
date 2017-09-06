@@ -166,7 +166,7 @@ export default class Profile extends Component {
 
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Musical Field</Text>
-							<Text style={[styles.questionText]}>Do you currently play a musical instrument, sing or compose, and if so for how long? (Please select zero if you do not)</Text>
+							<Text style={[styles.questionText]}>Do you currently play a musical instrument, sing or compose, and if so for how many years? (Please select zero if you do not have any)</Text>
 							<RadioSegmentedControls
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ (option) => this.setState({musicField:option},this.setMusicField) }
