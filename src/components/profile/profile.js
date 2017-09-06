@@ -7,6 +7,8 @@ import DatePicker from 'react-native-datepicker'
 
 import { MainBackgroundColor as MainColor, InputBackgroundColor } from "../../style/index";
 
+import CheckboxGroup from 'react-native-checkbox-group'
+
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
 
@@ -97,6 +99,17 @@ export default class Profile extends Component {
 	setMusicListen = () => {
 		if( this.props.setMusicListen ) {
 			this.props.setMusicListen( this.state.musicListen );
+		}
+	};
+
+	setEmail = () => {
+		if( this.props.setEmail ) {
+			this.props.setEmail(this.state.email );
+		}
+	};
+	setEmailFuture = () => {
+		if( this.props.setEmailFuture ) {
+			this.props.setEmailFuture( this.state.emailFuture );
 		}
 	};
 
@@ -280,6 +293,48 @@ export default class Profile extends Component {
 							/>
 						</View>
 
+						<View style={[styles.question]}>
+							<Text style={[styles.label]}>Optional</Text>
+							<Text style={[styles.questionText]}>If you'd like to be notified of the results from this study you can enter your email here:</Text>
+							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
+								<TextInput
+									style={[styles.textInput, {
+										width: '100%',
+									}]}
+									keyboardType='email-address'
+									value={this.state.email}
+									onChangeText={ (text) => this.setState({email:text},this.setEmail)}
+								/>
+							</View>
+							<CheckboxGroup
+								callback={ (selected) => this.setState({emailFuture:selected.length !== 0},this.setEmailFuture)}
+								iconColor={(this.state.email && this.state.email.length>0) ? "steelblue" : "#ddd"}
+								iconSize={30}
+								checkedIcon="ios-checkbox-outline"
+								uncheckedIcon="ios-square-outline"
+								enabled={false}
+								checkboxes={[
+									{
+										label: "If you would also like to be notified of other future studies tick this box.",
+										value: 1,
+										selected: this.state.emailFuture
+									},
+								]}
+								labelStyle={{
+									color: '#333',
+									paddingLeft: 10,
+									fontSize: 12,
+									width: '90%'
+								}}
+								rowStyle={{
+									flexDirection: 'row',
+									marginTop: 10,
+									backgroundColor: inputBackgroundColor
+								}}
+								rowDirection={"column"}
+							/>
+						</View>
+
 						<Button
 							onPress={ () => goBack()}
 							title={"Finished"} />
@@ -308,5 +363,10 @@ const styles = StyleSheet.create({
 	questionText: {
 		paddingTop: 10,
 		paddingBottom: 20
+	},
+	textInput: {
+		borderWidth: 1,
+		borderColor: '#ccc',
+		padding: 5
 	}
 });

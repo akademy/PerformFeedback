@@ -22,6 +22,9 @@ export const stateBase = {
 		educationOther: null,
 		musicListen: null,
 
+		email: null,
+		emailFuture: false,
+
 		syncStatus: SS.NOT_SYNCED,
 		postingProfile: false,
 	},

@@ -91,6 +91,24 @@ const musicListen = (state=null,  action) => {
 	return state;
 };
 
+const email = (state=null,  action) => {
+	switch(action.type) {
+		case R.SET_EMAIL :
+			return action.payload;
+	}
+
+	return state;
+};
+
+const emailFuture = (state=null,  action) => {
+	switch(action.type) {
+		case R.SET_EMAIL_FUTURE :
+			return action.payload;
+	}
+
+	return state;
+};
+
 export const syncStatus = (state=false, action ) => {
 
 	switch(action.type) {
@@ -153,6 +171,9 @@ export default combineReducers(
 		education,
 		educationOther,
 		musicListen,
+
+		email,
+		emailFuture,
 
 		syncStatus,
 		postingProfile

@@ -17,6 +17,9 @@ export const setEducation = (payload) => ({ type: R.SET_EDUCATION, payload });
 export const setEducationOther = (payload) => ({ type: R.SET_EDUCATION_OTHER, payload });
 export const setMusicListen = (payload) => ({ type: R.SET_MUSIC_LISTEN, payload });
 
+export const setEmail = (payload) => ({ type: R.SET_EMAIL, payload });
+export const setEmailFuture = (payload) => ({ type: R.SET_EMAIL_FUTURE, payload });
+
 export const setProfileSync = (payload) => ({ type: R.SET_PROFILE_SYNC, payload });
 
 export const postingProfile = () => ({ type: R.POSTING_PROFILE });
