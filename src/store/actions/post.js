@@ -16,6 +16,8 @@ export const setQuestionInfluences = (id, payload) => ({ type: R.SET_QUESTION_IN
 export const setQuestionMotivation = (id, payload) => ({ type: R.SET_QUESTION_MOTIVATION, id, payload });
 export const setQuestionMusicLength = (id, payload) => ({ type: R.SET_QUESTION_MUSIC_LENGTH, id, payload });
 export const setQuestionParticipation = (id, payload) => ({ type: R.SET_QUESTION_PARTICIPATION, id, payload });
+export const setQuestionFamiliarPiece = (id, payload) => ({ type: R.SET_QUESTION_FAMILIAR_PIECE, id, payload });
+export const setQuestionOften = (id, payload) => ({ type: R.SET_QUESTION_OFTEN, id, payload });
 
 export const setQuestionSync = (id, payload) => ({ type: R.SET_QUESTION_SYNC, id, payload });
 

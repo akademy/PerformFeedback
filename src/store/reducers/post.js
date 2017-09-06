@@ -18,6 +18,8 @@ const questions = (state=[],  action) => {
 		case R.SET_QUESTION_MOTIVATION:
 		case R.SET_QUESTION_COMMENTS:
 		case R.SET_QUESTION_PERFORMANCE_ID:
+		case R.SET_QUESTION_FAMILIAR_PIECE:
+		case R.SET_QUESTION_OFTEN:
 
 		case R.SET_QUESTION_SYNC:
 
@@ -86,6 +88,18 @@ function updateObjectInArray( array, action ) {
 				return {
 					...item,
 					comments: action.payload,
+					syncStatus: SS.NOT_SYNCED
+				};
+			case R.SET_QUESTION_FAMILIAR_PIECE:
+				return {
+					...item,
+					familiarPiece: action.payload,
+					syncStatus: SS.NOT_SYNCED
+				};
+			case R.SET_QUESTION_OFTEN:
+				return {
+					...item,
+					often: action.payload,
 					syncStatus: SS.NOT_SYNCED
 				};
 

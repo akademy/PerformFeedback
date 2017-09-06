@@ -10,7 +10,9 @@ import {
 	setQuestionInfluences,
 	setQuestionMotivation,
 	setQuestionMusicLength,
-	setQuestionParticipation
+	setQuestionParticipation,
+	setQuestionFamiliarPiece,
+	setQuestionOften,
 } from "../../../store/actions/post";
 
 
@@ -23,50 +25,60 @@ const stateToProps = (state) => (
 
 const dispatchToProps = (dispatch) => (
 	{
-		createQuestion: ( performanceId ) => (
-			dispatch( createQuestion( performanceId ) )
+		createQuestion: (performanceId) => (
+			dispatch(createQuestion(performanceId))
 		),
-		doSync: ( performanceId ) => (
-			dispatch( postPost( performanceId ) )
+		doSync: (performanceId) => (
+			dispatch(postPost(performanceId))
 		),
-		setQuestionComments: ( performanceId, payload ) => (
+		setQuestionComments: (performanceId, payload) => (
 			dispatch(
-				setQuestionComments( performanceId, payload )
+				setQuestionComments(performanceId, payload)
 			)
 		),
-		setQuestionDescribe: ( performanceId, payload ) => (
+		setQuestionDescribe: (performanceId, payload) => (
 			dispatch(
-				setQuestionDescribe( performanceId, payload )
+				setQuestionDescribe(performanceId, payload)
 			)
 		),
-		setQuestionEnjoy: ( performanceId, payload ) => (
+		setQuestionEnjoy: (performanceId, payload) => (
 			dispatch(
-				setQuestionEnjoy( performanceId, payload )
+				setQuestionEnjoy(performanceId, payload)
 			)
 		),
-		setQuestionFamiliar: ( performanceId, payload ) => (
+		setQuestionFamiliar: (performanceId, payload) => (
 			dispatch(
-				setQuestionFamiliar( performanceId, payload )
+				setQuestionFamiliar(performanceId, payload)
 			)
 		),
-		setQuestionInfluences: ( performanceId, payload ) => (
+		setQuestionInfluences: (performanceId, payload) => (
 			dispatch(
-				setQuestionInfluences( performanceId, payload )
+				setQuestionInfluences(performanceId, payload)
 			)
 		),
-		setQuestionMotivation: ( performanceId, payload ) => (
+		setQuestionMotivation: (performanceId, payload) => (
 			dispatch(
-				setQuestionMotivation( performanceId, payload )
+				setQuestionMotivation(performanceId, payload)
 			)
 		),
-		setQuestionMusicLength: ( performanceId, payload ) => (
+		setQuestionMusicLength: (performanceId, payload) => (
 			dispatch(
-				setQuestionMusicLength( performanceId, payload )
+				setQuestionMusicLength(performanceId, payload)
 			)
 		),
-		setQuestionParticipation: ( performanceId, payload ) => (
+		setQuestionParticipation: (performanceId, payload) => (
 			dispatch(
-				setQuestionParticipation( performanceId, payload )
+				setQuestionParticipation(performanceId, payload)
+			)
+		),
+		setQuestionFamiliarPiece: (performanceId, payload) => (
+			dispatch(
+				setQuestionFamiliarPiece(performanceId, payload)
+			)
+		),
+		setQuestionOften: (performanceId, payload) => (
+			dispatch(
+				setQuestionOften(performanceId, payload)
 			)
 		),
 	}

@@ -108,6 +108,8 @@ export default class Questions extends Component {
 
 			enjoy : question.enjoy,
 			familiar: question.familiar,
+			often: question.often,
+			familiarPiece: question.familiarPiece,
 			participation: question.participation,
 
 			comments: question.comments,
@@ -148,6 +150,16 @@ export default class Questions extends Component {
 			this.props.setQuestionFamiliar( this.props.performanceId, this.state.familiar );
 		}
 	};
+	setQuestionFamiliarPiece = () => {
+		if( this.props.setQuestionFamiliarPiece ) {
+			this.props.setQuestionFamiliarPiece( this.props.performanceId, this.state.familiarPiece );
+		}
+	};
+	setQuestionOften = () => {
+		if( this.props.setQuestionOften ) {
+			this.props.setQuestionOften( this.props.performanceId, this.state.often );
+		}
+	};
 	setQuestionInfluences = () => {
 		if( this.props.setQuestionInfluences ) {
 			this.props.setQuestionInfluences( this.props.performanceId, this.state.influences );
@@ -184,6 +196,7 @@ export default class Questions extends Component {
 
 	render() {
 		const { goBack } = this.props.navigation;
+		let questionNumber = 1;
 
 		return (
 			<TemplateBase mainTitle="Questions" subTitle="To be answered after the performance">
@@ -193,7 +206,7 @@ export default class Questions extends Component {
 					>
 
 						<View style={[styles.question, {marginTop:20}]}>
-							<Text style={[styles.label]}>Q1</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
 								<View style={{backgroundColor:inputBackgroundColor}}>
@@ -222,7 +235,7 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q2</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>Please describe the piece in three words:</Text>
 							<View style={{
 								flex:1,
@@ -273,7 +286,7 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q3</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>What features in the piece influenced your choice of section endings?</Text>
 							<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
 								<TextInput
@@ -290,7 +303,7 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q4</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>How much did you enjoy the piece of music?</Text>
 							<Text style={[styles.key]}>
 								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I didn't enjoy it at all</Text>{'\n'}
@@ -340,7 +353,7 @@ export default class Questions extends Component {
 
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q5</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>As a listener, how familiar are you with twentieth-century classical music?</Text>
 							<Text style={[styles.key]}>
 								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I am not familiar with it at all</Text>{'\n'}
@@ -363,7 +376,53 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q6</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
+							<Text style={[styles.questionText]}>How often do you listen to twentieth-century classical music?</Text>
+							<Text style={[styles.key]}>
+								<Text><Text style={{fontWeight:'bold'}}>1</Text> : Never listen</Text>{'\n'}
+								<Text><Text style={{fontWeight:'bold'}}>7</Text> : Listen every day</Text>
+							</Text>
+
+							<RadioSegmentedControls
+								options={ [1,2,3,4,5,6,7] }
+								onSelection={ (option) => this.setState({often:option},this.setQuestionOften) }
+								selectedOption={this.state.often}
+								tint={radioTint}
+								selectedTint={'white'}
+								backTint= {inputBackgroundColor}
+								paddingTop={10}
+								paddingBottom={25}
+								selectedBackgroundColor={MainColor}
+								//renderOption={ this.renderOption }
+								//renderContainer={ this.renderContainer }
+							/>
+						</View>
+
+						<View style={[styles.question]}>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
+							<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight, Ligeti’s ‘Fanfares’?</Text>
+							<Text style={[styles.key]}>
+								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I've never heard of it</Text>{'\n'}
+								<Text><Text style={{fontWeight:'bold'}}>7</Text> : I've heard it many times</Text>
+							</Text>
+
+							<RadioSegmentedControls
+								options={ [1,2,3,4,5,6,7] }
+								onSelection={ (option) => this.setState({familiarPiece:option},this.setQuestionFamiliarPiece) }
+								selectedOption={this.state.familiarPiece}
+								tint={radioTint}
+								selectedTint={'white'}
+								backTint= {inputBackgroundColor}
+								paddingTop={10}
+								paddingBottom={25}
+								selectedBackgroundColor={MainColor}
+								//renderOption={ this.renderOption }
+								//renderContainer={ this.renderContainer }
+							/>
+						</View>
+
+						<View style={[styles.question]}>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>Does participation in a scientific experiment such as this increase or decrease your enjoyment of a concert experience?</Text>
 							<Text style={[styles.key]}>
 								<Text><Text style={{fontWeight:'bold'}}>1</Text> : It significantly decreases my enjoyment</Text>{'\n'}
@@ -385,7 +444,7 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q7</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
 							<CheckboxGroup
 								callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
@@ -410,7 +469,7 @@ export default class Questions extends Component {
 						</View>
 
 						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q8</Text>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>Please use this box for any other comments you wish to make.</Text>
 							<View style={{width: '90%', backgroundColor:inputBackgroundColor}}>
 							<TextInput
