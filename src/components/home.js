@@ -15,7 +15,7 @@ export default class Home extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="PRiSM Audience App" subTitle="Thanks for taking part">
+			<TemplateBase mainTitle="PRiSM Perception App" subTitle="Feedback during performances">
 				<View style={{
 					//backgroundColor: 'green',
 					padding:50,
@@ -57,7 +57,7 @@ export default class Home extends Component {
 								onPress={ ()=>{navigate(N.COUNT)} }
 							/>
 							*/}
-							{__DEV__ &&
+							{/*__DEV__ &&
 								<Button
 									title="Purge Persist"
 									onPress={() => {
@@ -65,7 +65,7 @@ export default class Home extends Component {
 										this.props.screenProps.persister.purge();
 									}}
 								/>
-							}
+							*/}
 						</View>
 					</View>
 
