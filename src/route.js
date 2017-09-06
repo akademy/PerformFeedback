@@ -5,6 +5,7 @@ import { NAVIGATION as N } from './constants'
 
 import Home from "./components/bind/home"
 import About from "./components/about"
+import Licences from "./components/licences"
 import Count from "./components/bind/count"
 import Profile from "./components/profile/bind/profile"
 
@@ -35,6 +36,9 @@ routerSetup[N.COUNT] = {
 };
 routerSetup[N.ABOUT] = {
 	screen: About
+};
+routerSetup[N.LICENCES] = {
+	screen: Licences
 };
 routerSetup[N.PROFILE] = {
 	screen: Profile
