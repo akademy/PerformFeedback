@@ -126,6 +126,10 @@ export const syncStatus = (state=false, action ) => {
 		case R.SET_EDUCATION:
 		case R.SET_EDUCATION_OTHER:
 		case R.SET_MUSIC_LISTEN:
+		case R.SET_EMAIL:
+		case R.SET_EMAIL_FUTURE:
+
+
 		case R.POSTING_PROFILE_CANCEL :
 			return SS.NOT_SYNCED;
 

@@ -26,6 +26,8 @@ const stateToProps = (state) => (
 		education: state.profile.education,
 		educationOther: state.profile.educationOther,
 		musicListen: state.profile.musicListen,
+		email: state.profile.email,
+		emailFuture: state.profile.emailFuture,
 	}
 );
 
