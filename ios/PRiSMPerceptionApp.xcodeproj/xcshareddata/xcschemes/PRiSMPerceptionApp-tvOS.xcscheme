@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "PerformFeedback-tvOS.app"
-               BlueprintName = "PerformFeedback-tvOS"
-               ReferencedContainer = "container:PerformFeedback.xcodeproj">
+               BuildableName = "PRiSMPerceptionApp-tvOS.app"
+               BlueprintName = "PRiSMPerceptionApp-tvOS"
+               ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "PerformFeedback-tvOSTests.xctest"
-               BlueprintName = "PerformFeedback-tvOSTests"
-               ReferencedContainer = "container:PerformFeedback.xcodeproj">
+               BuildableName = "PRiSMPerceptionApp-tvOSTests.xctest"
+               BlueprintName = "PRiSMPerceptionApp-tvOSTests"
+               ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "PerformFeedback-tvOSTests.xctest"
-               BlueprintName = "PerformFeedback-tvOSTests"
-               ReferencedContainer = "container:PerformFeedback.xcodeproj">
+               BuildableName = "PRiSMPerceptionApp-tvOSTests.xctest"
+               BlueprintName = "PRiSMPerceptionApp-tvOSTests"
+               ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "PerformFeedback-tvOS.app"
-            BlueprintName = "PerformFeedback-tvOS"
-            ReferencedContainer = "container:PerformFeedback.xcodeproj">
+            BuildableName = "PRiSMPerceptionApp-tvOS.app"
+            BlueprintName = "PRiSMPerceptionApp-tvOS"
+            ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "PerformFeedback-tvOS.app"
-            BlueprintName = "PerformFeedback-tvOS"
-            ReferencedContainer = "container:PerformFeedback.xcodeproj">
+            BuildableName = "PRiSMPerceptionApp-tvOS.app"
+            BlueprintName = "PRiSMPerceptionApp-tvOS"
+            ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "PerformFeedback-tvOS.app"
-            BlueprintName = "PerformFeedback-tvOS"
-            ReferencedContainer = "container:PerformFeedback.xcodeproj">
+            BuildableName = "PRiSMPerceptionApp-tvOS.app"
+            BlueprintName = "PRiSMPerceptionApp-tvOS"
+            ReferencedContainer = "container:PRiSMPerceptionApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

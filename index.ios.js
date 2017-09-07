@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import App from './src/app'
 
-export default class PerformFeedback extends Component {
+export default class PRiSMPerceptionApp extends Component {
 	render() {
 		return (
             <App build="ios"/>
@@ -17,4 +17,4 @@ export default class PerformFeedback extends Component {
 }
 
 
-AppRegistry.registerComponent('PerformFeedback', () => PerformFeedback);
+AppRegistry.registerComponent('PRiSMPerceptionApp', () => PRiSMPerceptionApp);

@@ -1,4 +1,4 @@
-package com.performfeedback;
+package one.akadius.prismperceptionapp;
 
 import android.app.Application;
 

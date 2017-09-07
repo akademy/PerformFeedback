@@ -1,4 +1,4 @@
-package com.performfeedback;
+package one.akadius.prismperceptionapp;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "PerformFeedback";
+        return "PRiSMPerceptionApp";
     }
 }
