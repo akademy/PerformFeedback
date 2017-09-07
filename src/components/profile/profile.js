@@ -62,6 +62,9 @@ export default class Profile extends Component {
 			education: this.props.education,
 			educationOther: this.props.educationOther,
 			musicListen: this.props.musicListen,
+
+			email: this.props.email,
+			emailFuture: this.props.emailFuture
 		});
 
 		//this.updateCheckboxGroup( this.motivationOptions, question.motivation || [] );
