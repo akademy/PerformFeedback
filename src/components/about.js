@@ -13,7 +13,7 @@ export default class About extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="About" subTitle="Details about this PRiSM Perception App">
+			<TemplateBase mainTitle="About" subTitle="The PRiSM Perception App">
 				<View style={{
 					flex: 1,
 					paddingLeft: 20,
