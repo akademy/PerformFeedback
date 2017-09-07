@@ -35,14 +35,14 @@ export default class About extends Component {
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							The World Premiere of the PRiSM Perception App will take place on the 4th October 2017 at the RNCM in Manchester. More detail about PRiSM at the RNCM can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>. More details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.
+							The World Premiere of the PRiSM Perception App will take place on the 4th October 2017 at the RNCM in Manchester. More detail about PRiSM and the RNCM can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>. More details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
 							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please let us know.</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).”.
+						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
@@ -64,7 +64,7 @@ export default class About extends Component {
 							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/fast.png')} />
 						</View>
 
-						<Text>Thanks also to the React-Native Community, including but not limited to: alvaromb, akademy, akadius.one, arnaudrinquin, ataomega, eugenehp, jacklam, jamesisaac, js-media, oblador and skevy, for making this App possible.</Text>
+						<Text>Thanks also to the React-Native Community, including but not limited to: alvaromb, akademy, <Text onPress={() => Linking.openURL('http://akadius.one')}>akadius.one</Text>, arnaudrinquin, ataomega, eugenehp, jacklam, jamesisaac, js-media, oblador and skevy, for making this App possible.</Text>
 
 						<Text style={{color:'blue',textDecorationLine:'underline',marginTop:20}}  onPress={() => {navigate(N.LICENCES)} }>
 							Open source licences.
