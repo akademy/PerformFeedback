@@ -51,12 +51,6 @@ export default class Home extends Component {
 								title="Questions on performance"
 								onPress={ ()=>{navigate(N.QUESTIONS)} }
 							/>
-							{/*<Text style={{fontSize:28}}>Count is {this.props.count}</Text>
-							<Button
-								title="Change Count"
-								onPress={ ()=>{navigate(N.COUNT)} }
-							/>
-							*/}
 							{/*__DEV__ &&
 								<Button
 									title="Purge Persist"

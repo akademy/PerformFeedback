@@ -9,45 +9,6 @@ import C from "../../lib/console";
 export const setCurrentPerformanceId = (payload) => ({ type: R.SET_CURRENT_PERFORMANCE_ID, payload });
 export const setCurrentFeedbackId = (payload) => ({ type: R.SET_CURRENT_FEEDBACK_ID, payload });
 
-export const setCount = (count) => {
-	if( count < 0 ) {
-		count = 0;
-	}
-
-	return {
-		type: R.SET_COUNT,
-		payload: count
-	}
-};
-
-export const requestingCount = () => ({ type: R.REQUESTING_COUNT });
-export const requestingCountCancel = () => ({ type: R.REQUESTING_COUNT_CANCEL });
-export const requestingCountComplete = () => ({ type: R.REQUESTING_COUNT_COMPLETE });
-
-// thunk
-export const requestCount = () => (dispatch/*, getState*/) => {
-
-	dispatch( requestingCount() );
-
-	fetch( config.local.api.url + "/test/count" )
-		.then(
-			(response) => (
-				response.json()
-			)
-		)
-		.then(
-			(data) => {
-				dispatch( requestingCountComplete() );
-				dispatch( setCount( data.count ) );
-			}
-		)
-		.catch(
-			(error) => {
-				dispatch( addError( error.message ) );
-				dispatch( requestingCountCancel() );
-			}
-		);
-};
 
 export const addError = (message) => {
 	C.log( "Adding error: ", message );

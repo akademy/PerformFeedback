@@ -120,7 +120,7 @@ export default class Licences extends Component {
 							SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.{'\n'}
 						</Text>
 
-						<Text style={[styles.paragraph,styles.text]}>And thanks to all those who generously release under the MIT licence.</Text>
+						<Text style={[styles.paragraph,styles.text]}>And thanks to all those who generously release under the hassle free MIT licence.</Text>
 					</ScrollView>
 				</View>
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 const stateToProps = (state) => (
 	{
-		count: state.count,
 		performanceId: state.currentPerformanceId,
 		feedbackId: state.currentFeedbackId
 	}

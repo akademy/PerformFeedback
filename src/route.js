@@ -6,7 +6,6 @@ import { NAVIGATION as N } from './constants'
 import Home from "./components/bind/home"
 import About from "./components/about"
 import Licences from "./components/licences"
-import Count from "./components/bind/count"
 import Profile from "./components/profile/bind/profile"
 
 import Begin from "./components/performance/begin"
@@ -30,9 +29,6 @@ export const changePathAndNavigate = ( navigation, routeList, index ) => {
 const routerSetup = {};
 routerSetup[N.HOME] = {
 	screen: Home
-};
-routerSetup[N.COUNT] = {
-	screen: Count
 };
 routerSetup[N.ABOUT] = {
 	screen: About
