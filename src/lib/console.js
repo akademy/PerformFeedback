@@ -1,8 +1,17 @@
-export const Console = {};
-const z=(undefined===__DEV__||!__DEV__),x=()=>{},C=Console;
+export const Console = {},
+	z=(undefined===__DEV__||!__DEV__),
+	x=()=>{},
+	C=Console;
 
 C.log = z?x: (...args) => {
-	let d=new Date(); console.log("["+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+"] ", ...args);
+	const d=new Date(),
+		h=d.getHours(),
+		m=d.getMinutes(),
+		s=d.getSeconds();
+
+	console.log("[" +(h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s)+"] ",
+		...args
+	);
 };
 C.warn = z?x: (...args) => { console.warn(...args); };
 C.error = z?x: (...args) => { console.error(...args); };
@@ -21,6 +30,7 @@ C.fun = z?x: (...args) => { C.log( "[FUNCTION]", ...args) };
 
 export const ConsoleDummy = {
 	log : x,
+	fun : x,
 	warn : x,
 	error : x,
 	info : x,
