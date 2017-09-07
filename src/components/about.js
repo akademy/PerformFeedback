@@ -55,13 +55,15 @@ export default class About extends Component {
 							alignItems: 'center',
 						}}
 						>
-							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/PRiSM_purple_1.png')} />
-
-							<Image style={[styles.paragraph,{height:94,width: 200,marginRight:20,marginBottom:30}]} source={require('./img/RGB-Logo-Pair.png')} />
-
 							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/sponsorfullres.png')} />
 
 							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/fast.png')} />
+
+							<Image style={[styles.paragraph,{height:94,width: 200,marginRight:20,marginBottom:30}]} source={require('./img/RGB-Logo-Pair.png')} />
+
+							<Image style={[styles.paragraph,{height:80,width: 200,marginRight:20}]} source={require('./img/PRiSM_purple_1.png')} />
+
+							<Image style={[styles.paragraph,{height:135,width: 200,marginRight:20}]} source={require('./img/RNCMlogoCOLOUR.png')} />
 						</View>
 
 						<Text>Thanks also to the React-Native Community, including but not limited to: alvaromb, akademy, <Text onPress={() => Linking.openURL('http://akadius.one')}>akadius.one</Text>, arnaudrinquin, ataomega, eugenehp, jacklam, jamesisaac, js-media, oblador and skevy, for making this App possible.</Text>
