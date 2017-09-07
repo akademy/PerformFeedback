@@ -6,8 +6,6 @@ import C from "../lib/console";
 
 export const stateBase = {
 	dataVersion: 1, // increment if data is incompatible with previous
-	count: 0,
-	requestingCount: false,
 	errors: [],
 
 	profile : {

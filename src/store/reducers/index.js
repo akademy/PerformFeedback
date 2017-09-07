@@ -9,15 +9,6 @@ export const dataVersion = (state=0) => {
 	return state;
 };
 
-export const count = (state=0, action ) => {
-	switch(action.type) {
-		case R.SET_COUNT :
-			return action.payload;
-	}
-
-	return state;
-};
-
 export const currentPerformanceId = (state=null, action ) => {
 	switch(action.type) {
 		case R.SET_CURRENT_PERFORMANCE_ID :
@@ -31,23 +22,6 @@ export const currentFeedbackId = (state=null, action ) => {
 	switch(action.type) {
 		case R.SET_CURRENT_FEEDBACK_ID :
 			return action.payload;
-	}
-
-	return state;
-};
-
-export const requestingCount = (state=false, action ) => {
-	switch(action.type) {
-
-		case R.REQUESTING_COUNT :
-			return true;
-
-		case R.REQUESTING_COUNT_CANCEL :
-			return false;
-
-		case R.REQUESTING_COUNT_COMPLETE:
-			return false;
-
 	}
 
 	return state;
@@ -76,8 +50,6 @@ export const errors = (state=[], action) => {
 export default combineReducers(
 	{
 		dataVersion,
-		count,
-		requestingCount,
 		currentPerformanceId,
 		currentFeedbackId,
 		profile : profileReducers,
