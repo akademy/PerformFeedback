@@ -2,6 +2,7 @@ import uuid from 'react-native-uuid'
 
 import { SYNC_STATUS as SS } from '../constants'
 import { setRandomId, setRandomUuid, setProfileSync, postingProfileCancel } from "./actions/profile"
+import C from "../lib/console";
 
 export const stateBase = {
 	dataVersion: 1, // increment if data is incompatible with previous
@@ -80,6 +81,9 @@ export const stateSetup = (store) => {
 	}
 
 	// TODO: Clear errors
+	if( store.getState().errors.length !== 0 ) {
+		C.log( store.getState().errors );
+	}
 };
 
 const generateRandomUuid = () => {
