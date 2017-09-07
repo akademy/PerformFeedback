@@ -25,8 +25,7 @@ const persisterOptions = {
 	storage: AsyncStorage
 };
 
-BackgroundTask.cancel();
-BackgroundTask.define( () => {
+const background = () => {
 
 	C.log("***** BACKGROUND SYNC START *****");
 	sync.check( store )
@@ -37,8 +36,15 @@ BackgroundTask.define( () => {
 				BackgroundTask.finish();
 			}, 1000 );
 		});
-	}
-);
+};
+
+if( __DEV__ ) {
+	// C.log("Test background task");
+	// setTimeout(background, 30 * 1000);
+}
+
+BackgroundTask.cancel();
+BackgroundTask.define( background );
 
 const persister = persistStore( store, persisterOptions , () => {
 
