@@ -9,7 +9,9 @@ import {
 	setEducation,
 	setEducationOther,
 	setMusicListen,
-	postProfile
+	postProfile,
+	setEmail,
+	setEmailFuture,
 } from "../../../store/actions/profile";
 
 const stateToProps = (state) => (
@@ -70,6 +72,17 @@ const dispatchToProps = (dispatch) => (
 			)
 		),
 
+
+		setEmail: (performanceId, payload) => (
+			dispatch(
+				setEmail(performanceId, payload)
+			)
+		),
+		setEmailFuture: (performanceId, payload) => (
+			dispatch(
+				setEmailFuture(performanceId, payload)
+			)
+		),
 
 
 		onSync : () => (
