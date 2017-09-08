@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from "react-native"
 
 import Button from 'apsl-react-native-button'
+import Icon from 'react-native-vector-icons/Entypo';
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
@@ -20,7 +21,8 @@ export default class Performance extends Component {
 		return (
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance Live Complete" subTitle="Live performance part complete">
+				mainTitle="Performance Complete"
+				subTitle="Live performance part complete">
 				<View style={{
 					//backgroundColor: 'green',
 					paddingLeft: 30,
@@ -30,70 +32,69 @@ export default class Performance extends Component {
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text>Thanks for completing the Section Ends.</Text>
+						<Text>Thanks for completing the Section Ends. {"\n"}(Press "Back" if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
-						<Text>We have some questions about the performance which you can either do now or later</Text>
+						<Text style={{marginBottom:10}}>
+							We have some questions about the performance which you can take now or later.
+						</Text>
 
 						<View style={[styles.groupCenter]}>
 							<View style={[styles.buttonWrap]}>
-								<Button
+							<Icon.Button
+								style={[styles.button]}
+								backgroundColor={styles.button.backgroundColor}
+								name="text-document-inverted"
+								size={styles.buttonIcon.height}
+								color="#fff"
+								iconStyle={[styles.buttonIcon]}
+								onPress={ () => {
+									changePathAndNavigate( this.props.navigation, [N.HOME, N.QUESTIONS] );
+								}}
+							>
+								<Text style={[styles.buttonText]}>Questions on Performance</Text>
+							</Icon.Button>
+							</View>
+
+							<View style={[styles.buttonWrap]}>
+								<Icon.Button
 									style={[styles.button]}
-									textStyle={[styles.buttonText]}
-									onPress={ () => {
-										changePathAndNavigate( this.props.navigation, [N.HOME, N.QUESTIONS] );
-									}}>
-									Questions
-								</Button>
-								<Button
-									style={[styles.button]}
-									textStyle={[styles.buttonText]}
+									backgroundColor={styles.button.backgroundColor}
+									name="home"
+									size={styles.buttonIcon.height}
+									color="#fff"
+									iconStyle={[styles.buttonIcon]}
 									onPress={ () => {
 										changePathAndNavigate( this.props.navigation, [N.HOME] );
-									}}>
-									Home
-								</Button>
+									}}
+								>
+									<Text style={[styles.buttonText]}>Home</Text>
+								</Icon.Button>
 							</View>
+
 						</View>
 					</View>
 
 					<View style={[styles.group]}>
-						<Text style={[styles.textSmall]}>Alternatively, if you clicked "Finish" prematurely:</Text>
+						<Text style={{marginBottom:10}}>If you are asked to rerun the test press here:</Text>
 
 						<View style={[styles.groupCenter]}>
 							<View style={[styles.buttonWrap]}>
-							<Button
-								style={[styles.button, styles.buttonSmall]}
-								textStyle={[styles.buttonText,styles.buttonTextSmall]}
-								onPress={ () => {
-									C.log(navigationState,navigationState.params);
-									if( navigationState.params.navigateWithBack ) {
-										navigationState.params.navigateWithBack();
-										// TODO: Fix other back button... maybe don't stop timer until componentWillUnmount called
-									}
-									goBack();
-								} }>
-								Continue
-							</Button>
-						</View>
-						</View>
-					</View>
-
-					<View style={[styles.group]}>
-						<Text style={[styles.textSmall]}>Or if you are asked to rerun the test:</Text>
-
-						<View style={[styles.groupCenter]}>
-						<View style={[styles.buttonWrap]}>
-							<Button
-								style={[styles.button, styles.buttonSmall]}
-								textStyle={[styles.buttonText,styles.buttonTextSmall]}
+							<Icon.Button
+								style={[styles.button]}
+								backgroundColor={styles.button.backgroundColor}
+								name="note"
+								size={styles.buttonIcon.height}
+								color="#fff"
+								iconStyle={[styles.buttonIcon]}
 								onPress={ () => {
 									changePathAndNavigate( this.props.navigation, [N.HOME, N.PERFORMANCE_BEGIN]);
-								} }>
-								Rerun
-							</Button>
-						</View>
+								}}
+							>
+								<Text style={[styles.buttonText]}>Rerun</Text>
+							</Icon.Button>
+							</View>
 						</View>
 					</View>
 
@@ -104,11 +105,43 @@ export default class Performance extends Component {
 }
 
 const styles = StyleSheet.create({
+
 	button: {
-		backgroundColor: 'steelblue',
-		borderColor: '#4a88b2',
-		height: 40
+		backgroundColor: '#4094dd',
+		borderWidth: 0,
+		borderBottomWidth: 5,
+		borderBottomColor: '#157efb',
+		height:45,
+		marginBottom: 0
 	},
+	buttonDisabled: {
+		backgroundColor: '#bbb'
+	},
+	buttonWrap: {
+		marginBottom:10
+	},
+
+	buttonIcon: {
+		height: 20,
+		color: '#0e2d70'
+	},
+	buttonIconDisabled: {
+		color: '#777'
+	},
+	buttonText: {
+		color: '#fff',
+		fontSize: 16
+	},
+	buttonTextDisabled: {
+		color: '#fff'
+	},
+
+
+	//button: {
+	//	backgroundColor: 'steelblue',
+	//	borderColor: '#4a88b2',
+	//	height: 40
+	//},
 	buttonSmall: {
 		height: 30
 	},
@@ -119,22 +152,19 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		fontSize: 12
 	},
-	buttonText:{
-		color: '#fff',
-		fontSize: 14
-	},
+	//buttonText:{
+	//	color: '#fff',
+	//	fontSize: 14
+	//},
 	group: {
-		marginBottom: 10,
+		marginBottom: 30,
 		display: 'flex',
 		justifyContent: 'flex-start',
 	},
 	groupCenter: {
-		display: 'flex',
+		/*display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center',*/
 
-	},
-	buttonWrap: {
-		width: "60%"
 	}
 });
