@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 export default class Home extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		//title: `${screenProps.build} Home (Home)`
-		title: "Home"
+		title: "Home" + (__DEV__ ? " __DEV__" : "")
 	});
 
 	render() {
