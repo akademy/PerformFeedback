@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from "react-native"
+import { Platform, StyleSheet, Text, View } from "react-native"
 
-import Button from 'apsl-react-native-button'
 import Icon from 'react-native-vector-icons/Entypo';
 
 import TemplateBase from '../templateBase'
 import {NAVIGATION as N} from "../../constants";
-import { Console as C } from "../../lib/console"
+
 import {changePathAndNavigate} from "../../route"
 
 export default class Performance extends Component {
@@ -32,12 +31,12 @@ export default class Performance extends Component {
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text>Thanks for completing the Section Ends. {"\n"}(Press "Back" if you finished prematurely.)</Text>
+						<Text>Thanks for completing the Section Ends. {"\n"}(Press Back if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
 						<Text style={{marginBottom:10}}>
-							We have some questions about the performance which you can take now or later.
+							We have some questions about the performance which you can answer now or later.
 						</Text>
 
 						<View style={[styles.groupCenter]}>
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
 
 	button: {
 		backgroundColor: '#4094dd',
-		borderWidth: 0,
+		borderRadius: Platform.OS === "android" ? 0 : 3 , /* Bug in android stops borders working */
 		borderBottomWidth: 5,
 		borderBottomColor: '#157efb',
 		height:45,
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#bbb'
 	},
 	buttonWrap: {
-		marginBottom:10
+		marginBottom:10,
 	},
 
 	buttonIcon: {

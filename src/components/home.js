@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View } from "react-native"
+import { Button, Platform, StyleSheet, Text, View } from "react-native"
 import ButtonApsl from 'apsl-react-native-button'
 
 import TemplateBase from './templateBase'
@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
 	button: {
 		backgroundColor: '#4094dd',
 		height:45,
-		borderWidth: 0,
+		borderRadius: Platform.OS === "android" ? 0 : 3, /* Bug in android stops borders working */
 		borderBottomWidth: 5,
-		borderBottomColor: '#157efb',
+		borderBottomColor: '#157efb'
 	},
 	buttonDisabled: {
 		backgroundColor: '#bbb'
