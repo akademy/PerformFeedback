@@ -10,7 +10,7 @@ import {changePathAndNavigate} from "../../route"
 
 export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
-		title: "Performance Live Complete",
+		title: "Performance",
 	});
 
 	render() {
@@ -18,7 +18,9 @@ export default class Performance extends Component {
 		const navigationState = this.props.navigation.state;
 
 		return (
-			<TemplateBase mainTitle="Performance Live Complete" subTitle="Live performance part complete">
+			<TemplateBase
+				icon="note"
+				mainTitle="Performance Live Complete" subTitle="Live performance part complete">
 				<View style={{
 					//backgroundColor: 'green',
 					paddingLeft: 30,

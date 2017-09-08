@@ -120,7 +120,11 @@ export default class Profile extends Component {
 		const { goBack } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="Profile" subTitle="Your details">
+			<TemplateBase
+				icon="user"
+				mainTitle="Profile"
+				subTitle="Your details"
+			>
 				<View style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
 
 					<ScrollView

@@ -13,7 +13,7 @@ export default class Performance extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => {
 		C.log( "navOpts");
 		return {
-			title: "Sections"
+			title: "Performance"
 		}
 	};
 
@@ -163,7 +163,9 @@ export default class Performance extends Component {
 
 		return (
 
-			<TemplateBase mainTitle="Performance" subTitle="Watching a performance">
+			<TemplateBase
+				icon="note"
+				mainTitle="Performance" subTitle="Watching a performance">
 				<View style={{
 					height: 95,
 					justifyContent: 'center',

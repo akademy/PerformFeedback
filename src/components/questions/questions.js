@@ -199,7 +199,9 @@ export default class Questions extends Component {
 		let questionNumber = 1;
 
 		return (
-			<TemplateBase mainTitle="Questions" subTitle="To be answered after the performance">
+			<TemplateBase
+				icon="text-document-inverted"
+				mainTitle="Questions" subTitle="To be answered after the performance">
 				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
 					<ScrollView
 						contentContainerStyle={{paddingBottom: 40}}

@@ -56,7 +56,9 @@ export default class Performance extends Component {
 					</DialogContent>
 				</DialogComponent>
 
-				<TemplateBase mainTitle="Performance" subTitle="Watching a performance">
+				<TemplateBase
+					icon="note"
+					mainTitle="Performance" subTitle="Watching a performance">
 					<View style={{flex:1,padding: 20}}>
 						<Text style={[styles.text]}>Please only proceed to the next screen once instructed to do so.</Text>
 						<Text style={[styles.text]}>
@@ -89,7 +91,7 @@ export default class Performance extends Component {
 									navigate(N.PERFORMANCE_SECTIONS,{timestamp: Date.now()});
 								}}
 								isDisabled={this.state.beginButtonDisabled}
-							>BEGIN</Button>
+							>Begin</Button>
 						</View>
 					</View>
 				</TemplateBase>
