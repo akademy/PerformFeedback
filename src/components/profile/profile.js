@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, ScrollView, View, Text, TextInput } from "react-native"
+import { StyleSheet, ScrollView, View, Text, TextInput } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
+
+import Icon from 'react-native-vector-icons/Entypo';
 
 import TemplateBase from '../templateBase'
 import DatePicker from 'react-native-datepicker'
@@ -133,7 +135,7 @@ export default class Profile extends Component {
 
 						<View style={[styles.group, {paddingTop: 20}]}>
 							<Text>To help with our research we ask that you answer the following questions.
-								All data collected will be anonymous and only identifiable by the short ID below.</Text>
+								All data collected will be anonymous, see the About page for more details.</Text>
 						</View>
 
 						<View style={[styles.question]}>
@@ -260,7 +262,8 @@ export default class Profile extends Component {
 								flex:1,
 								flexDirection:'row',
 								alignItems:'center',
-								marginBottom: 5
+								marginBottom: 5,
+								marginTop: 20
 							}}>
 								<Text style={{
 									flex:3,
@@ -342,9 +345,23 @@ export default class Profile extends Component {
 							/>
 						</View>
 
-						<Button
-							onPress={ () => goBack()}
-							title={"Finished"} />
+
+						<View style={[styles.buttonWrap]}>
+							<Icon.Button
+								style={[styles.button]}
+								backgroundColor={styles.button.backgroundColor}
+								name="home"
+								size={styles.buttonIcon.height}
+								color="#fff"
+								iconStyle={[styles.buttonIcon]}
+								onPress={ () => {
+									goBack();
+								}}
+							>
+								<Text style={[styles.buttonText]}>Finished</Text>
+							</Icon.Button>
+						</View>
+
 					</ScrollView>
 				</View>
 			</TemplateBase>
@@ -375,5 +392,31 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#ccc',
 		padding: 5
-	}
+	},
+
+
+	button: {
+		backgroundColor: '#4094dd',
+		height:45,
+		borderWidth: 0,
+		borderBottomWidth: 5,
+		borderBottomColor: '#157efb',
+	},
+	buttonDisabled: {
+		backgroundColor: '#bbb'
+	},
+	buttonIcon: {
+		height: 20,
+		color: '#0e2d70'
+	},
+	buttonIconDisabled: {
+		color: '#777'
+	},
+	buttonText: {
+		color: '#fff',
+		fontSize: 16
+	},
+	buttonTextDisabled: {
+		color: '#fff'
+	},
 });

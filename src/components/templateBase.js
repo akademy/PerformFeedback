@@ -8,6 +8,8 @@ export default class TemplateBase extends Component {
 
 	render() {
 
+		const icon = this.props.icon;
+
 		return (
 			<View style={{
 				flex: 1
@@ -21,19 +23,23 @@ export default class TemplateBase extends Component {
 					<View style={{
 						flexDirection: 'column',
 						justifyContent: 'center',
-						flex: 1,
-						paddingLeft: 40
+						flex: icon ? 1 : 0,
+						paddingLeft: icon ? 40 : 60
 					}}>
-						<Icon name={this.props.icon} size={50} color="#3e5da0"/>
+						{
+							icon ?
+							<Icon name={this.props.icon} size={50} color="#3e5da0"/>
+								: null
+						}
 					</View>
 
 					<View style={{
 						flexDirection: 'column',
 						justifyContent: 'center',
-						flex: 4
+						flex: icon ? 4 : 1
 					}}>
 
-						<Text style={{fontWeightr:"bold",fontSize:20,color:"#fff",textAlign: "left"}}>
+						<Text style={{fontWeight:"bold",fontSize:20,color:"#fff",textAlign: "left"}}>
 							{this.props.mainTitle}
 						</Text>
 						<Text style={{fontSize:14,color:"white",textAlign: "left"}}>

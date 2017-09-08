@@ -45,7 +45,6 @@ export default class Performance extends Component {
 							<Text style={[styles.dialogText]}>
 								After you close this dialog, wait until instructed to press the Begin button.
 							</Text>
-							<Text style={[styles.dialogText]}>Timing is everything.</Text>
 							<DialogButton
 								onPress={() => {
 									this.dialogComponent.dismiss();
@@ -60,16 +59,14 @@ export default class Performance extends Component {
 					icon="note"
 					mainTitle="Performance" subTitle="Watching a performance">
 					<View style={{flex:1,padding: 20}}>
-						<Text style={[styles.text]}>Please only proceed to the next screen once instructed to do so.</Text>
-						<Text style={[styles.text]}>
-						In the following screen you will be able to mark a position as a
-							"section end" in the music you are listening to.
+						<Text style={[styles.text,{fontWeight:'bold', marginBottom: 20}]}>
+							Please only proceed to the next screen once instructed to do so.
 						</Text>
 						<Text style={[styles.text]}>
-							Simple press the "Add section end" button when you believe a section comes to an end.
+							When the performance starts you will be able to mark when you believe a section in the music comes to an end. {"\n"}Simply press the green button "Add section end".
 						</Text>
 						<Text style={[styles.text]}>
-							If you accidentally press the "Add section end" button you can mark it as accidental by pressing the "Mark last as accidental" button.
+							If you accidentally press the button you can mark it as accidental by pressing the red "Mark last as accidental" button.
 						</Text>
 						{/*<Button
 							onPress={ ()=>{navigate(N.PERFORMANCE_SECTIONS)} }

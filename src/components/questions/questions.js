@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 import CheckboxGroup from 'react-native-checkbox-group'
 
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/Entypo';
 
 import TemplateBase from '../templateBase'
 import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
@@ -201,7 +201,7 @@ export default class Questions extends Component {
 		return (
 			<TemplateBase
 				icon="text-document-inverted"
-				mainTitle="Questions" subTitle="To be answered after the performance">
+				mainTitle="Questions" subTitle="To be answered post performance">
 				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
 					<ScrollView
 						contentContainerStyle={{paddingBottom: 40}}
@@ -487,8 +487,22 @@ export default class Questions extends Component {
 							</View>
 						</View>
 
-						<Button onPress={ () => { goBack(); } }
-						        title="Finished" />
+
+						<View style={[styles.buttonWrap]}>
+							<Icon.Button
+								style={[styles.button]}
+								backgroundColor={styles.button.backgroundColor}
+								name="home"
+								size={styles.buttonIcon.height}
+								color="#fff"
+								iconStyle={[styles.buttonIcon]}
+								onPress={ () => {
+									goBack();
+								}}
+							>
+								<Text style={[styles.buttonText]}>Finished</Text>
+							</Icon.Button>
+						</View>
 
 					</ScrollView>
 				</View>
@@ -521,5 +535,30 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#ccc',
 		padding: 5
-	}
+	},
+
+	button: {
+		backgroundColor: '#4094dd',
+		height:45,
+		borderWidth: 0,
+		borderBottomWidth: 5,
+		borderBottomColor: '#157efb',
+	},
+	buttonDisabled: {
+		backgroundColor: '#bbb'
+	},
+	buttonIcon: {
+		height: 20,
+		color: '#0e2d70'
+	},
+	buttonIconDisabled: {
+		color: '#777'
+	},
+	buttonText: {
+		color: '#fff',
+		fontSize: 16
+	},
+	buttonTextDisabled: {
+		color: '#fff'
+	},
 });

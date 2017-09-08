@@ -19,7 +19,6 @@ export default class Home extends Component {
 
 		return (
 			<TemplateBase
-				icon="home"
 				mainTitle="PRiSM Perception App"
 				subTitle="Feedback during performances"
 			>
@@ -121,8 +120,10 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
 	button: {
 		backgroundColor: '#4094dd',
+		height:45,
 		borderWidth: 0,
-		height:45
+		borderBottomWidth: 5,
+		borderBottomColor: '#157efb',
 	},
 	buttonDisabled: {
 		backgroundColor: '#bbb'
