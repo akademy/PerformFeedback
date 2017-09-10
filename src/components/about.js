@@ -3,6 +3,7 @@ import { Image, Linking, ScrollView, StyleSheet, Text, View } from "react-native
 
 import TemplateBase from './templateBase'
 import {NAVIGATION as N} from "../constants";
+import config from "../config/config";
 
 export default class About extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -10,7 +11,8 @@ export default class About extends Component {
 	});
 
 	render() {
-		const { navigate } = this.props.navigation;
+		const { navigate } = this.props.navigation,
+			version = config.version;
 
 		return (
 			<TemplateBase
@@ -74,6 +76,8 @@ export default class About extends Component {
 						<Text style={{color:'blue',textDecorationLine:'underline',marginTop:20}}  onPress={() => {navigate(N.LICENCES)} }>
 							Open source licences.
 					</Text>
+
+						<Text style={{marginTop:20}}>v{version}</Text>
 
 					</ScrollView>
 				</View>
