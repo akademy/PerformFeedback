@@ -225,7 +225,7 @@ export default class Profile extends Component {
 
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Mathematical Field</Text>
-							<Text style={[styles.questionText]}>Do you currently work in a field which requires mathematical skills, and if so for how long have you worked in this area? (Please select zero if you do not work with mathematics)</Text>
+							<Text style={[styles.questionText]}>Do you currently work in a field which requires mathematical skills, and if so for how many years have you worked in this area? (Please select zero if you do not work with mathematics)</Text>
 							<RadioSegmentedControls
 								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
 								onSelection={ (option) => this.setState({mathField:option},this.setMathField) }
@@ -358,7 +358,7 @@ export default class Profile extends Component {
 									goBack();
 								}}
 							>
-								<Text style={[styles.buttonText]}>Finished</Text>
+								<Text style={[styles.buttonText]}>Finish</Text>
 							</Icon.Button>
 						</View>
 

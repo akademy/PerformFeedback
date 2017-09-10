@@ -12,7 +12,7 @@ export default class Licences extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<TemplateBase mainTitle="Licences" subTitle="Open source licences requirements"
+			<TemplateBase mainTitle="Licences" subTitle="Open source licences' requirements"
 			              icon="info">
 				<View style={{
 					flex: 1,

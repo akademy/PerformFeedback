@@ -57,13 +57,15 @@ export default class Performance extends Component {
 
 				<TemplateBase
 					icon="note"
-					mainTitle="Performance" subTitle="Watching a performance">
+					mainTitle="Performance"
+					subTitle="Before the performance"
+				>
 					<View style={{flex:1,padding: 20}}>
 						<Text style={[styles.text,{fontWeight:'bold', marginBottom: 20}]}>
 							Please only proceed to the next screen once instructed to do so.
 						</Text>
 						<Text style={[styles.text]}>
-							When the performance starts you will be able to mark when you believe a section in the music comes to an end. {"\n"}Simply press the green button "Add section end".
+							When the performance starts you will be able to mark when you believe a section in the music comes to an end. Simply press the green button "Add section end".
 						</Text>
 						<Text style={[styles.text]}>
 							If you accidentally press the button you can mark it as accidental by pressing the red "Mark last as accidental" button.
@@ -86,6 +88,7 @@ export default class Performance extends Component {
 								}}
 								onPress={ () => {
 									navigate(N.PERFORMANCE_SECTIONS,{timestamp: Date.now()});
+									// TODO: Stop back button working on next screen: (But need to pass over timestamp) changePathAndNavigate( this.props.navigation, [N.HOME, N.QUESTIONS]
 								}}
 								isDisabled={this.state.beginButtonDisabled}
 							>Begin</Button>

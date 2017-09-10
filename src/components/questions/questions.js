@@ -500,7 +500,7 @@ export default class Questions extends Component {
 									goBack();
 								}}
 							>
-								<Text style={[styles.buttonText]}>Finished</Text>
+								<Text style={[styles.buttonText]}>Finish</Text>
 							</Icon.Button>
 						</View>
 
