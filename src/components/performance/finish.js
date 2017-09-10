@@ -20,7 +20,7 @@ export default class Performance extends Component {
 		return (
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance Complete"
+				mainTitle="Performance"
 				subTitle="Live performance part complete">
 				<View style={{
 					//backgroundColor: 'green',
@@ -31,7 +31,7 @@ export default class Performance extends Component {
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text>Thanks for completing the Section Ends. {"\n"}(Press Back if you finished prematurely.)</Text>
+						<Text>Thanks for completing the Section Ends. {"\n"}(Press <Text onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
 	//	fontSize: 14
 	//},
 	group: {
-		marginBottom: 30,
+		marginBottom: 20,
 		display: 'flex',
 		justifyContent: 'flex-start',
 	},

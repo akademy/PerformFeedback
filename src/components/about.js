@@ -3,6 +3,7 @@ import { Image, Linking, ScrollView, StyleSheet, Text, View } from "react-native
 
 import TemplateBase from './templateBase'
 import {NAVIGATION as N} from "../constants";
+import config from "../config/config";
 
 export default class About extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -10,7 +11,8 @@ export default class About extends Component {
 	});
 
 	render() {
-		const { navigate } = this.props.navigation;
+		const { navigate } = this.props.navigation,
+			version = config.version;
 
 		return (
 			<TemplateBase
@@ -30,8 +32,7 @@ export default class About extends Component {
 						}}
 					>
 						<Text style={[styles.paragraph,styles.title]}>
-							Welcome to the
-							PRiSM Perception App.
+							Welcome to the{"\n"}PRiSM Perception App
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
@@ -70,11 +71,13 @@ export default class About extends Component {
 							<Image style={[styles.paragraph,{height:135,width: 200,marginRight:20}]} source={require('./img/RNCMlogoCOLOUR.png')} />
 						</View>
 
-						<Text>Thanks also to the React-Native Community, including but not limited to: alvaromb, akademy, <Text onPress={() => Linking.openURL('http://akadius.one')}>akadius.one</Text>, arnaudrinquin, ataomega, eugenehp, jacklam, jamesisaac, js-media, oblador and skevy, for making this App possible.</Text>
+						<Text>Thanks also to the React-Native Community, including but not limited to: alvaromb, akademy, <Text onPress={() => Linking.openURL('http://akadius.one')}>akadius.one</Text>, arnaudrinquin, ataomega, douglasjunior, eugenehp, jacklam, jamesisaac, js-media, oblador and skevy, for making this App possible.</Text>
 
 						<Text style={{color:'blue',textDecorationLine:'underline',marginTop:20}}  onPress={() => {navigate(N.LICENCES)} }>
 							Open source licences.
 					</Text>
+
+						<Text style={{marginTop:20}}>v{version}</Text>
 
 					</ScrollView>
 				</View>

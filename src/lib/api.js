@@ -25,7 +25,7 @@ let api = {
 		*/
 		let request = {
 			appOs: Platform.OS, // 'ios' or 'android'
-			appVersion: "0.0.1", // TODO: VersionNumber.appVersion + "." + VersionNumber.buildVersion,
+			appVersion: config.version, // TODO: VersionNumber.appVersion + "." + VersionNumber.buildVersion,
 
 			key: config.local.api.key,
 

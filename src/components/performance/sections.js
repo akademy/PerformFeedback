@@ -165,7 +165,7 @@ export default class Performance extends Component {
 
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance" subTitle="Watching a performance">
+				mainTitle="Performance" subTitle="During the performance">
 				<View style={{
 					height: 95,
 					justifyContent: 'center',
