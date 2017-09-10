@@ -130,7 +130,7 @@ export default class Profile extends Component {
 				<View style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
 
 					<ScrollView
-					    contentContainerStyle={{paddingBottom: 40}}
+					    contentContainerStyle={{paddingBottom: 150}}
 					>
 
 						<View style={[styles.group, {paddingTop: 20}]}>
