@@ -204,7 +204,7 @@ export default class Questions extends Component {
 				mainTitle="Questions" subTitle="To be answered post performance">
 				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
 					<ScrollView
-						contentContainerStyle={{paddingBottom: 40}}
+						contentContainerStyle={{paddingBottom: 150}}
 					>
 
 						<View style={[styles.question, {marginTop:20}]}>
