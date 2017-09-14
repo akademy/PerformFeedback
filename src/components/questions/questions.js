@@ -289,7 +289,7 @@ export default class Questions extends Component {
 
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>What features in the piece influenced your choice of section endings?</Text>
+							<Text style={[styles.questionText]}>How did you decide when a section had ended??</Text>
 							<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
 								<TextInput
 									style={[styles.textInput, {
@@ -402,7 +402,7 @@ export default class Questions extends Component {
 
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight, Ligeti’s ‘Fanfares’?</Text>
+							<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight?</Text>
 							<Text style={[styles.key]}>
 								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I've never heard of it</Text>{'\n'}
 								<Text><Text style={{fontWeight:'bold'}}>7</Text> : I've heard it many times</Text>
