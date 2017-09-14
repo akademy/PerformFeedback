@@ -21,7 +21,7 @@ export default class Performance extends Component {
 			<TemplateBase
 				icon="note"
 				mainTitle="Performance"
-				subTitle="Live performance part complete">
+				subTitle="Post performance">
 				<View style={{
 					//backgroundColor: 'green',
 					paddingLeft: 30,
