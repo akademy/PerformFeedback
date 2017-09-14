@@ -292,7 +292,7 @@ export default class Questions extends Component {
 
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How did you decide when a section had ended??</Text>
+							<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
 							<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
 								<TextInput
 									style={[styles.textInput, {
