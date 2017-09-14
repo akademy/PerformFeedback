@@ -28,14 +28,15 @@ export default class Performance extends Component {
 					paddingRight: 30,
 					paddingTop: 10,
 					flex: 1,
+					justifyContent: 'center'
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text>Thanks for completing the Section Ends. {"\n"}(Press <Text onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
+						<Text style={{textAlign: 'center'}}>Thanks for completing the Section Ends. {"\n"}(Press <Text onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
-						<Text style={{marginBottom:10}}>
+						<Text style={{marginBottom:10, textAlign: 'center'}}>
 							We have some questions about the performance which you can answer now or later.
 						</Text>
 
@@ -76,7 +77,7 @@ export default class Performance extends Component {
 					</View>
 
 					<View style={[styles.group]}>
-						<Text style={{marginBottom:10}}>If you are asked to rerun the test press here:</Text>
+						<Text style={{marginBottom:10,textAlign: 'center'}}>If you are asked to rerun the test press here:</Text>
 
 						<View style={[styles.groupCenter]}>
 							<View style={[styles.buttonWrap]}>
@@ -158,7 +159,8 @@ const styles = StyleSheet.create({
 	group: {
 		marginBottom: 20,
 		display: 'flex',
-		justifyContent: 'flex-start',
+		//justifyContent: 'flex-start',
+		textAlign: 'center'
 	},
 	groupCenter: {
 		/*display: 'flex',

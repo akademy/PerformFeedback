@@ -165,137 +165,146 @@ export default class Performance extends Component {
 
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance" subTitle="During the performance">
+				mainTitle="Performance"
+				subTitle="During the performance">
 				<View style={{
-					height: 95,
-					justifyContent: 'center',
-					backgroundColor: 'black'
+					flex:1,
+					flexDirection: 'column'
 				}}>
-					<Text style={{
-						maxHeight: 95,
-						textAlign:'center',
-						padding: 10,
-						color: 'white',
-						fontSize: (this.state.sectionTexts.length > 50 ) ? 16 : 20
-					}}>{this.state.sectionTexts}</Text>
-				</View>
-				<View style={{flex:1,padding: 20}}>
-					<View style={{flex:3, paddingBottom: 20}}>
-						<Button
-							style={{
-								backgroundColor: '#1ddd6a',
-								borderColor: '#1db259',
-								height: '100%'
-							}}
-							textStyle={{
-								color: '#fff',
-								fontSize: 18
-							}}
-							onPress={ () => {
-								C.log("Button: Add Section End");
-								const now = Date.now(); // immediately take a time snapshot
-
-								this.setState( (prevState) => {
-									const sections = prevState.sections.slice();
-									sections.push({
-										ts: now,
-									});
-									return {
-										sections ,
-										removeButtonDisabled: false,
-										sectionsNeedSync: true
-									}
-								}
-								, () => {
-									this.sectionsChanged();
-									this.createSectionText()
-								});
-							} }
-						>Add section end</Button>
+					<View style={{
+						flex: 1,
+						minHeight: 100,
+						justifyContent: 'center',
+						backgroundColor: 'black'
+					}}>
+						<Text style={{
+							maxHeight: 105,
+							textAlign:'center',
+							padding: 10,
+							color: 'white',
+							fontSize: (this.state.sectionTexts.length > 50 ) ? 16 : 20
+						}}>{this.state.sectionTexts}</Text>
 					</View>
+					<View style={{flex:1,padding: 20,
+						//backgroundColor: 'green'
+					}}>
+						<View style={{flex:1, minHeight: 150, paddingBottom: 20}}>
+							<Button
+								style={{
+									backgroundColor: '#1ddd6a',
+									borderColor: '#1db259',
+									height: '100%'
+								}}
+								textStyle={{
+									color: '#fff',
+									fontSize: 18
+								}}
+								onPress={ () => {
+									C.log("Button: Add Section End");
+									const now = Date.now(); // immediately take a time snapshot
 
-					<View style={{flex:1,paddingBottom: 20}}>
-						<Button
-							style={{
-								backgroundColor: '#dd2325',
-								borderColor: '#b42224',
-								height: '100%'
-							}}
-							textStyle={{
-								color: '#fff',
-								fontSize: 16
-							}}
-							disabledStyle={{
-								backgroundColor: '#b0a6ad',
-								borderColor: '#847a81',
-							}}
-							onPress={ () => {
-								C.log('Button: Mark last as Error', this.state);
-
-								this.setState((prevState) => {
-									C.log('Button: Mark last as Error', prevState);
-									const sections = prevState.sections.slice();
-
-									for( let i=sections.length; i; i-- ) {
-										if( sections[i-1].ty !== this.timestampType.FINISH ) {
-											sections[i-1].error = true;
-											break;
-										}
-									}
-
-									return {
-										sections,
-										removeButtonDisabled: true,
-										sectionsNeedSync: true
-									}
-								}, () => {
-									this.sectionsChanged();
-									this.createSectionText()
-								});
-							} }
-							isDisabled={this.state.removeButtonDisabled}
-						>Mark last as accidental</Button>
-					</View>
-
-					<View style={{flex:1,paddingBottom: 20}}>
-						<Button
-							style={{
-								backgroundColor: '#000',
-								borderColor: '#222',
-								height: 50
-							}}
-							textStyle={{
-								color: '#fff',
-								fontSize: 14
-							}}
-							onPress={ () => {
-								C.log("Button: Finish");
-								this.stopSyncInterval();
-
-								const now = Date.now(); // immediately take a time snapshot
-
-								this.setState( (prevState) => {
+									this.setState( (prevState) => {
 										const sections = prevState.sections.slice();
 										sections.push({
-											ty: this.timestampType.FINISH,
 											ts: now,
 										});
 										return {
 											sections ,
+											removeButtonDisabled: false,
 											sectionsNeedSync: true
 										}
 									}
 									, () => {
-										C.log( this.state );
-
 										this.sectionsChanged();
-										this.syncFeedback();
+										this.createSectionText()
+									});
+								} }
+							>Add section end</Button>
+						</View>
 
-										navigate(N.PERFORMANCE_FINISH, { navigateWithBack: this.navigateWithBack });
-									}
-								);
-							} }
-						>Finish</Button>
+						<View style={{flex:1, minHeight: 80, paddingBottom: 20}}>
+							<Button
+								style={{
+									backgroundColor: '#dd2325',
+									borderColor: '#b42224',
+									height: '100%'
+								}}
+								textStyle={{
+									color: '#fff',
+									fontSize: 16
+								}}
+								disabledStyle={{
+									backgroundColor: '#b0a6ad',
+									borderColor: '#847a81',
+								}}
+								onPress={ () => {
+									C.log('Button: Mark last as Error', this.state);
+
+									this.setState((prevState) => {
+										C.log('Button: Mark last as Error', prevState);
+										const sections = prevState.sections.slice();
+
+										for( let i=sections.length; i; i-- ) {
+											if( sections[i-1].ty !== this.timestampType.FINISH ) {
+												sections[i-1].error = true;
+												break;
+											}
+										}
+
+										return {
+											sections,
+											removeButtonDisabled: true,
+											sectionsNeedSync: true
+										}
+									}, () => {
+										this.sectionsChanged();
+										this.createSectionText()
+									});
+								} }
+								isDisabled={this.state.removeButtonDisabled}
+							>Mark last as accidental</Button>
+						</View>
+
+						<View style={{flex:1,minHeight:80,paddingBottom: 20}}>
+							<Button
+								style={{
+									backgroundColor: '#000',
+									borderColor: '#222',
+									height: '100%'
+								}}
+								textStyle={{
+									color: '#fff',
+									fontSize: 16
+								}}
+								onPress={ () => {
+									C.log("Button: Finish");
+									this.stopSyncInterval();
+
+									const now = Date.now(); // immediately take a time snapshot
+
+									this.setState( (prevState) => {
+											const sections = prevState.sections.slice();
+											sections.push({
+												ty: this.timestampType.FINISH,
+												ts: now,
+											});
+											return {
+												sections ,
+												sectionsNeedSync: true
+											}
+										}
+										, () => {
+											C.log( this.state );
+
+											this.sectionsChanged();
+											this.syncFeedback();
+
+											navigate(N.PERFORMANCE_FINISH, { navigateWithBack: this.navigateWithBack });
+										}
+									);
+								} }
+							>Finish</Button>
+						</View>
 					</View>
 				</View>
 			</TemplateBase>
