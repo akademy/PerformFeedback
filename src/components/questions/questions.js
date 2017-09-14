@@ -201,13 +201,16 @@ export default class Questions extends Component {
 		return (
 			<TemplateBase
 				icon="text-document-inverted"
-				mainTitle="Questions" subTitle="To be answered post performance">
+				mainTitle="Questions" subTitle="Post performance">
 				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
 					<ScrollView
 						contentContainerStyle={{paddingBottom: 150}}
 					>
-
 						<View style={[styles.question, {marginTop:20}]}>
+							<Text style={{textAlign: 'center',fontWeight:'bold'}}>Please only answer these questions after the performance has finished.</Text>
+						</View>
+
+						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
 							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
