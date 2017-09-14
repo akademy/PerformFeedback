@@ -36,22 +36,33 @@ export default class About extends Component {
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							The PRiSM Perception App is a generic tool that can be configured for different concerts, presentations and experiments. The data gathered will be analysed to explore what mathematics the listener may be hearing.
+							The PRiSM Perception App is a generic tool that can be configured for different concerts, presentations and experiments. With design by Michelle Phillips (RNCM), Matthew Wilcoxson (OeRC) and David De Roure (OeRC), this interactive app is being developed by PRiSM and Oxford e-Research Centre in collaboration with the EPRSC ‘Fusing Audio and Semantic Technologies’ (FAST) project.
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							The World Premiere of the PRiSM Perception App will take place on the 4th October 2017 at the RNCM in Manchester. More detail about PRiSM and the RNCM can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/prism/')}>here</Text>. More details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.
+							The World Premiere of the PRiSM Perception App will take place on 4th October 2017 at the RNCM in Manchester during the first PRiSM Experiment (#PRiSM-X1) and the data gathered by the app will be analysed to explore what mathematical relationships the listener may be hearing. Details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.{"\n"}
 						</Text>
+
+						<Text style={[styles.paragraph,styles.text,{marginBottom:0}]}>
+							Additional details about the groups involved can be found at their respective websites:
+						</Text>
+
+						<View style={{paddingLeft: 10}}>
+							<Text style={[styles.paragraph,styles.text,{marginBottom:20}]}>
+								{'\u2022'} <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/')}>RNCM</Text>{"\n"}
+
+								{'\u2022'} <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/prism/')}>PRiSM</Text>{"\n"}
+
+								{'\u2022'} <Text style={{color:'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('http://oerc.ox.ac.uk/')}>OeRC</Text>{"\n"}
+								{'\u2022'} <Text style={{color:'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('http://www.semanticaudio.ac.uk/')}>FAST</Text>{"\n"}
+							</Text>
+						</View>
 
 						<Text style={[styles.paragraph,styles.text]}>
 							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please let us know.</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
 						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).
-						</Text>
-
-						<Text style={[styles.paragraph,styles.text]}>
-							This interactive app is being developed in collaboration with the EPRSC ‘Fusing Audio and Semantic Technologies’ project. See <Text style={{color:'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('http://www.semanticaudio.ac.uk/')}>www.semanticaudio.ac.uk</Text>.
 						</Text>
 
 						<View style={{
