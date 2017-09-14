@@ -47,8 +47,8 @@ export default class About extends Component {
 							Additional details about the groups involved can be found at their respective websites:
 						</Text>
 
-						<View style={{paddingLeft: 10}}>
-							<Text style={[styles.paragraph,styles.text,{marginBottom:20}]}>
+						<View style={{paddingLeft: 10,marginBottom:20}}>
+							<Text style={[styles.paragraph,styles.text,{marginBottom:0}]}>
 								{'\u2022'} <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/')}>RNCM</Text>{"\n"}
 
 								{'\u2022'} <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/prism/')}>PRiSM</Text>{"\n"}
