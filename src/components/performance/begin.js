@@ -61,7 +61,7 @@ export default class Performance extends Component {
 					subTitle="Before the performance"
 				>
 					<View style={{flex:1,padding: 20}}>
-						<Text style={[styles.text,{fontWeight:'bold', marginBottom: 20}]}>
+						<Text style={[styles.text,{fontWeight:'bold'}]}>
 							Please only proceed to the next screen once instructed to do so.
 						</Text>
 						<Text style={[styles.text]}>
