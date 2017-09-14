@@ -40,7 +40,7 @@ export default class About extends Component {
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							The World Premiere of the PRiSM Perception App will take place on the 4th October 2017 at the RNCM in Manchester. More detail about PRiSM and the RNCM can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>. More details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.
+							The World Premiere of the PRiSM Perception App will take place on the 4th October 2017 at the RNCM in Manchester. More detail about PRiSM and the RNCM can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/prism/')}>here</Text>. More details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
