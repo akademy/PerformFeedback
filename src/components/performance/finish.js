@@ -37,7 +37,7 @@ export default class Performance extends Component {
 
 					<View style={[styles.group]}>
 						<Text style={{marginBottom:10, textAlign: 'center'}}>
-							We have some questions about the performance which you can answer now or later.
+							We have some questions about the performance which you can answer now or later from the home screen.
 						</Text>
 
 						<View style={[styles.groupCenter]}>
