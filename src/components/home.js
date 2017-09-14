@@ -94,7 +94,7 @@ export default class Home extends Component {
 									navigate(N.QUESTIONS);
 								}}
 							>
-								<Text style={[styles.buttonText]}>Questions on performances</Text>
+								<Text style={[styles.buttonText]}>Questions</Text>
 							</Icon.Button>
 
 							{/*__DEV__ &&

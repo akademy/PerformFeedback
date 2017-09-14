@@ -52,7 +52,7 @@ export default class Performance extends Component {
 									changePathAndNavigate( this.props.navigation, [N.HOME, N.QUESTIONS] );
 								}}
 							>
-								<Text style={[styles.buttonText]}>Questions on Performance</Text>
+								<Text style={[styles.buttonText]}>Questions</Text>
 							</Icon.Button>
 							</View>
 
