@@ -173,12 +173,11 @@ export default class Performance extends Component {
 				}}>
 					<View style={{
 						flex: 1,
-						minHeight: 100,
+						minHeight: 90,
 						justifyContent: 'center',
 						backgroundColor: 'black'
 					}}>
 						<Text style={{
-							maxHeight: 105,
 							textAlign:'center',
 							padding: 10,
 							color: 'white',
@@ -188,7 +187,7 @@ export default class Performance extends Component {
 					<View style={{flex:1,padding: 20,
 						//backgroundColor: 'green'
 					}}>
-						<View style={{flex:1, minHeight: 150, paddingBottom: 20}}>
+						<View style={{flex:1, minHeight: 135, paddingBottom: 20}}>
 							<Button
 								style={{
 									backgroundColor: '#1ddd6a',
@@ -218,11 +217,11 @@ export default class Performance extends Component {
 										this.sectionsChanged();
 										this.createSectionText()
 									});
-								} }
+								}}
 							>Add section end</Button>
 						</View>
 
-						<View style={{flex:1, minHeight: 80, paddingBottom: 20}}>
+						<View style={{flex:1, minHeight: 75, paddingBottom: 20}}>
 							<Button
 								style={{
 									backgroundColor: '#dd2325',
@@ -265,7 +264,7 @@ export default class Performance extends Component {
 							>Mark last as accidental</Button>
 						</View>
 
-						<View style={{flex:1,minHeight:80,paddingBottom: 20}}>
+						<View style={{flex:1,minHeight:70,paddingBottom: 20}}>
 							<Button
 								style={{
 									backgroundColor: '#000',
