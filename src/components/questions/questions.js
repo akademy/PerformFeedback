@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
+import { StyleSheet, Text, TextInput, View } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 import CheckboxGroup from 'react-native-checkbox-group'
 
@@ -202,312 +202,309 @@ export default class Questions extends Component {
 			<TemplateBase
 				icon="text-document-inverted"
 				mainTitle="Questions" subTitle="Post performance">
-				<View style={{flex:1,paddingRight: 20,paddingLeft:20}}>
-					<ScrollView
-						contentContainerStyle={{paddingBottom: 150}}
-					>
-						<View style={[styles.question, {marginTop:20}]}>
-							<Text style={{textAlign: 'center',fontWeight:'bold'}}>Please only answer these questions after the performance has finished.</Text>
-						</View>
+				<View style={{flex:1,paddingRight: 20,paddingLeft:20, paddingBottom: 150}}>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
-							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-								<View style={{backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[{textAlign:'right',width: 45, fontSize:20}]}
-										editable={true}
-										keyboardType='numeric'
-										value={this.state.musicLengthMinutes}
-										placeholder="0"
-										onChangeText={ (text) => this.setState({musicLengthMinutes:text},this.setQuestionMusicLength)}
-									/>
-								</View>
-								<Text> Minutes </Text>
-								<View style={{backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[{textAlign:'right',width: 35, fontSize:20}]}
-										editable={true}
-										keyboardType='numeric'
-										value={this.state.musicLengthSeconds}
-										placeholder="0"
-										onChangeText={ (text) => this.setState({musicLengthSeconds:text},this.setQuestionMusicLength )}
-									/>
-								</View>
-								<Text> Seconds</Text>
-							</View>
-						</View>
+					<View style={[styles.question, {marginTop:20}]}>
+						<Text style={{textAlign: 'center',fontWeight:'bold'}}>Please only answer these questions after the performance has finished.</Text>
+					</View>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>Please describe the piece in three words:</Text>
-							<View style={{
-								flex:1,
-								flexDirection:'row',
-								alignItems:'center',
-								marginBottom: 5
-							}}>
-								<Text style={{flex:1}}>1</Text>
-								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[styles.textInput,{
-											width:'100%'
-										}]}
-										value={this.state.describe1}
-										onChangeText={ (text) => this.setState({describe1:text},this.setQuestionDescribe)}
-									/>
-								</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>How long did you think the piece of music lasted?</Text>
+						<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
+							<View style={{backgroundColor:inputBackgroundColor}}>
+								<TextInput
+									style={[{textAlign:'right',width: 45, fontSize:20}]}
+									editable={true}
+									keyboardType='numeric'
+									value={this.state.musicLengthMinutes}
+									placeholder="0"
+									onChangeText={ (text) => this.setState({musicLengthMinutes:text},this.setQuestionMusicLength)}
+								/>
 							</View>
-							<View style={{
-								flex:1,
-								flexDirection:'row',
-								alignItems:'center',
-								marginBottom: 5
-							}}>
-								<Text style={{flex:1}}>2</Text>
-								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[styles.textInput, {
-											width: '100%',
-										}]}
-										value={this.state.describe2}
-										onChangeText={ (text) => this.setState({describe2:text},this.setQuestionDescribe)}
-									/>
-								</View>
+							<Text> Minutes </Text>
+							<View style={{backgroundColor:inputBackgroundColor}}>
+								<TextInput
+									style={[{textAlign:'right',width: 35, fontSize:20}]}
+									editable={true}
+									keyboardType='numeric'
+									value={this.state.musicLengthSeconds}
+									placeholder="0"
+									onChangeText={ (text) => this.setState({musicLengthSeconds:text},this.setQuestionMusicLength )}
+								/>
 							</View>
-							<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-								<Text style={{flex:1}}>3</Text>
-								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[styles.textInput, {
-											width: '100%',
-										}]}
-										value={this.state.describe3}
-										onChangeText={ (text) => this.setState({describe3:text},this.setQuestionDescribe)}
-									/>
-								</View>
+							<Text> Seconds</Text>
+						</View>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>Please describe the piece in three words:</Text>
+						<View style={{
+							flex:1,
+							flexDirection:'row',
+							alignItems:'center',
+							marginBottom: 5
+						}}>
+							<Text style={{flex:1}}>1</Text>
+							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
+								<TextInput
+									style={[styles.textInput,{
+										width:'100%'
+									}]}
+									value={this.state.describe1}
+									onChangeText={ (text) => this.setState({describe1:text},this.setQuestionDescribe)}
+								/>
 							</View>
 						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
-							<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
+						<View style={{
+							flex:1,
+							flexDirection:'row',
+							alignItems:'center',
+							marginBottom: 5
+						}}>
+							<Text style={{flex:1}}>2</Text>
+							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
 								<TextInput
 									style={[styles.textInput, {
 										width: '100%',
 									}]}
-
-									multiline={true}
-									numberOfLines={3}
-									value={this.state.influences}
-									onChangeText={ (text) => this.setState({influences:text},this.setQuestionInfluences)}
+									value={this.state.describe2}
+									onChangeText={ (text) => this.setState({describe2:text},this.setQuestionDescribe)}
 								/>
 							</View>
 						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How much did you enjoy the piece of music?</Text>
-							<Text style={[styles.key]}>
-								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I didn't enjoy it at all</Text>{'\n'}
-								<Text><Text style={{fontWeight:'bold'}}>7</Text> : I enjoyed it a lot</Text>
-							</Text>
-							<RadioSegmentedControls
-								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({enjoy:option},this.setQuestionEnjoy) }
-								selectedOption={this.state.enjoy}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-							{/*
-								list of the props you might override:
-								const IOS_BLUE = '#007AFF';
-								const IOS_WHITE = '#ffffff';
-
-								const DEFAULTS = {
-								  direction: 'row',
-
-								  tint: IOS_BLUE,
-								  backTint: IOS_WHITE,
-
-								  paddingTop: 5,
-								  paddingBottom: 5,
-								  textAlign: 'center',
-
-								  selectedTint: IOS_WHITE,
-								  selectedBackgroundColor: IOS_WHITE,
-
-								  separatorTint: IOS_BLUE,
-								  separatorWidth: 1,
-
-								  containerBorderTint: IOS_BLUE,
-								  containerBorderWidth: 1,
-								  containerBorderRadius: 5,
-
-								}
-								*/}
+						<View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
+							<Text style={{flex:1}}>3</Text>
+							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
+								<TextInput
+									style={[styles.textInput, {
+										width: '100%',
+									}]}
+									value={this.state.describe3}
+									onChangeText={ (text) => this.setState({describe3:text},this.setQuestionDescribe)}
+								/>
+							</View>
 						</View>
+					</View>
 
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>As a listener, how familiar are you with twentieth-century classical music?</Text>
-							<Text style={[styles.key]}>
-								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I am not familiar with it at all</Text>{'\n'}
-								<Text><Text style={{fontWeight:'bold'}}>7</Text> : I am very familiar with it</Text>
-							</Text>
-
-							<RadioSegmentedControls
-								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({familiar:option},this.setQuestionFamiliar) }
-								selectedOption={this.state.familiar}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How often do you listen to twentieth-century classical music?</Text>
-							<Text style={[styles.key]}>
-								<Text><Text style={{fontWeight:'bold'}}>1</Text> : Never listen</Text>{'\n'}
-								<Text><Text style={{fontWeight:'bold'}}>7</Text> : Listen every day</Text>
-							</Text>
-
-							<RadioSegmentedControls
-								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({often:option},this.setQuestionOften) }
-								selectedOption={this.state.often}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight?</Text>
-							<Text style={[styles.key]}>
-								<Text><Text style={{fontWeight:'bold'}}>1</Text> : I've never heard of it</Text>{'\n'}
-								<Text><Text style={{fontWeight:'bold'}}>7</Text> : I've heard it many times</Text>
-							</Text>
-
-							<RadioSegmentedControls
-								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({familiarPiece:option},this.setQuestionFamiliarPiece) }
-								selectedOption={this.state.familiarPiece}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>Does participation in a scientific experiment such as this increase or decrease your enjoyment of a concert experience?</Text>
-							<Text style={[styles.key]}>
-								<Text><Text style={{fontWeight:'bold'}}>1</Text> : It significantly decreases my enjoyment</Text>{'\n'}
-								<Text><Text style={{fontWeight:'bold'}}>7</Text> : It significantly increases my enjoyment</Text>
-							</Text>
-							<RadioSegmentedControls
-								options={ [1,2,3,4,5,6,7] }
-								onSelection={ (option) => this.setState({participation:option},this.setQuestionParticipation) }
-								selectedOption={this.state.participation}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
-							<CheckboxGroup
-								callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
-								iconColor={"steelblue"}
-								iconSize={30}
-								checkedIcon="ios-checkbox-outline"
-								uncheckedIcon="ios-square-outline"
-								checkboxes={this.motivationOptions}
-								labelStyle={{
-									color: '#333',
-									paddingLeft: 10,
-									fontSize: 12,
-									width: '90%'
-								}}
-								rowStyle={{
-									flexDirection: 'row',
-									marginTop: 10,
-									backgroundColor: inputBackgroundColor
-								}}
-								rowDirection={"column"}
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Q{questionNumber++}</Text>
-							<Text style={[styles.questionText]}>Please use this box for any other comments you wish to make.</Text>
-							<View style={{width: '90%', backgroundColor:inputBackgroundColor}}>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
+						<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
 							<TextInput
 								style={[styles.textInput, {
 									width: '100%',
 								}]}
 
-							    multiline={true}
-							    numberOfLines={3}
-								value={this.state.comments}
-								onChangeText={ (text) => this.setState({comments:text},this.setQuestionComments)}
+								multiline={true}
+								numberOfLines={3}
+								value={this.state.influences}
+								onChangeText={ (text) => this.setState({influences:text},this.setQuestionInfluences)}
 							/>
-							</View>
 						</View>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>How much did you enjoy the piece of music?</Text>
+						<Text style={[styles.key]}>
+							<Text><Text style={{fontWeight:'bold'}}>1</Text> : I didn't enjoy it at all</Text>{'\n'}
+							<Text><Text style={{fontWeight:'bold'}}>7</Text> : I enjoyed it a lot</Text>
+						</Text>
+						<RadioSegmentedControls
+							options={ [1,2,3,4,5,6,7] }
+							onSelection={ (option) => this.setState({enjoy:option},this.setQuestionEnjoy) }
+							selectedOption={this.state.enjoy}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+						{/*
+							list of the props you might override:
+							const IOS_BLUE = '#007AFF';
+							const IOS_WHITE = '#ffffff';
+
+							const DEFAULTS = {
+							  direction: 'row',
+
+							  tint: IOS_BLUE,
+							  backTint: IOS_WHITE,
+
+							  paddingTop: 5,
+							  paddingBottom: 5,
+							  textAlign: 'center',
+
+							  selectedTint: IOS_WHITE,
+							  selectedBackgroundColor: IOS_WHITE,
+
+							  separatorTint: IOS_BLUE,
+							  separatorWidth: 1,
+
+							  containerBorderTint: IOS_BLUE,
+							  containerBorderWidth: 1,
+							  containerBorderRadius: 5,
+
+							}
+							*/}
+					</View>
 
 
-						<View style={[styles.buttonWrap]}>
-							<Icon.Button
-								style={[styles.button]}
-								backgroundColor={styles.button.backgroundColor}
-								name="home"
-								size={styles.buttonIcon.height}
-								color="#fff"
-								iconStyle={[styles.buttonIcon]}
-								onPress={ () => {
-									goBack();
-								}}
-							>
-								<Text style={[styles.buttonText]}>Finish</Text>
-							</Icon.Button>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>As a listener, how familiar are you with twentieth-century classical music?</Text>
+						<Text style={[styles.key]}>
+							<Text><Text style={{fontWeight:'bold'}}>1</Text> : I am not familiar with it at all</Text>{'\n'}
+							<Text><Text style={{fontWeight:'bold'}}>7</Text> : I am very familiar with it</Text>
+						</Text>
+
+						<RadioSegmentedControls
+							options={ [1,2,3,4,5,6,7] }
+							onSelection={ (option) => this.setState({familiar:option},this.setQuestionFamiliar) }
+							selectedOption={this.state.familiar}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>How often do you listen to twentieth-century classical music?</Text>
+						<Text style={[styles.key]}>
+							<Text><Text style={{fontWeight:'bold'}}>1</Text> : Never listen</Text>{'\n'}
+							<Text><Text style={{fontWeight:'bold'}}>7</Text> : Listen every day</Text>
+						</Text>
+
+						<RadioSegmentedControls
+							options={ [1,2,3,4,5,6,7] }
+							onSelection={ (option) => this.setState({often:option},this.setQuestionOften) }
+							selectedOption={this.state.often}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight?</Text>
+						<Text style={[styles.key]}>
+							<Text><Text style={{fontWeight:'bold'}}>1</Text> : I've never heard of it</Text>{'\n'}
+							<Text><Text style={{fontWeight:'bold'}}>7</Text> : I've heard it many times</Text>
+						</Text>
+
+						<RadioSegmentedControls
+							options={ [1,2,3,4,5,6,7] }
+							onSelection={ (option) => this.setState({familiarPiece:option},this.setQuestionFamiliarPiece) }
+							selectedOption={this.state.familiarPiece}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>Does participation in a scientific experiment such as this increase or decrease your enjoyment of a concert experience?</Text>
+						<Text style={[styles.key]}>
+							<Text><Text style={{fontWeight:'bold'}}>1</Text> : It significantly decreases my enjoyment</Text>{'\n'}
+							<Text><Text style={{fontWeight:'bold'}}>7</Text> : It significantly increases my enjoyment</Text>
+						</Text>
+						<RadioSegmentedControls
+							options={ [1,2,3,4,5,6,7] }
+							onSelection={ (option) => this.setState({participation:option},this.setQuestionParticipation) }
+							selectedOption={this.state.participation}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
+						<CheckboxGroup
+							callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
+							iconColor={"steelblue"}
+							iconSize={30}
+							checkedIcon="ios-checkbox-outline"
+							uncheckedIcon="ios-square-outline"
+							checkboxes={this.motivationOptions}
+							labelStyle={{
+								color: '#333',
+								paddingLeft: 10,
+								fontSize: 12,
+								width: '90%'
+							}}
+							rowStyle={{
+								flexDirection: 'row',
+								marginTop: 10,
+								backgroundColor: inputBackgroundColor
+							}}
+							rowDirection={"column"}
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Q{questionNumber++}</Text>
+						<Text style={[styles.questionText]}>Please use this box for any other comments you wish to make.</Text>
+						<View style={{width: '90%', backgroundColor:inputBackgroundColor}}>
+						<TextInput
+							style={[styles.textInput, {
+								width: '100%',
+							}]}
+
+						    multiline={true}
+						    numberOfLines={3}
+							value={this.state.comments}
+							onChangeText={ (text) => this.setState({comments:text},this.setQuestionComments)}
+						/>
 						</View>
+					</View>
 
-					</ScrollView>
+
+					<View style={[styles.buttonWrap]}>
+						<Icon.Button
+							style={[styles.button]}
+							backgroundColor={styles.button.backgroundColor}
+							name="home"
+							size={styles.buttonIcon.height}
+							color="#fff"
+							iconStyle={[styles.buttonIcon]}
+							onPress={ () => {
+								goBack();
+							}}
+						>
+							<Text style={[styles.buttonText]}>Finish</Text>
+						</Icon.Button>
+					</View>
+
 				</View>
 			</TemplateBase>
 		);

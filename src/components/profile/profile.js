@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, View, Text, TextInput } from "react-native"
+import { StyleSheet, View, Text, TextInput } from "react-native"
 import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-buttons'
 
 import Icon from 'react-native-vector-icons/Entypo';
@@ -127,242 +127,237 @@ export default class Profile extends Component {
 				mainTitle="Profile"
 				subTitle="Your details"
 			>
-				<View style={{flex:1, paddingLeft: 20, paddingRight: 20}}>
+				<View style={{flex:1, paddingLeft: 20, paddingRight: 20, paddingBottom: 150}}>
 
-					<ScrollView
-					    contentContainerStyle={{paddingBottom: 150}}
-					>
+					<View style={[styles.group, {paddingTop: 20}]}>
+						<Text>To help with our research we ask that you answer the following questions.
+							All data collected will be anonymous, see the About page for more details.</Text>
+					</View>
 
-						<View style={[styles.group, {paddingTop: 20}]}>
-							<Text>To help with our research we ask that you answer the following questions.
-								All data collected will be anonymous, see the About page for more details.</Text>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Anonymous identifier</Text>
+						<Text style={{fontSize:20}}>{this.state.shortId}</Text>
+					</View>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Anonymous identifier</Text>
-							<Text style={{fontSize:20}}>{this.state.shortId}</Text>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Date of Birth</Text>
+						<Text style={[styles.questionText]}>What is your date of birth? (YYYY-MM-DD)</Text>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Date of Birth</Text>
-							<Text style={[styles.questionText]}>What is your date of birth? (YYYY-MM-DD)</Text>
+						<DatePicker
+							style={{
+								//width: 200
+							}}
+							date={this.state.dateOfBirth}
+							mode="date"
+							placeholder="select date"
+							format="YYYY-MM-DD"
+							minDate="1895-01-01"
+							maxDate="2014-12-31"
+							confirmBtnText="Confirm"
+							cancelBtnText="Cancel"
+							customStyles={{}}
+							onDateChange={
+								(date) => this.setState({dateOfBirth:date},this.setDateOfBirth)
+							}
+						/>
+					</View>
 
-							<DatePicker
-								style={{
-									//width: 200
-								}}
-								date={this.state.dateOfBirth}
-								mode="date"
-								placeholder="select date"
-								format="YYYY-MM-DD"
-								minDate="1895-01-01"
-								maxDate="2014-12-31"
-								confirmBtnText="Confirm"
-								cancelBtnText="Cancel"
-								customStyles={{}}
-								onDateChange={
-									(date) => this.setState({dateOfBirth:date},this.setDateOfBirth)
-								}
-							/>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Formal Music Training</Text>
+						<Text style={[styles.questionText]}>How many years of formal music training have you had (including A-level and any instrumental, vocal or composition lessons)?</Text>
+						<RadioSegmentedControls
+							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
+							onSelection={ (option) => this.setState({musicTraining:option},this.setMusicTraining) }
+							selectedOption={this.state.musicTraining }
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Formal Music Training</Text>
-							<Text style={[styles.questionText]}>How many years of formal music training have you had (including A-level and any instrumental, vocal or composition lessons)?</Text>
-							<RadioSegmentedControls
-								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-								onSelection={ (option) => this.setState({musicTraining:option},this.setMusicTraining) }
-								selectedOption={this.state.musicTraining }
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
 
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Musical Field</Text>
-							<Text style={[styles.questionText]}>Do you currently play a musical instrument, sing or compose, and if so for how many years? (Please select zero if you do not have any)</Text>
-							<RadioSegmentedControls
-								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-								onSelection={ (option) => this.setState({musicField:option},this.setMusicField) }
-								selectedOption={this.state.musicField }
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Musical Field</Text>
+						<Text style={[styles.questionText]}>Do you currently play a musical instrument, sing or compose, and if so for how many years? (Please select zero if you do not have any)</Text>
+						<RadioSegmentedControls
+							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
+							onSelection={ (option) => this.setState({musicField:option},this.setMusicField) }
+							selectedOption={this.state.musicField }
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Mathematical Training</Text>
-							<Text style={[styles.questionText]}>How many years of formal mathematics training have you had (including A-level and any further study of mathematics)?</Text>
-							<RadioSegmentedControls
-								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-								onSelection={ (option) => this.setState({mathTraining:option},this.setMathTraining) }
-								selectedOption={this.state.mathTraining }
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Mathematical Training</Text>
+						<Text style={[styles.questionText]}>How many years of formal mathematics training have you had (including A-level and any further study of mathematics)?</Text>
+						<RadioSegmentedControls
+							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
+							onSelection={ (option) => this.setState({mathTraining:option},this.setMathTraining) }
+							selectedOption={this.state.mathTraining }
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
 
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Mathematical Field</Text>
-							<Text style={[styles.questionText]}>Do you currently work in a field which requires mathematical skills, and if so for how many years have you worked in this area? (Please select zero if you do not work with mathematics)</Text>
-							<RadioSegmentedControls
-								options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-								onSelection={ (option) => this.setState({mathField:option},this.setMathField) }
-								selectedOption={this.state.mathField}
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={25}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Mathematical Field</Text>
+						<Text style={[styles.questionText]}>Do you currently work in a field which requires mathematical skills, and if so for how many years have you worked in this area? (Please select zero if you do not work with mathematics)</Text>
+						<RadioSegmentedControls
+							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
+							onSelection={ (option) => this.setState({mathField:option},this.setMathField) }
+							selectedOption={this.state.mathField}
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={25}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
 
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Education</Text>
-							<Text style={[styles.questionText]}>What is your highest level of formal qualification?</Text>
-							<RadioSegmentedControls
-								direction="column"
-								options={ this.educationOptions }
-								onSelection={ (option) => this.setState({education:option},this.setEducation) }
-								selectedOption={this.state.education }
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={10}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-							<View style={{
-								flex:1,
-								flexDirection:'row',
-								alignItems:'center',
-								marginBottom: 5,
-								marginTop: 20
-							}}>
-								<Text style={{
-									flex:3,
-									color: (this.state.education === this.educationOptions[this.educationOptionsOtherIndex]) ? '#333' : '#aaa',
-								}}>{this.educationOptions[this.educationOptionsOtherIndex]}</Text>
-								<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
-									<TextInput
-										style={[styles.textInput, {
-											width: '100%',
-										}]}
-										value={this.state.educationOther}
-										onChangeText={ (text) => this.setState({educationOther:text},this.setEducationOther)}
-										editable={ this.state.education === this.educationOptions[this.educationOptionsOtherIndex] }
-									/>
-								</View>
-							</View>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Listening to Music</Text>
-							<Text style={[styles.questionText]}>How often do you listen to music (of any style)?</Text>
-							<RadioSegmentedControls
-								direction="column"
-								options={ [
-									'Never', 'Occasionally', 'Sometimes', 'Most days', 'Every day'
-								] }
-								onSelection={ (option) => this.setState({musicListen:option},this.setMusicListen) }
-								selectedOption={this.state.musicListen }
-								tint={radioTint}
-								selectedTint={'white'}
-								backTint= {inputBackgroundColor}
-								paddingTop={10}
-								paddingBottom={10}
-								selectedBackgroundColor={MainColor}
-								//renderOption={ this.renderOption }
-								//renderContainer={ this.renderContainer }
-							/>
-						</View>
-
-						<View style={[styles.question]}>
-							<Text style={[styles.label]}>Optional</Text>
-							<Text style={[styles.questionText]}>If you'd like to be notified of the results from this study you can enter your email here:</Text>
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Education</Text>
+						<Text style={[styles.questionText]}>What is your highest level of formal qualification?</Text>
+						<RadioSegmentedControls
+							direction="column"
+							options={ this.educationOptions }
+							onSelection={ (option) => this.setState({education:option},this.setEducation) }
+							selectedOption={this.state.education }
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={10}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+						<View style={{
+							flex:1,
+							flexDirection:'row',
+							alignItems:'center',
+							marginBottom: 5,
+							marginTop: 20
+						}}>
+							<Text style={{
+								flex:3,
+								color: (this.state.education === this.educationOptions[this.educationOptionsOtherIndex]) ? '#333' : '#aaa',
+							}}>{this.educationOptions[this.educationOptionsOtherIndex]}</Text>
 							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
 								<TextInput
 									style={[styles.textInput, {
 										width: '100%',
 									}]}
-									keyboardType='email-address'
-									value={this.state.email}
-									onChangeText={ (text) => this.setState({email:text},this.setEmail)}
+									value={this.state.educationOther}
+									onChangeText={ (text) => this.setState({educationOther:text},this.setEducationOther)}
+									editable={ this.state.education === this.educationOptions[this.educationOptionsOtherIndex] }
 								/>
 							</View>
-							<CheckboxGroup
-								callback={ (selected) => this.setState({emailFuture:selected.length !== 0},this.setEmailFuture)}
-								iconColor={(this.state.email && this.state.email.length>0) ? "steelblue" : "#ddd"}
-								iconSize={30}
-								checkedIcon="ios-checkbox-outline"
-								uncheckedIcon="ios-square-outline"
-								enabled={false}
-								checkboxes={[
-									{
-										label: "If you would also like to be notified of other future studies tick this box.",
-										value: 1,
-										selected: this.state.emailFuture
-									},
-								]}
-								labelStyle={{
-									color: '#333',
-									paddingLeft: 10,
-									fontSize: 12,
-									width: '90%'
-								}}
-								rowStyle={{
-									flexDirection: 'row',
-									marginTop: 10,
-									backgroundColor: inputBackgroundColor
-								}}
-								rowDirection={"column"}
+						</View>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Listening to Music</Text>
+						<Text style={[styles.questionText]}>How often do you listen to music (of any style)?</Text>
+						<RadioSegmentedControls
+							direction="column"
+							options={ [
+								'Never', 'Occasionally', 'Sometimes', 'Most days', 'Every day'
+							] }
+							onSelection={ (option) => this.setState({musicListen:option},this.setMusicListen) }
+							selectedOption={this.state.musicListen }
+							tint={radioTint}
+							selectedTint={'white'}
+							backTint= {inputBackgroundColor}
+							paddingTop={10}
+							paddingBottom={10}
+							selectedBackgroundColor={MainColor}
+							//renderOption={ this.renderOption }
+							//renderContainer={ this.renderContainer }
+						/>
+					</View>
+
+					<View style={[styles.question]}>
+						<Text style={[styles.label]}>Optional</Text>
+						<Text style={[styles.questionText]}>If you'd like to be notified of the results from this study you can enter your email here:</Text>
+						<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
+							<TextInput
+								style={[styles.textInput, {
+									width: '100%',
+								}]}
+								keyboardType='email-address'
+								value={this.state.email}
+								onChangeText={ (text) => this.setState({email:text},this.setEmail)}
 							/>
 						</View>
+						<CheckboxGroup
+							callback={ (selected) => this.setState({emailFuture:selected.length !== 0},this.setEmailFuture)}
+							iconColor={(this.state.email && this.state.email.length>0) ? "steelblue" : "#ddd"}
+							iconSize={30}
+							checkedIcon="ios-checkbox-outline"
+							uncheckedIcon="ios-square-outline"
+							enabled={false}
+							checkboxes={[
+								{
+									label: "If you would also like to be notified of other future studies tick this box.",
+									value: 1,
+									selected: this.state.emailFuture
+								},
+							]}
+							labelStyle={{
+								color: '#333',
+								paddingLeft: 10,
+								fontSize: 12,
+								width: '90%'
+							}}
+							rowStyle={{
+								flexDirection: 'row',
+								marginTop: 10,
+								backgroundColor: inputBackgroundColor
+							}}
+							rowDirection={"column"}
+						/>
+					</View>
 
 
-						<View style={[styles.buttonWrap]}>
-							<Icon.Button
-								style={[styles.button]}
-								backgroundColor={styles.button.backgroundColor}
-								name="home"
-								size={styles.buttonIcon.height}
-								color="#fff"
-								iconStyle={[styles.buttonIcon]}
-								onPress={ () => {
-									goBack();
-								}}
-							>
-								<Text style={[styles.buttonText]}>Finish</Text>
-							</Icon.Button>
-						</View>
+					<View style={[styles.buttonWrap]}>
+						<Icon.Button
+							style={[styles.button]}
+							backgroundColor={styles.button.backgroundColor}
+							name="home"
+							size={styles.buttonIcon.height}
+							color="#fff"
+							iconStyle={[styles.buttonIcon]}
+							onPress={ () => {
+								goBack();
+							}}
+						>
+							<Text style={[styles.buttonText]}>Finish</Text>
+						</Icon.Button>
+					</View>
 
-					</ScrollView>
 				</View>
 			</TemplateBase>
 		);
