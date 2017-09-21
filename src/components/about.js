@@ -59,7 +59,7 @@ export default class About extends Component {
 						</View>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please let us know.</Text>
+							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please email your Anonymous ID (located on the Profile Screen) to the email address on the PRiSM webpage and ask to be removed.</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
 						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).
