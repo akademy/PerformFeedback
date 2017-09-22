@@ -32,7 +32,7 @@ export default class Performance extends Component {
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text style={{textAlign: 'center'}}>Thanks for completing the Section Ends. {"\n"}(Press <Text onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
+						<Text style={{textAlign: 'center'}}>Thanks for completing the Section Ends. {"\n"}(Press <Text style={{color:'blue'}} onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
 		marginBottom: 20,
 		display: 'flex',
 		//justifyContent: 'flex-start',
-		textAlign: 'center'
+		//textAlign: 'center'
 	},
 	groupCenter: {
 		/*display: 'flex',
