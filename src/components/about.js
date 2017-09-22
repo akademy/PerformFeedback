@@ -44,7 +44,7 @@ export default class About extends Component {
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							At any time before or after the performance you can fill in the details on the "Profile" page. You will be guided through the "Performance" pages on the night of the performance. Please only fill in the details on "Questions" page after you have heard the performance.
+							At any time before or after the performance you can fill in the details on the "Profile" page. You will be guided through the "Performance" pages on the night of the performance. Please only fill in the details on the "Questions" page after you have heard the performance.
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text,{marginBottom:0}]}>
@@ -63,7 +63,7 @@ export default class About extends Component {
 						</View>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please let us know.</Text>
+							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please email PRiSM with your Anonymous ID asking to be removed.</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
 						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).
