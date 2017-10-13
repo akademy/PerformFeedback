@@ -43,6 +43,10 @@ export default class About extends Component {
 							The World Premiere of the PRiSM Perception App will take place on 4th October 2017 at the RNCM in Manchester during the first PRiSM Experiment (#PRiSM-X1) and the data gathered by the app will be analysed to explore what mathematical relationships the listener may be hearing. Details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.{"\n"}
 						</Text>
 
+						<Text style={[styles.paragraph,styles.text]}>
+							At any time before or after the performance you can fill in the details on the "Profile" page. You will be guided through the "Performance" pages on the night of the performance. Please only fill in the details on "Questions" page after you have heard the performance.
+						</Text>
+
 						<Text style={[styles.paragraph,styles.text,{marginBottom:0}]}>
 							Additional details about the groups involved can be found at their respective websites:
 						</Text>
