@@ -40,11 +40,11 @@ export default class About extends Component {
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							The World Premiere of the PRiSM Perception App will take place on 4th October 2017 at the RNCM in Manchester during the first PRiSM Experiment (#PRiSM-X1) and the data gathered by the app will be analysed to explore what mathematical relationships the listener may be hearing. Details on the October event can be found <Text style={{color: 'blue',textDecorationLine:'underline'}}  onPress={() => Linking.openURL('https://www.rncm.ac.uk/performance/the-music-of-proof/')}>here</Text>.{"\n"}
+							The World Premiere of the PRiSM Perception App took place on 4th October 2017 at the RNCM in Manchester during the first PRiSM Experiment (#PRiSM-X1). The data gathered by the app was analysed to explore what mathematical relationships the listener may have been hearing.{"\n"}
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							At any time before or after the performance you can fill in the details on the "Profile" page. You will be guided through the "Performance" pages on the night of the performance. Please only fill in the details on "Questions" page after you have heard the performance.
+							If you are taking part in a performance you can fill in the details on the "Profile" page any time before or after the performance. You will be guided through the "Performance" pages during the performance. Please only fill in the details on "Questions" page after you have attended the performance.
 						</Text>
 
 						<Text style={[styles.paragraph,styles.text,{marginBottom:0}]}>
@@ -63,7 +63,7 @@ export default class About extends Component {
 						</View>
 
 						<Text style={[styles.paragraph,styles.text]}>
-							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please let us know.</Text>
+							Please note: Your participation in this experiment is voluntary, but by responding to the questions in this app, you are giving consent for your data to be included in the experiment. However, you may withdraw from the research at any time and for any reason, please email your Anonymous ID (located on the Profile Screen) to the email address on the PRiSM webpage and ask to be removed.</Text>
 
 						<Text style={[styles.paragraph,styles.text]}>
 						Your responses will be treated with full confidentiality and if results are published responses will not be identifiable as yours. All data is recorded anonymously (no names are collected by the app).
