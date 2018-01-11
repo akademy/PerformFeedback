@@ -76,7 +76,7 @@ export default class Home extends Component {
 								name="note"
 								size={styles.buttonIcon.height}
 								onPress={ () => {
-									navigate(N.PERFORMANCE_BEGIN);
+									navigate(N.PERFORMANCE_LOCATION);//N.PERFORMANCE_BEGIN);
 								}}
 							>
 								<Text style={[styles.buttonText,{textAlign:'center'}]}>Performances</Text>
