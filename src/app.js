@@ -29,7 +29,7 @@ const background = () => {
 
 	C.log("***** BACKGROUND SYNC START *****");
 	sync.check( store )
-		.then( C.log("****BACKGROUND SYNC COMPLETE *****") )
+		.then( C.log("****BACKGROUND SYNC COMPLETE *****") ) // TODO: THIS CALL SHOULD BE IN A FUNCTION ?!
 		.then( () => {
 			setTimeout( ()=> {
 				C.log("**** FINISHING *****");
