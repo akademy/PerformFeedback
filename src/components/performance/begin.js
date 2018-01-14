@@ -64,9 +64,17 @@ export default class Performance extends Component {
 						<Text style={[styles.text,{fontWeight:'bold'}]}>
 							Please only proceed to the next screen once instructed to do so.
 						</Text>
-						<Text style={[styles.text]}>
-							When the performance starts you will be able to mark when you believe a section in the music comes to an end. Simply press the green button "Add section end".
-						</Text>
+						{this.props.performanceId === "oxfordJanuary2018" ?
+							<Text style={[styles.text]}>
+								When the performance starts you will be able to mark when you believe you have detected a palindrome section.
+								Simply press the green button "Mark a palindrome".
+							</Text>
+							:
+							<Text style={[styles.text]}>
+								When the performance starts you will be able to mark when you believe a section in the
+								music comes to an end. Simply press the green button "Add section end".
+							</Text>
+						}
 						<Text style={[styles.text]}>
 							If you accidentally press the button you can mark it as accidental by pressing the red "Mark last as accidental" button.
 						</Text>

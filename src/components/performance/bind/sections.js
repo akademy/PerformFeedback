@@ -6,7 +6,6 @@ import {setCurrentPerformanceId} from "../../../store/actions/index";
 const stateToProps = (state) => (
 	{
 		performanceId: state.currentPerformanceId,
-		//feedbackId: state.currentFeedbackId
 	}
 );
 

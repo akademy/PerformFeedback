@@ -9,7 +9,7 @@ import Licences from "./components/licences"
 import Profile from "./components/profile/bind/profile"
 
 import Location from "./components/performance/bind/location"
-import Begin from "./components/performance/begin"
+import Begin from "./components/performance/bind/begin"
 import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"
 

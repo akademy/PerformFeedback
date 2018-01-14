@@ -37,55 +37,59 @@ export default class Location extends Component {
 		return (
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance Location" subTitle="Where are you?">
-				<Text style={[styles.paragraph,styles.text]}>Please select the performance your are taking part in from the list below:</Text>
-				<View style={{
-					height:200,
-					margin:10,
-					borderLeftWidth:1
-				}}>
-				<FlatList
-					data={this.performances}
-					keyExtractor={ (item) => item.key}
-					extraData={this.state.selectedKey}
-					renderItem={ ({item}) =>
-						<TouchableHighlight
-							onPress={() => this.setState({selectedKey:item.key}) }
-							underlayColor='#999'
-						>
+				mainTitle="Performance Location" subTitle="Where are you?"
+			>
+				<View style={{flex:1,padding: 20}}>
+					<Text style={[styles.paragraph,styles.text]}>Please select the performance your are currently attending from the list below:</Text>
+					<View style={{
+						height:200,
+						margin:10,
+						borderLeftWidth:1
+					}}>
+					<FlatList
+						data={this.performances}
+						keyExtractor={ (item) => item.key}
+						extraData={this.state.selectedKey}
+						renderItem={ ({item}) =>
+							<TouchableHighlight
+								onPress={() => this.setState({selectedKey:item.key}) }
+								underlayColor='#999'
+							>
 
-							<View style={{
-								backgroundColor: (item.key === this.state.selectedKey) ? 'black' : 'transparent',
-								padding: 10
-							}}>
-								<Text style={{
-									fontWeight:'bold',
-									color: (item.key === this.state.selectedKey) ? 'white' : 'black',
-								}}>{item.title}</Text>
-								<Text style={{
-									color: (item.key === this.state.selectedKey) ? 'white' : 'black',
-								}}>{item.date}</Text>
-							</View>
-						</TouchableHighlight>
-					}/>
+								<View style={{
+									backgroundColor: (item.key === this.state.selectedKey) ? 'black' : 'transparent',
+									padding: 10
+								}}>
+									<Text style={{
+										fontWeight:'bold',
+										color: (item.key === this.state.selectedKey) ? 'white' : 'black',
+									}}>{item.title}</Text>
+									<Text style={{
+										color: (item.key === this.state.selectedKey) ? 'white' : 'black',
+									}}>{item.date}</Text>
+								</View>
+							</TouchableHighlight>
+						}/>
+					</View>
+					<Button
+						style={{
+							backgroundColor: '#1ddd6a',
+							borderColor: '#1db259',
+							height: 50,
+							marginTop: 10
+						}}
+						textStyle={{
+							color: '#fff',
+							fontSize: 18
+						}}
+						onPress={ () => {
+							if( this.props.setCurrentPerformanceId ) {
+								this.props.setCurrentPerformanceId(this.state.selectedKey);
+							}
+							navigate(N.PERFORMANCE_BEGIN);
+						}}
+					>Proceed</Button>
 				</View>
-				<Button
-					style={{
-						backgroundColor: '#1ddd6a',
-						borderColor: '#1db259',
-						height: 50
-					}}
-					textStyle={{
-						color: '#fff',
-						fontSize: 18
-					}}
-					onPress={ () => {
-						if( this.props.setCurrentPerformanceId ) {
-							this.props.setCurrentPerformanceId(this.state.selectedKey);
-						}
-						navigate(N.PERFORMANCE_BEGIN);
-					}}
-				>Proceed</Button>
 			</TemplateBase>
 		);
 	}
