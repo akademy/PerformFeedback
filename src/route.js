@@ -8,7 +8,7 @@ import About from "./components/about"
 import Licences from "./components/licences"
 import Profile from "./components/profile/bind/profile"
 
-import Location from "./components/performance/location"
+import Location from "./components/performance/bind/location"
 import Begin from "./components/performance/begin"
 import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"

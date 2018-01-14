@@ -1,50 +1,109 @@
 import React, { Component } from 'react'
-import {Text, TouchableHighlight, View} from "react-native"
+import {FlatList, StyleSheet, Text, TouchableHighlight, View} from "react-native"
+import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
-import ListViewSelect from "react-native-list-view-select";
+
+import {NAVIGATION as N} from "../../constants";
 
 export default class Location extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
 		title: "Location"
 	});
 
+	performances = [
+		{
+			key:"oxfordJanuary2018",
+			title:"Music and Maths",
+			date: "27 January, 2018"
+		},
+		{
+			key:"manchester2017",
+			title:"PRiSM Perception App World Premiere",
+			date: "04 October, 2017"
+		},
+	];
+
 	constructor(props) {
 		super(props);
 		this.state = {
-			item: "Item 1",
-			isVisible: false,
+			selectedKey: props.performanceId //"oxfordJanuary2018"
 		};
-		//_.bindAll(this, ['showPopover', 'closePopover', 'setItem']);
 	}
-
-
 
 	render() {
 		const { navigate } = this.props.navigation;
-		const items = [
-			"Item 1",
-			"Item 2",
-			"Item 3",
-			"Item 4",
-		];
 
 		return (
 			<TemplateBase
 				icon="note"
 				mainTitle="Performance Location" subTitle="Where are you?">
-				<View>
-					<TouchableHighlight onPress={this.showPopover}>
-						<Text>{this.state.item}</Text>
-					</TouchableHighlight>
-					<ListViewSelect
-						list={items}
-						isVisible={this.state.isVisible}
-						onClick={this.setItem}
-						onClose={this.closePopover}
-					/>
+				<Text style={[styles.paragraph,styles.text]}>Please select the performance your are taking part in from the list below:</Text>
+				<View style={{
+					height:200,
+					margin:10,
+					borderLeftWidth:1
+				}}>
+				<FlatList
+					data={this.performances}
+					keyExtractor={ (item) => item.key}
+					extraData={this.state.selectedKey}
+					renderItem={ ({item}) =>
+						<TouchableHighlight
+							onPress={() => this.setState({selectedKey:item.key}) }
+							underlayColor='#999'
+						>
+
+							<View style={{
+								backgroundColor: (item.key === this.state.selectedKey) ? 'black' : 'transparent',
+								padding: 10
+							}}>
+								<Text style={{
+									fontWeight:'bold',
+									color: (item.key === this.state.selectedKey) ? 'white' : 'black',
+								}}>{item.title}</Text>
+								<Text style={{
+									color: (item.key === this.state.selectedKey) ? 'white' : 'black',
+								}}>{item.date}</Text>
+							</View>
+						</TouchableHighlight>
+					}/>
 				</View>
+				<Button
+					style={{
+						backgroundColor: '#1ddd6a',
+						borderColor: '#1db259',
+						height: 50
+					}}
+					textStyle={{
+						color: '#fff',
+						fontSize: 18
+					}}
+					onPress={ () => {
+						if( this.props.setCurrentPerformanceId ) {
+							this.props.setCurrentPerformanceId(this.state.selectedKey);
+						}
+						navigate(N.PERFORMANCE_BEGIN);
+					}}
+				>Proceed</Button>
 			</TemplateBase>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	paragraph: {
+		marginBottom: 20,
+		paddingRight: 10,
+		paddingLeft: 10,
+	},
+	text: {
+		lineHeight: 24,
+		fontSize: 16
+	},
+	title: {
+		lineHeight: 30,
+		fontSize: 20,
+		textAlign: "center"
+	}
+});

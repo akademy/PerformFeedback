@@ -3,10 +3,10 @@ import {StyleSheet, Text, View} from "react-native"
 
 import Button from 'apsl-react-native-button'
 
-import { DialogComponent, SlideAnimation, DialogContent, DialogButton }from 'react-native-dialog-component';
+import { DialogComponent, SlideAnimation, DialogContent, DialogButton } from 'react-native-dialog-component'
 
 import TemplateBase from '../templateBase'
-import {NAVIGATION as N} from "../../constants";
+import {NAVIGATION as N} from "../../constants"
 
 export default class Performance extends Component {
 
