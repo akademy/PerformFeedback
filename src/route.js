@@ -8,11 +8,12 @@ import About from "./components/about"
 import Licences from "./components/licences"
 import Profile from "./components/profile/bind/profile"
 
-import Location from "./components/performance/bind/location"
+import LocationPerformance from "./components/performance/bind/location"
 import Begin from "./components/performance/bind/begin"
 import Sections from "./components/performance/bind/sections"
 import Finish from "./components/performance/finish"
 
+import LocationQuestions from "./components/questions/bind/locationQ"
 import Questions from "./components/questions/bind/questions"
 
 export const changePathAndNavigate = ( navigation, routeList, index ) => {
@@ -41,7 +42,7 @@ routerSetup[N.PROFILE] = {
 	screen: Profile
 };
 routerSetup[N.PERFORMANCE_LOCATION] = {
-	screen: Location
+	screen: LocationPerformance
 };
 routerSetup[N.PERFORMANCE_BEGIN] = {
 	screen: Begin
@@ -55,6 +56,9 @@ routerSetup[N.PERFORMANCE_FINISH] = {
 
 routerSetup[N.QUESTIONS] = {
 	screen: Questions
+};
+routerSetup[N.QUESTIONS_LOCATION] = {
+	screen: LocationQuestions
 };
 
 // Options for router

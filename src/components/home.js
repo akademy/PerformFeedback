@@ -91,13 +91,13 @@ export default class Home extends Component {
 								iconStyle={(!this.props.performanceId || !this.props.feedbackId) ? [styles.buttonIconDisabled] : [styles.buttonIcon] }
 								disabled={!this.props.performanceId || !this.props.feedbackId}
 								onPress={ () => {
-									navigate(N.QUESTIONS);
+									navigate(N.QUESTIONS_LOCATION);
 								}}
 							>
 								<Text style={[styles.buttonText]}>Questions</Text>
 							</Icon.Button>
 
-							{/*__DEV__ &&
+							{__DEV__ &&
 								<Button
 									title="Purge Persist"
 									onPress={() => {
@@ -105,7 +105,7 @@ export default class Home extends Component {
 										this.props.screenProps.persister.purge();
 									}}
 								/>
-							*/}
+							}
 						</View>
 					</View>
 

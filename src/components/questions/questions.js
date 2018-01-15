@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/Entypo';
 import TemplateBase from '../templateBase'
 import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
 import {Console as C} from '../../lib/console'
+import {NAVIGATION as N} from "../../constants";
+import {changePathAndNavigate} from "../../route";
 
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
@@ -198,7 +200,6 @@ export default class Questions extends Component {
 	};
 
 	render() {
-		const { goBack } = this.props.navigation;
 		let questionNumber = 1;
 
 		return (
@@ -525,7 +526,7 @@ export default class Questions extends Component {
 							color="#fff"
 							iconStyle={[styles.buttonIcon]}
 							onPress={ () => {
-								goBack();
+								changePathAndNavigate( this.props.navigation, [N.HOME] );
 							}}
 						>
 							<Text style={[styles.buttonText]}>Finish</Text>
