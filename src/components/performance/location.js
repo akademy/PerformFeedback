@@ -44,7 +44,8 @@ export default class Location extends Component {
 					<View style={{
 						height:200,
 						margin:10,
-						borderLeftWidth:1
+						borderWidth:1,
+						borderColor:'#999'
 					}}>
 					<FlatList
 						data={this.performances}
@@ -53,7 +54,7 @@ export default class Location extends Component {
 						renderItem={ ({item}) =>
 							<TouchableHighlight
 								onPress={() => this.setState({selectedKey:item.key}) }
-								underlayColor='#999'
+								underlayColor='#ddd'
 							>
 
 								<View style={{
@@ -88,6 +89,7 @@ export default class Location extends Component {
 							}
 							navigate(N.PERFORMANCE_BEGIN);
 						}}
+						isDisabled={this.state.selectedKey===null}
 					>Proceed</Button>
 				</View>
 			</TemplateBase>
