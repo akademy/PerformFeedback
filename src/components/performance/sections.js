@@ -30,7 +30,6 @@ export default class Performance extends Component {
 		this.startSyncInterval();
 	};
 
-	performanceId = 'manchester2017';
 	sectionsChangedInterval = null;
 
 	state = {
