@@ -4,7 +4,8 @@ import {setCurrentPerformanceId} from "../../../store/actions/index";
 
 const stateToProps = (state) => (
 	{
-		performanceId: state.currentPerformanceId
+		performanceId: state.currentPerformanceId,
+		performances: state.performances
 	}
 );
 

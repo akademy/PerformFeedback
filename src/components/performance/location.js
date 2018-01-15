@@ -11,19 +11,6 @@ export default class Location extends Component {
 		title: "Location"
 	});
 
-	performances = [
-		{
-			key:"oxfordJanuary2018",
-			title:"Music and Maths",
-			date: "27 January, 2018"
-		},
-		{
-			key:"manchester2017",
-			title:"PRiSM Perception App World Premiere",
-			date: "04 October, 2017"
-		},
-	];
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -39,7 +26,7 @@ export default class Location extends Component {
 				icon="note"
 				mainTitle="Performance Location" subTitle="Where are you?"
 			>
-				<View style={{flex:1,padding: 20}}>
+				<View style={+{flex:1,padding: 20}}>
 					<Text style={[styles.paragraph,styles.text]}>Please select the performance your are currently attending from the list below:</Text>
 					<View style={{
 						height:200,
@@ -48,7 +35,7 @@ export default class Location extends Component {
 						borderColor:'#999'
 					}}>
 					<FlatList
-						data={this.performances}
+						data={this.props.performances}
 						keyExtractor={ (item) => item.key}
 						extraData={this.state.selectedKey}
 						renderItem={ ({item}) =>

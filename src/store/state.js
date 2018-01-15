@@ -54,7 +54,9 @@ export const stateBase = {
 
 			}*/
 		]
-	}
+	},
+
+	performances : []
 
 };
 
