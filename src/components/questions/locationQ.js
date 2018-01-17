@@ -57,7 +57,7 @@ export default class Location extends Component {
 				icon="note"
 				mainTitle="Performance Location" subTitle="Where were you?"
 			>
-				<View style={+{flex:1,padding: 20}}>
+				<View style={{flex:1,padding: 20}}>
 					<Text style={[styles.paragraph,styles.text]}>Please select the performance you have previously attended from the list below:</Text>
 					<View style={{
 						height:200,
