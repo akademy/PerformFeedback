@@ -31,7 +31,7 @@ export const createFeedback = () => (dispatch, getState) => {
 		performanceId = getState().currentPerformanceId;
 
 	dispatch( addFeedback( { feedbackId } ) );
-	dispatch( setFeedbackPerformanceId( performanceId ) );
+	dispatch( setFeedbackPerformanceId( feedbackId, performanceId ) );
 
 	dispatch( setCurrentFeedbackId( feedbackId ) );
 

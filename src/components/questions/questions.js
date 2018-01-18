@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/Entypo';
 import TemplateBase from '../templateBase'
 import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
 import {Console as C} from '../../lib/console'
+import {NAVIGATION as N} from "../../constants";
+import {changePathAndNavigate} from "../../route";
 
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
@@ -43,7 +45,10 @@ export default class Questions extends Component {
 			value: 1, // selected value for item, if selected, what value should be sent?
 		},
 		{
-			label: "I am a regular attendee of RNCM events",
+			label: (this.props.performanceId === "oxfordJanuary2018") ?
+				"I am a regular attendee of these events"
+				:
+				"I am a regular attendee of RNCM events",
 			value: 2
 		},
 		{
@@ -195,7 +200,6 @@ export default class Questions extends Component {
 	};
 
 	render() {
-		const { goBack } = this.props.navigation;
 		let questionNumber = 1;
 
 		return (
@@ -288,22 +292,26 @@ export default class Questions extends Component {
 						</View>
 					</View>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
-						<View style={{width: '90%',backgroundColor:inputBackgroundColor}}>
-							<TextInput
-								style={[styles.textInput, {
-									width: '100%',
-								}]}
+					{this.props.performanceId === "manchester2017" ?
+						<View style={[styles.question]}>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
+							<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
+							<View style={{width: '90%', backgroundColor: inputBackgroundColor}}>
+								<TextInput
+									style={[styles.textInput, {
+										width: '100%',
+									}]}
 
-								multiline={true}
-								numberOfLines={3}
-								value={this.state.influences}
-								onChangeText={ (text) => this.setState({influences:text},this.setQuestionInfluences)}
-							/>
+									multiline={true}
+									numberOfLines={3}
+									value={this.state.influences}
+									onChangeText={(text) => this.setState({influences: text}, this.setQuestionInfluences)}
+								/>
+							</View>
 						</View>
-					</View>
+						:
+						<View/>
+					}
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
@@ -357,7 +365,17 @@ export default class Questions extends Component {
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>As a listener, how familiar are you with twentieth-century classical music?</Text>
+						<Text style={[styles.questionText]}>
+							{this.props.performanceId === "oxfordJanuary2018" ?
+								<Text style={[styles.questionText]}>
+									As a listener, how familiar are you with classical music?
+								</Text>
+								:
+								<Text style={[styles.questionText]}>
+									As a listener, how familiar are you with twentieth-century classical music?
+								</Text>
+							}
+						</Text>
 						<Text style={[styles.key]}>
 							<Text><Text style={{fontWeight:'bold'}}>1</Text> : I am not familiar with it at all</Text>{'\n'}
 							<Text><Text style={{fontWeight:'bold'}}>7</Text> : I am very familiar with it</Text>
@@ -380,7 +398,17 @@ export default class Questions extends Component {
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>How often do you listen to twentieth-century classical music?</Text>
+						<Text style={[styles.questionText]}>
+							{this.props.performanceId === "oxfordJanuary2018" ?
+								<Text style={[styles.questionText]}>
+									How often do you listen to classical music?
+								</Text>
+								:
+								<Text>
+									How often do you listen to twentieth-century classical music?
+								</Text>
+							}
+						</Text>
 						<Text style={[styles.key]}>
 							<Text><Text style={{fontWeight:'bold'}}>1</Text> : Never listen</Text>{'\n'}
 							<Text><Text style={{fontWeight:'bold'}}>7</Text> : Listen every day</Text>
@@ -498,7 +526,7 @@ export default class Questions extends Component {
 							color="#fff"
 							iconStyle={[styles.buttonIcon]}
 							onPress={ () => {
-								goBack();
+								changePathAndNavigate( this.props.navigation, [N.HOME] );
 							}}
 						>
 							<Text style={[styles.buttonText]}>Finish</Text>

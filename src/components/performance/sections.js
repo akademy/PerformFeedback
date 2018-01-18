@@ -30,7 +30,6 @@ export default class Performance extends Component {
 		this.startSyncInterval();
 	};
 
-	performanceId = 'manchester2017';
 	sectionsChangedInterval = null;
 
 	state = {
@@ -47,9 +46,6 @@ export default class Performance extends Component {
 		// TODO?: Reset on retake
 		let feedbackId = null;
 
-		if( this.props.setPerformanceId ) { // TODO: Remove to own component
-			this.props.setPerformanceId( 'manchester2017' );
-		}
 
 		if( this.props.createFeedback ) {
 			feedbackId = this.props.createFeedback();
@@ -218,7 +214,17 @@ export default class Performance extends Component {
 										this.createSectionText()
 									});
 								}}
-							>Add section end</Button>
+							>
+								{this.props.performanceId === "oxfordJanuary2018" ?
+									<Text style={{color:'white',
+										fontSize: 18}}
+									>Mark a palindrome</Text>
+									:
+									<Text style={{color:'white',
+										fontSize: 18}}
+									>Add section end</Text>
+								}
+							</Button>
 						</View>
 
 						<View style={{flex:1, minHeight: 75, paddingBottom: 20}}>

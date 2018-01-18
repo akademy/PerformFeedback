@@ -32,12 +32,12 @@ export default class Performance extends Component {
 				}}
 				>
 					<View style={[styles.group]}>
-						<Text style={{textAlign: 'center'}}>Thanks for completing the Section Ends. {"\n"}(Press <Text style={{color:'blue'}} onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
+						<Text style={{textAlign: 'center'}}>Thanks for taking part so far. {"\n"}(Press <Text style={{color:'blue'}} onPress={ () => goBack() }>Back</Text> if you finished prematurely.)</Text>
 					</View>
 
 					<View style={[styles.group]}>
 						<Text style={{marginBottom:10, textAlign: 'center'}}>
-							We have some questions about the performance which you can answer now or later from the home screen.
+							We also have some questions about the performance. You can answer them straight away or later from the home screen.
 						</Text>
 
 						<View style={[styles.groupCenter]}>

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "emulator-home": "~/Android/Sdk/emulator/emulator -avd Nexus_5_API_22 -use-system-libs"
   },
   "dependencies": {
     "apsl-react-native-button": "^3.1.0",
@@ -19,7 +19,9 @@
     "react-native-datepicker": "^1.6.0",
     "react-native-dialog-component": "^0.2.16",
     "react-native-keyboard-manager": "^4.0.10-3",
+    "react-native-list-view-select": "^1.0.4",
     "react-native-radio-buttons": "^1.0.0",
+    "react-native-root-siblings": "^1.2.1",
     "react-native-uuid": "^1.4.9",
     "react-native-vector-icons": "^4.3.0",
     "react-native-version-number": "^0.1.3",

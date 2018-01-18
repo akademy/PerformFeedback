@@ -47,6 +47,21 @@ export const errors = (state=[], action) => {
 	return state;
 };
 
+export const performances = (state=[]) => {
+	return [
+		{
+			key:"oxfordJanuary2018",
+			title:"Music and Maths",
+			date: "27 January, 2018"
+		},
+		{
+			key:"manchester2017",
+			title:"PRiSM Perception App World Premiere",
+			date: "04 October, 2017"
+		}
+	];
+};
+
 export default combineReducers(
 	{
 		dataVersion,
@@ -55,6 +70,7 @@ export default combineReducers(
 		profile : profileReducers,
 		live: liveReducers,
 		post: postReducers,
-		errors
+		errors,
+		performances
 	}
 );
