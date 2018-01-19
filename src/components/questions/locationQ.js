@@ -23,19 +23,14 @@ export default class Location extends Component {
 	componentWillMount() {
 		let performanceIds = new Set();
 
-		C.log("feedback length", this.props.feedbacks.length);
-
 		for( let i=0, z=this.props.feedbacks.length; i<z; i++ ) {
 			let performanceId = this.props.feedbacks[i].performanceId;
 			if( !performanceId ) {
-				// There should always be a feedback ID, except in the case of the very first use of the app
+				// There should always be a feedback ID, except in the case of the very first version of the app
 				performanceId = "manchester2017" // special case
 			}
-			C.log(this.props.feedbacks[i],this.props.feedbacks[i].performanceId)
-			performanceIds.add( this.props.feedbacks[i].performanceId );
+			performanceIds.add( performanceId );
 		}
-		C.log("performance id length",performanceIds.size, performanceIds);
-		C.log("performances length", this.props.performances.length, this.props.performances);
 
 		let performances = [];
 		performanceIds.forEach( (id) => {
@@ -102,12 +97,13 @@ export default class Location extends Component {
 							fontSize: 18
 						}}
 						onPress={ () => {
-							if( this.props.setCurrentPerformanceId ) {
-								this.props.setCurrentPerformanceId(this.state.selectedKey);
-							}
-							navigate(N.QUESTIONS);
+							//if( this.props.setCurrentPerformanceId ) {
+							//	this.props.setCurrentPerformanceId(this.state.selectedKey);
+							//}
+							//navigate(N.QUESTIONS);
+							alert(this.props.feedbacks[0].performanceId);
 						}}
-						isDisabled={this.state.selectedKey===null}
+						isDisabled={false}//this.state.selectedKey===null}
 					>Proceed</Button>
 				</View>
 			</TemplateBase>
