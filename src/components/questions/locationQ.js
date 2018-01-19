@@ -97,13 +97,12 @@ export default class Location extends Component {
 							fontSize: 18
 						}}
 						onPress={ () => {
-							//if( this.props.setCurrentPerformanceId ) {
-							//	this.props.setCurrentPerformanceId(this.state.selectedKey);
-							//}
-							//navigate(N.QUESTIONS);
-							alert(this.props.feedbacks[0].performanceId);
+							if( this.props.setCurrentPerformanceId ) {
+								this.props.setCurrentPerformanceId(this.state.selectedKey);
+							}
+							navigate(N.QUESTIONS);
 						}}
-						isDisabled={false}//this.state.selectedKey===null}
+						isDisabled={this.state.selectedKey===null}
 					>Proceed</Button>
 				</View>
 			</TemplateBase>
