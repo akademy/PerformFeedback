@@ -4,8 +4,10 @@ import { StyleSheet, Text, View } from "react-native"
 import Button from 'apsl-react-native-button'
 
 import TemplateBase from '../templateBase'
-import { NAVIGATION as N } from "../../constants"
+import {MODE, NAVIGATION as N} from "../../constants"
 import { Console as C } from "../../lib/console"
+
+import { performanceFromId } from '../../lib/helper'
 
 export default class Performance extends Component {
 
@@ -32,13 +34,20 @@ export default class Performance extends Component {
 
 	sectionsChangedInterval = null;
 
-	state = {
-		sections: [],
-		sectionsNeedSync: false,
-		sectionTexts: '',
-		removeButtonDisabled: true
-	};
 
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			sections: [],
+			sectionsNeedSync: false,
+			sectionTexts: '',
+			removeButtonDisabled: true,
+
+			performance: performanceFromId(props.performances, props.performanceId) //"oxfordJanuary2018"
+		};
+	}
 
 	// noinspection JSUnusedGlobalSymbols
 	componentWillMount = () => {
@@ -215,7 +224,7 @@ export default class Performance extends Component {
 									});
 								}}
 							>
-								{this.props.performanceId === "oxfordJanuary2018" ?
+								{this.state.performance.mode === MODE.PALINDROME ?
 									<Text style={{color:'white',
 										fontSize: 18}}
 									>Mark a palindrome</Text>

@@ -1,5 +1,16 @@
 import Enum from './lib/enum';
 
+export const PERFORMANCES = Enum({
+	ABBEY       : "abbeyRoadOctober2018",
+	OXFORD      : "oxfordJanuary2018",
+	MANCHESTER  : "manchester2017",
+}, Enum.TYPE.STRING);
+
+export const MODE = Enum({
+	SECTION :1,
+	PALINDROME :1
+});
+
 export const NAVIGATION = Enum({
 	HOME :1,
 	ABOUT :1,

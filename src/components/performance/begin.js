@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import {StyleSheet, Text, View} from "react-native"
+import {StyleSheet, Text, View} from 'react-native'
 
 import Button from 'apsl-react-native-button'
 
-import { DialogComponent, SlideAnimation, DialogContent, DialogButton } from 'react-native-dialog-component'
+import { DialogComponent, SlideAnimation, DialogContent, DialogButton }
+	from 'react-native-dialog-component'
 
 import TemplateBase from '../templateBase'
-import {NAVIGATION as N} from "../../constants"
+import {NAVIGATION as N, MODE} from '../../constants'
+
+import { performanceFromId } from '../../lib/helper'
 
 export default class Performance extends Component {
 
@@ -15,7 +18,15 @@ export default class Performance extends Component {
 		title: "Performance"
 	});
 
-	state = { beginButtonDisabled : true };
+	constructor(props) {
+		super(props);
+		console.log( props.performances, props.performanceId );
+
+		this.state = {
+			beginButtonDisabled : true,
+			performance: performanceFromId(props.performances, props.performanceId) //"oxfordJanuary2018"
+		};
+	}
 
 	// noinspection JSUnusedGlobalSymbols
 	componentDidMount = () => {
@@ -64,7 +75,7 @@ export default class Performance extends Component {
 						<Text style={[styles.text,{fontWeight:'bold'}]}>
 							Please only proceed to the next screen once instructed to do so.
 						</Text>
-						{this.props.performanceId === "oxfordJanuary2018" ?
+						{this.state.performance.mode === MODE.PALINDROME ?
 							<Text style={[styles.text]}>
 								When the performance starts you will be able to mark when you believe you have detected a palindrome section.
 								Simply press the green button "Mark a palindrome".

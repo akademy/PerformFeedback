@@ -1,4 +1,4 @@
-import { REDUCER as R } from '../../constants'
+import {REDUCER as R, MODE, PERFORMANCES} from '../../constants'
 import { combineReducers } from 'redux'
 
 import profileReducers from './profile'
@@ -50,12 +50,20 @@ export const errors = (state=[], action) => {
 export const performances = (state=[]) => {
 	return [
 		{
-			key:"oxfordJanuary2018",
+			key: PERFORMANCES.ABBEY, //"abbeyRoadOctober2018",
+			mode: MODE.PALINDROME,
+			title:"Abbey Road Industry Day",
+			date: "25 October, 2018"
+		},
+		{
+			key: PERFORMANCES.OXFORD, //"oxfordJanuary2018",
+			mode: MODE.PALINDROME,
 			title:"Music and Maths",
 			date: "27 January, 2018"
 		},
 		{
-			key:"manchester2017",
+			key: PERFORMANCES.MANCHESTER, //"manchester2017",
+			mode: MODE.SECTION,
 			title:"PRiSM Perception App World Premiere",
 			date: "04 October, 2017"
 		}

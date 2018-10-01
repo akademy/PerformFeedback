@@ -8,8 +8,9 @@ import Icon from 'react-native-vector-icons/Entypo';
 import TemplateBase from '../templateBase'
 import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
 import {Console as C} from '../../lib/console'
-import {NAVIGATION as N} from "../../constants";
+import {MODE, NAVIGATION as N, PERFORMANCES} from "../../constants";
 import {changePathAndNavigate} from "../../route";
+import {performanceFromId} from "../../lib/helper";
 
 const inputBackgroundColor = InputBackgroundColor;
 const radioTint = '#555';
@@ -20,55 +21,59 @@ export default class Questions extends Component {
 		title: "Questions"
 	});
 
-	state = {
-		performanceId: this.props.performanceId,
+	constructor(props) {
+		super(props);
 
-		musicLengthSeconds: null,
-		musicLengthMinutes: null,
+		this.state = {
+			performance: performanceFromId(props.performances, props.performanceId),
 
-		describe1: "",
-		describe2: "",
-		describe3: "",
+			musicLengthSeconds: null,
+			musicLengthMinutes: null,
 
-		influences: "",
+			describe1: "",
+			describe2: "",
+			describe3: "",
 
-		enjoy : null,
-		familiar: null,
-		participation: null,
+			influences: "",
 
-		motivation: []
-	};
+			enjoy: null,
+			familiar: null,
+			participation: null,
 
-	motivationOptions = [
-		{
-			label: "I wanted to learn more about music and maths working together", // label for checkbox item
-			value: 1, // selected value for item, if selected, what value should be sent?
-		},
-		{
-			label: (this.props.performanceId === "oxfordJanuary2018") ?
-				"I am a regular attendee of these events"
-				:
-				"I am a regular attendee of RNCM events",
-			value: 2
-		},
-		{
-			label: "I wanted to take part in a scientific study",
-			value: 3
-		},
-		{
-			label: "A friend / family member asked me to come along",
-			value: 4
-		},
-	];
+			motivation: []
+		};
+
+		this.motivationOptions = [
+			{
+				label: "I wanted to learn more about music and maths working together", // label for checkbox item
+				value: 1, // selected value for item, if selected, what value should be sent?
+			},
+			{
+				label: (this.state.performance.key === PERFORMANCES.MANCHESTER) ?
+					"I am a regular attendee of RNCM events"
+					:
+					"I am a regular attendee of these events",
+				value: 2
+			},
+			{
+				label: "I wanted to take part in a scientific study",
+				value: 3
+			},
+			{
+				label: "A friend / family member asked me to come along",
+				value: 4
+			},
+		];
+	}
 
 	componentWillMount = () => {
 		C.log( 'componentWillMount' );
 
 		let question = null;
 
-		if( this.props.performanceId && this.props.questions ) {
+		if( this.state.performance.key && this.props.questions ) {
 			for( let i=0, z=this.props.questions.length; i<z; i++ ) {
-				if( this.props.questions[i].performanceId === this.props.performanceId ) {
+				if( this.props.questions[i].performanceId === this.state.performance.key ) {
 					question = this.props.questions[i];
 
 					break;
@@ -77,7 +82,7 @@ export default class Questions extends Component {
 		}
 
 		if( question === null && this.props.createQuestion ) {
-			this.props.createQuestion( this.props.performanceId )
+			this.props.createQuestion( this.state.performance.key )
 		}
 		else {
 			this.setStateFromQuestion( question );
@@ -132,47 +137,48 @@ export default class Questions extends Component {
 
 	setQuestionComments = () => {
 		if( this.props.setQuestionComments ) {
-			this.props.setQuestionComments( this.props.performanceId, this.state.comments );
-		}};
+			this.props.setQuestionComments( this.state.performance.key, this.state.comments );
+		}
+	};
 	setQuestionDescribe = () => {
 		if( this.props.setQuestionDescribe ) {
 			let words = [
-				this.state.describe1,
+				this.state.describe1,,
 				this.state.describe2,
 				this.state.describe3
 			];
 
-			this.props.setQuestionDescribe( this.props.performanceId, words );
+			this.props.setQuestionDescribe( this.state.performance.key, words );
 		}
 	};
 	setQuestionEnjoy = () => {
 		if( this.props.setQuestionEnjoy ) {
-			this.props.setQuestionEnjoy( this.props.performanceId, this.state.enjoy );
+			this.props.setQuestionEnjoy( this.state.performance.key, this.state.enjoy );
 		}
 	};
 	setQuestionFamiliar = () => {
 		if( this.props.setQuestionFamiliar ) {
-			this.props.setQuestionFamiliar( this.props.performanceId, this.state.familiar );
+			this.props.setQuestionFamiliar( this.state.performance.key, this.state.familiar );
 		}
 	};
 	setQuestionFamiliarPiece = () => {
 		if( this.props.setQuestionFamiliarPiece ) {
-			this.props.setQuestionFamiliarPiece( this.props.performanceId, this.state.familiarPiece );
+			this.props.setQuestionFamiliarPiece( this.state.performance.key, this.state.familiarPiece );
 		}
 	};
 	setQuestionOften = () => {
 		if( this.props.setQuestionOften ) {
-			this.props.setQuestionOften( this.props.performanceId, this.state.often );
+			this.props.setQuestionOften( this.state.performance.key, this.state.often );
 		}
 	};
 	setQuestionInfluences = () => {
 		if( this.props.setQuestionInfluences ) {
-			this.props.setQuestionInfluences( this.props.performanceId, this.state.influences );
+			this.props.setQuestionInfluences( this.state.performance.key, this.state.influences );
 		}
 	};
 	setQuestionMotivation = () => {
 		if (this.props.setQuestionMotivation) {
-			this.props.setQuestionMotivation(this.props.performanceId, this.state.motivation);
+			this.props.setQuestionMotivation(this.state.performance.key, this.state.motivation);
 		}
 	};
 	setQuestionMusicLength = () => {
@@ -181,13 +187,13 @@ export default class Questions extends Component {
 			let seconds = this.checkInt(this.state.musicLengthMinutes) * 60;
 			seconds += this.checkInt(this.state.musicLengthSeconds);
 
-			this.props.setQuestionMusicLength( this.props.performanceId, seconds );
+			this.props.setQuestionMusicLength( this.state.performance.key, seconds );
 		}
 
 	};
 	setQuestionParticipation = () => {
 		if( this.props.setQuestionParticipation ) {
-			this.props.setQuestionParticipation( this.props.performanceId, this.state.participation );
+			this.props.setQuestionParticipation( this.state.performance.key, this.state.participation );
 		}
 	};
 
@@ -292,7 +298,7 @@ export default class Questions extends Component {
 						</View>
 					</View>
 
-					{this.props.performanceId === "manchester2017" ?
+					{this.state.performance.mode === MODE.SECTION ?
 						<View style={[styles.question]}>
 							<Text style={[styles.label]}>Q{questionNumber++}</Text>
 							<Text style={[styles.questionText]}>How did you decide when a section had ended?</Text>
@@ -366,7 +372,7 @@ export default class Questions extends Component {
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
 						<Text style={[styles.questionText]}>
-							{this.props.performanceId === "oxfordJanuary2018" ?
+							{this.state.performance.key === PERFORMANCES.OXFORD || this.state.performance.key === PERFORMANCES.ABBEY?
 								<Text style={[styles.questionText]}>
 									As a listener, how familiar are you with classical music?
 								</Text>
@@ -399,7 +405,7 @@ export default class Questions extends Component {
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
 						<Text style={[styles.questionText]}>
-							{this.props.performanceId === "oxfordJanuary2018" ?
+							{this.state.performance.key === PERFORMANCES.OXFORD || this.state.performance.key === PERFORMANCES.ABBEY ?
 								<Text style={[styles.questionText]}>
 									How often do you listen to classical music?
 								</Text>
@@ -431,7 +437,7 @@ export default class Questions extends Component {
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>How familiar are you with the piece performed tonight?</Text>
+						<Text style={[styles.questionText]}>How familiar are you with the piece performed?</Text>
 						<Text style={[styles.key]}>
 							<Text><Text style={{fontWeight:'bold'}}>1</Text> : I've never heard of it</Text>{'\n'}
 							<Text><Text style={{fontWeight:'bold'}}>7</Text> : I've heard it many times</Text>
@@ -454,7 +460,7 @@ export default class Questions extends Component {
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>Does participation in a scientific experiment such as this increase or decrease your enjoyment of a concert experience?</Text>
+						<Text style={[styles.questionText]}>Does participation in a scientific experiment such as this increase or decrease your enjoyment of a performance?</Text>
 						<Text style={[styles.key]}>
 							<Text><Text style={{fontWeight:'bold'}}>1</Text> : It significantly decreases my enjoyment</Text>{'\n'}
 							<Text><Text style={{fontWeight:'bold'}}>7</Text> : It significantly increases my enjoyment</Text>
@@ -474,30 +480,34 @@ export default class Questions extends Component {
 						/>
 					</View>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Q{questionNumber++}</Text>
-						<Text style={[styles.questionText]}>What motivated you to come to tonight's event? (Select all that apply)</Text>
-						<CheckboxGroup
-							callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
-							iconColor={"steelblue"}
-							iconSize={30}
-							checkedIcon="ios-checkbox-outline"
-							uncheckedIcon="ios-square-outline"
-							checkboxes={this.motivationOptions}
-							labelStyle={{
-								color: '#333',
-								paddingLeft: 10,
-								fontSize: 12,
-								width: '90%'
-							}}
-							rowStyle={{
-								flexDirection: 'row',
-								marginTop: 10,
-								backgroundColor: inputBackgroundColor
-							}}
-							rowDirection={"column"}
-						/>
-					</View>
+					{this.state.performance.key !== PERFORMANCES.ABBEY ?
+						<View style={[styles.question]}>
+							<Text style={[styles.label]}>Q{questionNumber++}</Text>
+							<Text style={[styles.questionText]}>What motivated you to come to this event? (Select all that apply)</Text>
+							<CheckboxGroup
+								callback={ (selected) => this.setState({motivation:selected.sort()},this.setQuestionMotivation)}
+								iconColor={"steelblue"}
+								iconSize={30}
+								checkedIcon="ios-checkbox-outline"
+								uncheckedIcon="ios-square-outline"
+								checkboxes={this.motivationOptions}
+								labelStyle={{
+									color: '#333',
+									paddingLeft: 10,
+									fontSize: 12,
+									width: '90%'
+								}}
+								rowStyle={{
+									flexDirection: 'row',
+									marginTop: 10,
+									backgroundColor: inputBackgroundColor
+								}}
+								rowDirection={"column"}
+							/>
+						</View>
+						:
+						<View/>
+					}
 
 					<View style={[styles.question]}>
 						<Text style={[styles.label]}>Q{questionNumber++}</Text>

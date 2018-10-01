@@ -1,6 +1,4 @@
 import { REDUCER as R } from '../../constants'
-import fetch from 'fetch-everywhere'
-import config from '../../config/config'
 import C from "../../lib/console";
 
 // These set up the data if needs be, and create a "state changer"

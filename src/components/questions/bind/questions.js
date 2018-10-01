@@ -19,6 +19,7 @@ import {
 const stateToProps = (state) => (
 	{
 		performanceId: state.currentPerformanceId,
+		performances: state.performances,
 		questions: state.post.questions
 	}
 );
