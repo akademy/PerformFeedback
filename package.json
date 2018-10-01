@@ -10,8 +10,8 @@
     "apsl-react-native-button": "^3.1.0",
     "buffer": "^5.0.7",
     "fetch-everywhere": "^1.0.5",
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.46.4",
+    "react": "16.0.0",
+    "react-native": "^0.50.4",
     "react-native-background-fetch": "^2.0.8",
     "react-native-background-task": "^0.2.1",
     "react-native-checkbox-group": "^1.0.3",
@@ -29,7 +29,8 @@
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
     "redux-persist": "^4.8.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
