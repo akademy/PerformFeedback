@@ -52,7 +52,7 @@ export const performances = (state=[]) => {
 		{
 			key: PERFORMANCES.ABBEY, //"abbeyRoadOctober2018",
 			mode: MODE.PALINDROME,
-			title:"Abbey Road Industry Day",
+			title:"FAST Industry Day",
 			date: "25 October, 2018"
 		},
 		{
