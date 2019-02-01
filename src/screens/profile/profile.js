@@ -5,7 +5,9 @@ import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-
 import Icon from 'react-native-vector-icons/Entypo';
 
 import TemplateBase from '../../components/templateBase'
-import DatePicker from 'react-native-datepicker'
+import QuestionBase from '../../components/questions/questionBase'
+import QuestionDate from '../../components/questions/questionDate'
+import QuestionRadio from '../../components/questions/questionRadio'
 
 import { MainBackgroundColor as MainColor, InputBackgroundColor } from "../../style/index";
 
@@ -139,169 +141,89 @@ export default class Profile extends Component {
 						<Text style={{fontSize:20}}>{this.state.shortId}</Text>
 					</View>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Date of Birth</Text>
-						<Text style={[styles.questionText]}>What is your date of birth? (YYYY-MM-DD)</Text>
+					<QuestionDate
+						title={"Date of Birth"}
+						text={"What is your date of birth? (YYYY-MM-DD)"}
+						value={this.state.dateOfBirth}
+						onChange={ (date) =>
+							this.setState({dateOfBirth:date},this.setDateOfBirth)
+						}
+					/>
 
-						<DatePicker
-							style={{
-								//width: 200
-							}}
-							date={this.state.dateOfBirth}
-							mode="date"
-							placeholder="select date"
-							format="YYYY-MM-DD"
-							minDate="1895-01-01"
-							maxDate="2014-12-31"
-							confirmBtnText="Confirm"
-							cancelBtnText="Cancel"
-							customStyles={{}}
-							onDateChange={
-								(date) => this.setState({dateOfBirth:date},this.setDateOfBirth)
-							}
-						/>
-					</View>
+					<QuestionRadio
+						title={"Formal Music Training"}
+						text={"How many years of formal music training have you had (including A-level and any instrumental, vocal or composition lessons)?"}
+						options={[0,1,2,3,4,5,6,7,8,9,"10+"]}
+						value={this.state.musicTraining}
+						onChange={ (option) =>
+							this.setState({musicTraining: option}, this.setMusicTraining)
+						}
+					/>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Formal Music Training</Text>
-						<Text style={[styles.questionText]}>How many years of formal music training have you had (including A-level and any instrumental, vocal or composition lessons)?</Text>
-						<RadioSegmentedControls
-							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-							onSelection={ (option) => this.setState({musicTraining:option},this.setMusicTraining) }
-							selectedOption={this.state.musicTraining }
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={25}
-							selectedBackgroundColor={MainColor}
+					<QuestionRadio
+						title={"Musical Field"}
+						text={"Do you currently play a musical instrument, sing or compose, and if so for how many years? (Please select zero if you do not have any)"}
+						options={[0,1,2,3,4,5,6,7,8,9,"10+"]}
+						value={this.state.musicField}
+						onChange={ (option) =>
+							this.setState({musicField: option}, this.setMusicField)
+						}
+					/>
 
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-					</View>
+					<QuestionRadio
+						title={"Mathematical Training"}
+						text={"How many years of formal mathematics training have you had (including A-level and any further study of mathematics)?"}
+						options={[0,1,2,3,4,5,6,7,8,9,"10+"]}
+						value={this.state.mathTraining}
+						onChange={ (option) =>
+							this.setState({mathTraining: option}, this.setMathTraining)
+						}
+					/>
 
+					<QuestionRadio
+						title={"Mathematical Field"}
+						text={"Do you currently work in a field which requires mathematical skills, and if so for how many years have you worked in this area? (Please select zero if you do not work with mathematics)"}
+						options={[0,1,2,3,4,5,6,7,8,9,"10+"]}
+						value={this.state.mathField}
+						onChange={ (option) =>
+							this.setState({mathField: option}, this.setMathField)
+						}
+					/>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Musical Field</Text>
-						<Text style={[styles.questionText]}>Do you currently play a musical instrument, sing or compose, and if so for how many years? (Please select zero if you do not have any)</Text>
-						<RadioSegmentedControls
-							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-							onSelection={ (option) => this.setState({musicField:option},this.setMusicField) }
-							selectedOption={this.state.musicField }
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={25}
-							selectedBackgroundColor={MainColor}
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-					</View>
+					<QuestionRadio
+						title={"Education"}
+						text={"What is your highest level of formal qualification?"}
+						direction={"column"}
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Mathematical Training</Text>
-						<Text style={[styles.questionText]}>How many years of formal mathematics training have you had (including A-level and any further study of mathematics)?</Text>
-						<RadioSegmentedControls
-							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-							onSelection={ (option) => this.setState({mathTraining:option},this.setMathTraining) }
-							selectedOption={this.state.mathTraining }
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={25}
-							selectedBackgroundColor={MainColor}
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-					</View>
+						options={this.educationOptions}
+						value={this.state.education}
+						onChange={ (option) =>
+							this.setState({education:option},this.setEducation)
+						}
 
+						textEntry={true}
+						textEntryValue={this.state.educationOther}
+						textEntryOption={this.educationOptions[this.educationOptionsOtherIndex]}
+						textEntryOnChange={ (text) => this.setState({educationOther:text},this.setEducationOther) }
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Mathematical Field</Text>
-						<Text style={[styles.questionText]}>Do you currently work in a field which requires mathematical skills, and if so for how many years have you worked in this area? (Please select zero if you do not work with mathematics)</Text>
-						<RadioSegmentedControls
-							options={ [0,1,2,3,4,5,6,7,8,9,"10+"] }
-							onSelection={ (option) => this.setState({mathField:option},this.setMathField) }
-							selectedOption={this.state.mathField}
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={25}
-							selectedBackgroundColor={MainColor}
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-					</View>
+					/>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Education</Text>
-						<Text style={[styles.questionText]}>What is your highest level of formal qualification?</Text>
-						<RadioSegmentedControls
-							direction="column"
-							options={ this.educationOptions }
-							onSelection={ (option) => this.setState({education:option},this.setEducation) }
-							selectedOption={this.state.education }
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={10}
-							selectedBackgroundColor={MainColor}
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-						<View style={{
-							flex:1,
-							flexDirection:'row',
-							alignItems:'center',
-							marginBottom: 5,
-							marginTop: 20
-						}}>
-							<Text style={{
-								flex:3,
-								color: (this.state.education === this.educationOptions[this.educationOptionsOtherIndex]) ? '#333' : '#aaa',
-							}}>{this.educationOptions[this.educationOptionsOtherIndex]}</Text>
-							<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
-								<TextInput
-									style={[styles.textInput, {
-										width: '100%',
-									}]}
-									value={this.state.educationOther}
-									onChangeText={ (text) => this.setState({educationOther:text},this.setEducationOther)}
-									editable={ this.state.education === this.educationOptions[this.educationOptionsOtherIndex] }
-								/>
-							</View>
-						</View>
-					</View>
+					<QuestionRadio
+						title={"Listening to Music"}
+						text={"How often do you listen to music (of any style)?"}
+						direction={"column"}
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Listening to Music</Text>
-						<Text style={[styles.questionText]}>How often do you listen to music (of any style)?</Text>
-						<RadioSegmentedControls
-							direction="column"
-							options={ [
-								'Never', 'Occasionally', 'Sometimes', 'Most days', 'Every day'
-							] }
-							onSelection={ (option) => this.setState({musicListen:option},this.setMusicListen) }
-							selectedOption={this.state.musicListen }
-							tint={radioTint}
-							selectedTint={'white'}
-							backTint= {inputBackgroundColor}
-							paddingTop={10}
-							paddingBottom={10}
-							selectedBackgroundColor={MainColor}
-							//renderOption={ this.renderOption }
-							//renderContainer={ this.renderContainer }
-						/>
-					</View>
+						options={['Never', 'Occasionally', 'Sometimes', 'Most days', 'Every day'] }
+						value={this.state.musicListen}
+						onChange={ (option) =>
+							this.setState({musicListen:option},this.setMusicListen)
+						}
+					/>
 
-					<View style={[styles.question]}>
-						<Text style={[styles.label]}>Optional</Text>
-						<Text style={[styles.questionText]}>If you'd like to be notified of the results from this study you can enter your email here:</Text>
+					<QuestionBase
+						title={"Optional"}
+						text={"If you'd like to be notified of the results from this study you can enter your email here:"}
+					>
 						<View style={{flex:12,backgroundColor:inputBackgroundColor}}>
 							<TextInput
 								style={[styles.textInput, {
@@ -339,8 +261,7 @@ export default class Profile extends Component {
 							}}
 							rowDirection={"column"}
 						/>
-					</View>
-
+					</QuestionBase>
 
 					<View style={[styles.buttonWrap]}>
 						<Icon.Button
