@@ -3,18 +3,18 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 
 import { NAVIGATION as N } from './constants'
 
-import Home from "./components/bind/home"
-import About from "./components/about"
-import Licences from "./components/licences"
-import Profile from "./components/profile/bind/profile"
+import Home from "./screens/home/bind/home"
+import About from "./screens/about/about"
+import Licences from "./screens/about/licences"
+import Profile from "./screens/profile/bind/profile"
 
-import LocationPerformance from "./components/performance/bind/location"
-import Begin from "./components/performance/bind/begin"
-import Sections from "./components/performance/bind/sections"
-import Finish from "./components/performance/finish"
+import LocationPerformance from "./screens/performance/bind/location"
+import Begin from "./screens/performance/bind/begin"
+import Sections from "./screens/performance/bind/sections"
+import Finish from "./screens/performance/finish"
 
-import LocationQuestions from "./components/questions/bind/locationQ"
-import Questions from "./components/questions/bind/questions"
+import LocationQuestions from "./screens/questions/bind/locationQ"
+import Questions from "./screens/questions/bind/questions"
 
 export const changePathAndNavigate = ( navigation, routeList, index ) => {
 	let actions = [];

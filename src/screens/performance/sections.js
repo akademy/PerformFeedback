@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native"
 
 import Button from 'apsl-react-native-button'
 
-import TemplateBase from '../templateBase'
+import TemplateBase from '../../components/templateBase'
 import {MODE, NAVIGATION as N} from "../../constants"
 import { Console as C } from "../../lib/console"
 

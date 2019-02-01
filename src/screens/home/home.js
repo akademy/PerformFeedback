@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Button, Platform, StyleSheet, Text, View } from "react-native"
 import ButtonApsl from 'apsl-react-native-button'
 
-import TemplateBase from './templateBase'
-import { NAVIGATION as N } from '../constants'
-import { Console as C } from "../lib/console"
+import TemplateBase from '../../components/templateBase'
+import { NAVIGATION as N } from '../../constants'
+import { Console as C } from "../../lib/console"
 
 import Icon from 'react-native-vector-icons/Entypo';
 

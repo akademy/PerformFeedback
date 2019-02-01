@@ -6,7 +6,7 @@ import Button from 'apsl-react-native-button'
 import { DialogComponent, SlideAnimation, DialogContent, DialogButton }
 	from 'react-native-dialog-component'
 
-import TemplateBase from '../templateBase'
+import TemplateBase from '../../components/templateBase'
 import {NAVIGATION as N, MODE} from '../../constants'
 
 import { performanceFromId } from '../../lib/helper'

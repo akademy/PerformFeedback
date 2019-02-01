@@ -5,8 +5,8 @@ import CheckboxGroup from 'react-native-checkbox-group'
 
 import Icon from 'react-native-vector-icons/Entypo';
 
-import TemplateBase from '../templateBase'
-import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/";
+import TemplateBase from '../../components/templateBase'
+import {MainBackgroundColor as MainColor, InputBackgroundColor} from "../../style/index";
 import {Console as C} from '../../lib/console'
 import {MODE, NAVIGATION as N, PERFORMANCES} from "../../constants";
 import {changePathAndNavigate} from "../../route";

@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View } from "react-native"
 
 import Icon from 'react-native-vector-icons/Entypo';
 
-import TemplateBase from '../templateBase'
+import TemplateBase from '../../components/templateBase'
 import {NAVIGATION as N} from "../../constants";
 
 import {changePathAndNavigate} from "../../route"

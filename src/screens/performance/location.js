@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import {FlatList, StyleSheet, Text, TouchableHighlight, View} from "react-native"
 import Button from 'apsl-react-native-button'
 
-import TemplateBase from '../templateBase'
+import TemplateBase from '../../components/templateBase'
 
 import {NAVIGATION as N} from "../../constants";
-import { Console as C } from "../../lib/console"
 
 export default class Location extends Component {
 	static navigationOptions = ({ navigation, screenProps }) => ({
@@ -15,34 +14,9 @@ export default class Location extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedKey: props.performanceId, //"oxfordJanuary2018"
-			performances: []
+			selectedKey: props.performanceId //"oxfordJanuary2018"
 		};
 	}
-
-	componentWillMount() {
-		let performanceIds = new Set();
-
-		for( let i=0, z=this.props.feedbacks.length; i<z; i++ ) {
-			let performanceId = this.props.feedbacks[i].performanceId;
-			if( !performanceId ) {
-				// There should always be a feedback ID, except in the case of the very first version of the app
-				performanceId = "manchester2017" // special case
-			}
-			performanceIds.add( performanceId );
-		}
-
-		let performances = [];
-		performanceIds.forEach( (id) => {
-			for( let i=0, z=this.props.performances.length; i<z; i++ ) {
-				if( this.props.performances[i].key === id ) {
-					performances.push(this.props.performances[i]);
-				}
-			}
-		} );
-
-		this.setState({performances});
-	};
 
 	render() {
 		const { navigate } = this.props.navigation;
@@ -50,10 +24,10 @@ export default class Location extends Component {
 		return (
 			<TemplateBase
 				icon="note"
-				mainTitle="Performance Location" subTitle="Where were you?"
+				mainTitle="Performance Location" subTitle="Where are you?"
 			>
 				<View style={{flex:1,padding: 20}}>
-					<Text style={[styles.paragraph,styles.text]}>Please select the performance you have previously attended from the list below:</Text>
+					<Text style={[styles.paragraph,styles.text]}>Please select the performance your are currently attending from the list below:</Text>
 					<View style={{
 						height:200,
 						margin:10,
@@ -61,7 +35,7 @@ export default class Location extends Component {
 						borderColor:'#999'
 					}}>
 					<FlatList
-						data={this.state.performances}
+						data={this.props.performances}
 						keyExtractor={ (item) => item.key}
 						extraData={this.state.selectedKey}
 						renderItem={ ({item}) =>
@@ -100,7 +74,7 @@ export default class Location extends Component {
 							if( this.props.setCurrentPerformanceId ) {
 								this.props.setCurrentPerformanceId(this.state.selectedKey);
 							}
-							navigate(N.QUESTIONS);
+							navigate(N.PERFORMANCE_BEGIN);
 						}}
 						isDisabled={this.state.selectedKey===null}
 					>Proceed</Button>

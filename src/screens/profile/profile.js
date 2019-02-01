@@ -4,7 +4,7 @@ import { SegmentedControls as RadioSegmentedControls } from 'react-native-radio-
 
 import Icon from 'react-native-vector-icons/Entypo';
 
-import TemplateBase from '../templateBase'
+import TemplateBase from '../../components/templateBase'
 import DatePicker from 'react-native-datepicker'
 
 import { MainBackgroundColor as MainColor, InputBackgroundColor } from "../../style/index";
